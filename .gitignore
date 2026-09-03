@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+
+# Playwright browser profile (contains logged-in session data)
+chrome-profile/
+
+# Environment variables (if you add one later)
+.env
+
+# Debug/output artifacts
+debug_screenshot.png
+output/
+
+# Playwright test artifacts
+test-results/
+playwright-report/
+playwright/.cache/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# Editor folders
+.vscode/
+.idea/

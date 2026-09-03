@@ -1,0 +1,26 @@
+{
+  "name": "meeting-bot-streaming-poc",
+  "version": "1.0.0",
+  "description": "This repo is for showing the detained step by step approach taken to create a small poc for bot streaming system",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Masterravi2000/Meeting-Bot-Streaming-POC.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Masterravi2000/Meeting-Bot-Streaming-POC/issues"
+  },
+  "homepage": "https://github.com/Masterravi2000/Meeting-Bot-Streaming-POC#readme",
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "playwright": "^1.62.1",
+    "playwright-extra": "^4.3.6",
+    "puppeteer-extra-plugin-stealth": "^2.11.2"
+  }
+}
