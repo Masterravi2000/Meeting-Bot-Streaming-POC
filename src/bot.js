@@ -19,24 +19,24 @@ chromium.use(stealth);
   });
 
   // Inject WebRTC hook BEFORE Meet's own scripts run.
-  // Patches RTCPeerConnection so every new track (audio/video) gets logged
-  // with its id and kind, polls REAL audio level via getStats(),
-  // AND now also logs the parent MediaStream's lifecycle (addtrack/removetrack)
-  // so we can see the full picture: stream creation on join, and track
-  // addition/removal within that stream over time.
   await context.addInitScript(() => {
     const OriginalRTCPeerConnection = window.RTCPeerConnection;
+    let pcCounter = 0;
 
     window.RTCPeerConnection = function (...args) {
       const pc = new OriginalRTCPeerConnection(...args);
+      const pcId = ++pcCounter;
 
-      // Poll actual audio level via getStats() — the reliable signal,
-      // since track.muted only reflects whether packets are arriving at all,
-      // not whether the sender is actually speaking/unmuted.
+      console.log(`[PC_CREATED] pcId=${pcId}`);
+
       async function checkAudioLevel(pcInstance, trackId) {
         const stats = await pcInstance.getStats();
         stats.forEach((report) => {
-          if (report.type === "inbound-rtp" && report.kind === "audio") {
+          if (
+            report.type === "inbound-rtp" &&
+            report.kind === "audio" &&
+            report.trackIdentifier === trackId
+          ) {
             console.log(
               `[AUDIO_LEVEL] trackId~${trackId} level=${report.audioLevel}`,
             );
@@ -47,17 +47,14 @@ chromium.use(stealth);
       pc.addEventListener("track", (event) => {
         const track = event.track;
         console.log(
-          `[WEBRTC_TRACK] kind=${track.kind} id=${track.id} muted=${track.muted}`,
+          `[WEBRTC_TRACK] pcId=${pcId} kind=${track.kind} trackId=${track.id} readyState=${track.readyState} muted=${track.muted} streams=${event.streams.map((s) => s.id).join(",")}`,
         );
 
-        // Log the parent MediaStream(s) this track belongs to.
-        // event.streams is an array — usually one stream per participant.
         event.streams.forEach((stream) => {
           console.log(
             `[MEDIA_STREAM] streamId=${stream.id} attachedTo trackId=${track.id} kind=${track.kind} activeTracksInStream=${stream.getTracks().length}`,
           );
 
-          // Watch this specific stream for future track additions/removals
           stream.addEventListener("addtrack", (e) => {
             console.log(
               `[STREAM_ADDTRACK] streamId=${stream.id} newTrackId=${e.track.id} kind=${e.track.kind}`,
@@ -71,15 +68,25 @@ chromium.use(stealth);
           });
         });
 
-        // Log when THIS track itself ends (removed/stopped at the track level)
         track.addEventListener("ended", () => {
           console.log(
             `[TRACK_ENDED] kind=${track.kind} id=${track.id} — track has ended`,
           );
         });
 
+        track.addEventListener("mute", () => {
+          console.log(
+            `[TRACK_MUTED] pcId=${pcId} kind=${track.kind} trackId=${track.id}`,
+          );
+        });
+
+        track.addEventListener("unmute", () => {
+          console.log(
+            `[TRACK_UNMUTED] pcId=${pcId} kind=${track.kind} trackId=${track.id}`,
+          );
+        });
+
         if (track.kind === "audio") {
-          // Poll audio level every 1 second for this specific track's connection
           const levelInterval = setInterval(() => {
             checkAudioLevel(pc, track.id);
             if (track.readyState === "ended") clearInterval(levelInterval);
@@ -98,8 +105,7 @@ chromium.use(stealth);
 
           function onFrame(now, metadata) {
             frameCount++;
-            const currentTime = Date.now();
-            lastFrameTime = currentTime;
+            lastFrameTime = Date.now();
 
             if (!isCurrentlyActive) {
               isCurrentlyActive = true;
@@ -118,7 +124,6 @@ chromium.use(stealth);
             }
           }
 
-          // Watchdog: check every 1 second if frames have stopped arriving
           const gapCheckInterval = setInterval(() => {
             const gap = Date.now() - lastFrameTime;
             if (gap > 1500 && isCurrentlyActive) {
@@ -148,6 +153,90 @@ chromium.use(stealth);
     };
 
     window.RTCPeerConnection.prototype = OriginalRTCPeerConnection.prototype;
+
+    // --- DOM observation: watch ONLY for the stable identity-linking attributes ---
+    // data-participant-id: stable participant identity
+    // data-ssrc: matches WebRTC MediaStream streamId
+    // This is deliberately narrow (attributeFilter) to avoid the class-change noise flood.
+    function extractTileInfo(el) {
+      const ssrcEl =
+        el.hasAttribute && el.hasAttribute("data-ssrc")
+          ? el
+          : el.querySelector && el.querySelector("[data-ssrc]");
+      const participantEl =
+        el.hasAttribute && el.hasAttribute("data-participant-id")
+          ? el
+          : (el.closest && el.closest("[data-participant-id]")) ||
+            (el.querySelector && el.querySelector("[data-participant-id]"));
+      const nameEl =
+        participantEl && participantEl.querySelector
+          ? participantEl.querySelector("span.notranslate")
+          : null;
+
+      if (ssrcEl || participantEl) {
+        console.log(
+          `[TILE_INFO] participantId=${participantEl ? participantEl.getAttribute("data-participant-id") : "unknown"} ssrc=${ssrcEl ? ssrcEl.getAttribute("data-ssrc") : "unknown"} name=${nameEl ? nameEl.textContent : "unknown"}`,
+        );
+      }
+    }
+
+    function startDomObserver() {
+      const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+          // Case 1: the watched attribute itself changed on an existing node
+          if (mutation.type === "attributes") {
+            if (mutation.attributeName === "data-ssrc") {
+              console.log(
+                `[SSRC_CHANGE] oldValue=${mutation.oldValue} newValue=${mutation.target.getAttribute("data-ssrc")} timestamp=${Date.now()}`,
+              );
+            } else {
+              console.log(
+                `[TILE_ATTR_CHANGE] attr=${mutation.attributeName} newValue=${mutation.target.getAttribute(mutation.attributeName)}`,
+              );
+            }
+            extractTileInfo(mutation.target);
+          }
+
+          // Case 2: a whole new tile subtree was added — scan it for these attributes
+          if (mutation.type === "childList" && mutation.addedNodes.length > 0) {
+            mutation.addedNodes.forEach((node) => {
+              if (node.nodeType === 1) {
+                if (
+                  node.hasAttribute &&
+                  (node.hasAttribute("data-ssrc") ||
+                    node.hasAttribute("data-participant-id"))
+                ) {
+                  extractTileInfo(node);
+                }
+                if (node.querySelectorAll) {
+                  node
+                    .querySelectorAll("[data-ssrc], [data-participant-id]")
+                    .forEach(extractTileInfo);
+                }
+              }
+            });
+          }
+        });
+      });
+
+      observer.observe(document.body, {
+        childList: true,
+        subtree: true,
+        attributes: true,
+        attributeOldValue: true,
+        attributeFilter: ["data-ssrc", "data-participant-id"],
+      });
+
+      console.log(
+        "[DOM_OBSERVER] Started watching for data-ssrc / data-participant-id",
+      );
+    }
+
+    if (document.body) {
+      startDomObserver();
+    } else {
+      document.addEventListener("DOMContentLoaded", startDomObserver);
+    }
   });
 
   const page = context.pages()[0] || (await context.newPage());
@@ -163,7 +252,14 @@ chromium.use(stealth);
       text.includes("TRACK_ENDED") ||
       text.includes("VIDEO_FRAME") ||
       text.includes("VIDEO_STOPPED") ||
-      text.includes("VIDEO_RESUMED")
+      text.includes("VIDEO_RESUMED") ||
+      text.includes("PC_CREATED") ||
+      text.includes("TRACK_MUTED") ||
+      text.includes("TRACK_UNMUTED") ||
+      text.includes("TILE_INFO") ||
+      text.includes("SSRC_CHANGE") ||
+      text.includes("TILE_ATTR_CHANGE") ||
+      text.includes("DOM_OBSERVER")
     ) {
       console.log("BROWSER LOG:", text);
     }
@@ -172,17 +268,15 @@ chromium.use(stealth);
   page.on("close", () => console.log("PAGE CLOSED EVENT FIRED"));
   context.on("close", () => console.log("CONTEXT CLOSED EVENT FIRED"));
 
-  await page.goto("https://meet.google.com/rxn-qeiz-spw");
+  await page.goto("https://meet.google.com/doj-uavh-tvv");
 
   console.log("Page loaded, taking screenshot...");
   await page.screenshot({ path: "debug_screenshot.png" });
   console.log("Screenshot saved.");
 
-  // Instead of a blind fixed wait, wait for something concrete to load
   await page.waitForLoadState("networkidle").catch(() => {});
-  await page.waitForTimeout(1500); // small buffer for Meet's JS to finish rendering buttons
+  await page.waitForTimeout(1500);
 
-  // Try turning off camera/mic (best-effort)
   await page
     .getByRole("button", { name: /turn off camera/i })
     .click()
@@ -193,14 +287,12 @@ chromium.use(stealth);
     .click()
     .catch(() => console.log("Microphone toggle not found"));
 
-  // Fill name if a guest name field appears (only relevant if not logged in)
   const nameInput = page.getByRole("textbox");
   if (await nameInput.isVisible().catch(() => false)) {
     await nameInput.fill("Meeting Bot");
     console.log("Filled in bot name");
   }
 
-  // Click join
   try {
     await page.getByRole("button", { name: /ask to join|join now/i }).click();
     console.log("Clicked join button");
@@ -208,6 +300,7 @@ chromium.use(stealth);
     console.log("Join button not found:", e.message);
   }
 
-  // Keep open to observe result
+  console.log("=== READY: say something now, wait 3s, then stay silent ===");
+
   await page.waitForTimeout(120000);
 })();
