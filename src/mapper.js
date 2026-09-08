@@ -1,12 +1,8 @@
 // mapper.js
-// Core identity-binding data structure + separate event history,
-// built from validated findings:
-// - data-ssrc on a tile matches the WebRTC VIDEO MediaStream's streamId (reliable, ~86%+ direct match)
-// - audio has no DOM data-attribute; binding requires active-speaker correlation
-//   (tile's .DYfzY.cYKTje class-change timestamp vs. AUDIO_LEVEL spike timestamp, within a small tolerance)
+// Mapper = identity/negotiation binding ONLY (participant <-> track/stream IDs).
+// It does NOT track live on/off state — that's the Event History's job.
+// Event History = the single source of truth for REAL on/off transitions of actual media.
 
-// ---- Mapper: identity binding, keyed by participantId ----
-// Kept small and fast — read/written constantly during live correlation.
 const mapper = new Map();
 
 function ensureParticipant(participantId, name) {
@@ -14,72 +10,57 @@ function ensureParticipant(participantId, name) {
     mapper.set(participantId, {
       participantId,
       name,
-      videoStreamId: null, // == data-ssrc == WebRTC video streamId
+      videoStreamId: null,       // == data-ssrc == WebRTC video streamId
       currentVideoTrackId: null,
       currentAudioTrackId: null,
-      currentState: {
-        videoActive: false,
-        audioActive: false,
-      },
+      videoBound: false,         // negotiation/binding succeeded (stream exists, may still be off)
+      audioBound: false,         // negotiation/binding succeeded
     });
   } else {
-    // keep name fresh in case it was "unknown" earlier
     const record = mapper.get(participantId);
     if (name && name !== "unknown") record.name = name;
   }
   return mapper.get(participantId);
 }
 
-// Called when a tile's data-ssrc appears/changes (video binding).
+// --- Negotiation/binding only. Pure identity <-> track mapping. ---
 function bindVideo(participantId, name, ssrc, trackId) {
   const record = ensureParticipant(participantId, name);
   record.videoStreamId = ssrc;
   record.currentVideoTrackId = trackId;
-  record.currentState.videoActive = true;
+  record.videoBound = true;
+}
+
+function bindAudio(participantId, name, trackId) {
+  const record = ensureParticipant(participantId, name);
+  record.currentAudioTrackId = trackId;
+  record.audioBound = true;
+}
+
+// --- Real activity transitions. These ONLY log to event history — no mapper state to update. ---
+// Dedup (only logging genuine on->off / off->on transitions) is the caller's (bot.js) responsibility,
+// since the mapper no longer holds "current state" to check against.
+function markVideoOn(participantId, trackId) {
   logEvent(participantId, "video_on", trackId);
 }
 
-function unbindVideo(participantId) {
-  const record = mapper.get(participantId);
-  if (!record) return;
-  record.currentState.videoActive = false;
-  logEvent(participantId, "video_off", record.currentVideoTrackId);
+function markVideoOff(participantId, trackId) {
+  logEvent(participantId, "video_off", trackId);
 }
 
-// Called when active-speaker correlation confirms a match
-// (audio spike timestamp closely matches speaker-class-change timestamp for this tile).
-function bindAudio(participantId, name, trackId) {
-  const record = ensureParticipant(participantId, name);
-  const isNewBinding = record.currentAudioTrackId !== trackId;
-  record.currentAudioTrackId = trackId;
-  record.currentState.audioActive = true;
-  console.log("[DEBUG_BIND_AUDIO_STATE]", {
-    mapperSize: mapper.size,
-    record,
-  });
-  if (isNewBinding) {
-    logEvent(participantId, "audio_on", trackId);
-  }
+function markAudioOn(participantId, trackId) {
+  logEvent(participantId, "audio_on", trackId);
 }
 
-function unbindAudio(participantId) {
-  const record = mapper.get(participantId);
-  if (!record) return;
-  record.currentState.audioActive = false;
-  logEvent(participantId, "audio_off", record.currentAudioTrackId);
+function markAudioOff(participantId, trackId) {
+  logEvent(participantId, "audio_off", trackId);
 }
 
 function getMapperSnapshot() {
-  console.log("[DEBUG_SNAPSHOT_STATE]", {
-    mapperSize: mapper.size,
-    entries: Array.from(mapper.entries()),
-  });
   return Array.from(mapper.values());
 }
 
-// ---- Event History: separate structure, keyed by participantId ----
-// Append-only during the meeting. Only read once at the end, when merging
-// with ASR output — never touched by the live correlation hot path.
+// ---- Event History: separate structure, the only place real on/off state lives ----
 const eventHistory = new Map();
 
 function logEvent(participantId, eventType, trackId) {
@@ -90,9 +71,6 @@ function logEvent(participantId, eventType, trackId) {
     timestamp: Date.now(),
     event: eventType,
     trackId: trackId || null,
-  });
-  console.log("[DEBUG_EVENT_HISTORY_STATE]", {
-    eventHistorySize: eventHistory.size,
   });
 }
 
@@ -106,9 +84,11 @@ function getEventHistorySnapshot() {
 
 module.exports = {
   bindVideo,
-  unbindVideo,
   bindAudio,
-  unbindAudio,
+  markVideoOn,
+  markVideoOff,
+  markAudioOn,
+  markAudioOff,
   getMapperSnapshot,
   getEventHistorySnapshot,
 };
