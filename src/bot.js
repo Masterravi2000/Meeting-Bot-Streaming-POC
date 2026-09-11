@@ -85,8 +85,35 @@ chromium.use(stealth);
     scheduleSnapshotPrint();
   });
 
+  await page.exposeFunction("__updateName", (participantId, name) => {
+    mapper.updateName(participantId, name);
+  });
+
   await context.addInitScript({
     path: require("path").join(__dirname, "frameProcessor.js"),
+  });
+
+  await page.exposeFunction("__markScreenShareOn", (participantId, trackId) => {
+    mapper.markScreenShareOn(participantId, trackId);
+    console.log(
+      `[EVENT_SCREEN_SHARE_ON] participantId=${participantId} trackId=${trackId}`,
+    );
+    scheduleSnapshotPrint();
+  });
+
+  await page.exposeFunction(
+    "__markScreenShareOff",
+    (participantId, trackId) => {
+      mapper.markScreenShareOff(participantId, trackId);
+      console.log(
+        `[EVENT_SCREEN_SHARE_OFF] participantId=${participantId} trackId=${trackId}`,
+      );
+      scheduleSnapshotPrint();
+    },
+  );
+
+  await page.exposeFunction("__markAsPresentation", (participantId) => {
+    mapper.markAsPresentation(participantId);
   });
 
   await context.addInitScript(() => {
@@ -100,6 +127,7 @@ chromium.use(stealth);
     window.__lastAudioActivity = window.__lastAudioActivity || {};
     window.__audioActiveParticipants = window.__audioActiveParticipants || {};
     window.__ssrcToParticipant = window.__ssrcToParticipant || {};
+    window.__presentationParticipants = window.__presentationParticipants || {};
     const AUDIO_SPIKE_THRESHOLD = 0.02;
     const CORRELATION_WINDOW_MS = 400;
     const AUDIO_SILENCE_TIMEOUT_MS = 1500;
@@ -119,10 +147,10 @@ chromium.use(stealth);
             report.trackIdentifier === trackId
           ) {
             const now = Date.now();
-            console.log(
-              `[AUDIO_LEVEL] trackId~${trackId} level=${report.audioLevel} timestamp=${now}`,
-            );
             if (report.audioLevel > AUDIO_SPIKE_THRESHOLD) {
+              console.log(
+                `[AUDIO_LEVEL] trackId~${trackId} level=${report.audioLevel} timestamp=${now}`,
+              );
               window.__recentAudioSpikes[trackId] = {
                 level: report.audioLevel,
                 timestamp: now,
@@ -193,6 +221,17 @@ chromium.use(stealth);
           console.log(
             `[TRACK_ENDED] kind=${track.kind} id=${track.id} — track has ended`,
           );
+
+          if (track.kind === "video") {
+            const pid = window.__videoTrackToParticipant[track.id];
+            if (pid) {
+              if (window.__presentationParticipants[pid]) {
+                window.__markScreenShareOff(pid, track.id);
+              } else {
+                window.__markVideoOff(pid, track.id);
+              }
+            }
+          }
         });
 
         track.addEventListener("mute", () => {
@@ -211,7 +250,7 @@ chromium.use(stealth);
           const levelInterval = setInterval(() => {
             checkAudioLevel(pc, track.id);
             if (track.readyState === "ended") clearInterval(levelInterval);
-          }, 1000);
+          }, 500);
         }
 
         if (track.kind === "video") {
@@ -228,13 +267,20 @@ chromium.use(stealth);
             frameCount++;
             lastFrameTime = Date.now();
 
+            // In onFrame:
             if (!isCurrentlyActive) {
               isCurrentlyActive = true;
               console.log(
                 `[VIDEO_RESUMED] trackId=${track.id} — frames flowing again`,
               );
               const pid = window.__videoTrackToParticipant[track.id];
-              if (pid) window.__markVideoOn(pid, track.id);
+              if (pid) {
+                if (window.__presentationParticipants[pid]) {
+                  window.__markScreenShareOn(pid, track.id);
+                } else {
+                  window.__markVideoOn(pid, track.id);
+                }
+              }
             }
 
             if (frameCount % 30 === 0) {
@@ -249,13 +295,20 @@ chromium.use(stealth);
 
           const gapCheckInterval = setInterval(() => {
             const gap = Date.now() - lastFrameTime;
+            // In gapCheckInterval:
             if (gap > 1500 && isCurrentlyActive) {
               isCurrentlyActive = false;
               console.log(
                 `[VIDEO_STOPPED] trackId=${track.id} — no frames for ${gap}ms`,
               );
               const pid = window.__videoTrackToParticipant[track.id];
-              if (pid) window.__markVideoOff(pid, track.id);
+              if (pid) {
+                if (window.__presentationParticipants[pid]) {
+                  window.__markScreenShareOff(pid, track.id);
+                } else {
+                  window.__markVideoOff(pid, track.id);
+                }
+              }
             }
             if (track.readyState === "ended") clearInterval(gapCheckInterval);
           }, 1000);
@@ -308,6 +361,16 @@ chromium.use(stealth);
 
       if (ssrc && participantId !== "unknown") {
         window.__ssrcToParticipant[ssrc] = { participantId, name };
+
+        // Detect presentation tiles immediately at bind time, before frames arrive
+        const labelled =
+          participantEl && participantEl.querySelector
+            ? participantEl.querySelector('[aria-label*="presentation"]')
+            : null;
+        if (labelled && !window.__presentationParticipants[participantId]) {
+          window.__presentationParticipants[participantId] = true;
+          window.__markAsPresentation(participantId);
+        }
 
         const trackId = window.__streamToTrack[ssrc];
         if (trackId) {
@@ -409,6 +472,9 @@ chromium.use(stealth);
               });
 
               if (bestTrackId) {
+                console.log(
+                  `[CORRELATION_MATCH] name="${name}" participantId=${participantId} matched audio trackId=${bestTrackId} gap=${bestGap}ms`,
+                );
                 window.__bindAudio(participantId, name, bestTrackId);
                 window.__audioTrackToParticipant[bestTrackId] = participantId;
                 window.__lastAudioActivity[participantId] = now;
@@ -435,6 +501,41 @@ chromium.use(stealth);
       );
     }
 
+    // Periodically re-read names from the live DOM and update any mapper record
+    // still holding "unknown" — catches tiles (especially screen shares) whose
+    // label renders after the stream was already bound.
+    function startNameResolutionSweep() {
+      setInterval(() => {
+        document.querySelectorAll("[data-participant-id]").forEach((tile) => {
+          const pid = tile.getAttribute("data-participant-id");
+          if (!pid) return;
+
+          // Primary: regular participant tiles have a name span
+          const nameEl = tile.querySelector("span.notranslate");
+          if (nameEl && nameEl.textContent) {
+            window.__updateName(pid, nameEl.textContent);
+            return;
+          }
+
+          // Fallback: presentation tiles expose the name only via aria-label
+          const labelled = tile.querySelector('[aria-label*="presentation"]');
+          if (labelled) {
+            const label = labelled.getAttribute("aria-label");
+            const match = label.match(/(?:Pin|Unpin)\s+(.+?)'s presentation/i);
+            if (match && match[1]) {
+              window.__updateName(pid, `${match[1]} (Presentation)`);
+              if (!window.__presentationParticipants[pid]) {
+                window.__presentationParticipants[pid] = true;
+                window.__markAsPresentation(pid);
+              }
+            }
+          }
+        });
+      }, 2000);
+
+      console.log("[NAME_SWEEP] Started periodic name resolution");
+    }
+
     function startAudioSilenceWatchdog() {
       setInterval(() => {
         const now = Date.now();
@@ -456,11 +557,13 @@ chromium.use(stealth);
       startDomObserver();
       startSpeakerObserver();
       startAudioSilenceWatchdog();
+      startNameResolutionSweep();
     } else {
       document.addEventListener("DOMContentLoaded", () => {
         startDomObserver();
         startSpeakerObserver();
         startAudioSilenceWatchdog();
+        startNameResolutionSweep();
       });
     }
   });
@@ -469,12 +572,8 @@ chromium.use(stealth);
     const text = msg.text();
     if (
       text.includes("WEBRTC_TRACK") ||
-      text.includes("AUDIO_LEVEL") ||
       text.includes("MEDIA_STREAM") ||
-      text.includes("STREAM_ADDTRACK") ||
-      text.includes("STREAM_REMOVETRACK") ||
       text.includes("TRACK_ENDED") ||
-      text.includes("VIDEO_FRAME") ||
       text.includes("VIDEO_STOPPED") ||
       text.includes("VIDEO_RESUMED") ||
       text.includes("PC_CREATED") ||
@@ -482,9 +581,7 @@ chromium.use(stealth);
       text.includes("TRACK_UNMUTED") ||
       text.includes("TILE_INFO") ||
       text.includes("SSRC_CHANGE") ||
-      text.includes("TILE_ATTR_CHANGE") ||
       text.includes("DOM_OBSERVER") ||
-      text.includes("SPEAKER_CLASS_CHANGE") ||
       text.includes("SPEAKER_OBSERVER") ||
       text.includes("EVENT_VIDEO_ON") ||
       text.includes("EVENT_VIDEO_OFF") ||
@@ -492,7 +589,13 @@ chromium.use(stealth);
       text.includes("EVENT_AUDIO_OFF") ||
       text.includes("PCM_FRAME") ||
       text.includes("YUV_FRAME") ||
-      text.includes("FRAME_DEMO")
+      text.includes("FRAME_DEMO") ||
+      text.includes("AUDIO_LEVEL") ||
+      text.includes("SPEAKER_CLASS_CHANGE") ||
+      text.includes("NAME_SWEEP") ||
+      text.includes("CORRELATION_MATCH") ||
+      text.includes("EVENT_SCREEN_SHARE_ON") ||
+      text.includes("EVENT_SCREEN_SHARE_OFF")
     ) {
       console.log("BROWSER LOG:", text);
     }
@@ -501,7 +604,7 @@ chromium.use(stealth);
   page.on("close", () => console.log("PAGE CLOSED EVENT FIRED"));
   context.on("close", () => console.log("CONTEXT CLOSED EVENT FIRED"));
 
-  await page.goto("https://meet.google.com/ego-bwuf-ims");
+  await page.goto("https://meet.google.com/xny-zfed-zge?hs=224");
 
   console.log("Page loaded, taking screenshot...");
   await page.screenshot({ path: "debug_screenshot.png" });
@@ -534,7 +637,7 @@ chromium.use(stealth);
 
   console.log("=== READY: say something now, wait 3s, then stay silent ===");
 
-  await page.waitForTimeout(120000);
+  await new Promise(() => {});
 
   if (snapshotTimer) clearTimeout(snapshotTimer);
   console.log(
@@ -544,5 +647,9 @@ chromium.use(stealth);
   console.log(
     "[FINAL_EVENT_HISTORY]",
     JSON.stringify(mapper.getEventHistorySnapshot(), null, 2),
+  );
+  console.log(
+    "[FINAL_BINDING_HISTORY]",
+    JSON.stringify(mapper.getBindingHistorySnapshot(), null, 2),
   );
 })();
