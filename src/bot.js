@@ -1,6 +1,10 @@
 const { chromium } = require("playwright-extra");
 const stealth = require("puppeteer-extra-plugin-stealth")();
 const mapper = require("./mapper.js");
+const fs = require("fs");
+const path = require("path");
+const outputDir = path.join(__dirname, "recordings");
+if (!fs.existsSync(outputDir)) fs.mkdirSync(outputDir, { recursive: true });
 
 chromium.use(stealth);
 
@@ -11,6 +15,10 @@ chromium.use(stealth);
     headless: true,
     channel: "chrome",
     slowMo: 300,
+    handleSIGINT: false,
+    handleSIGTERM: false,
+    handleSIGHUP: false,
+    args: ["--autoplay-policy=no-user-gesture-required"],
   });
 
   await context.grantPermissions(["camera", "microphone"], {
@@ -93,6 +101,10 @@ chromium.use(stealth);
     path: require("path").join(__dirname, "frameProcessor.js"),
   });
 
+  await context.addInitScript({
+    path: require("path").join(__dirname, "recorder.js"),
+  });
+
   await page.exposeFunction("__markScreenShareOn", (participantId, trackId) => {
     mapper.markScreenShareOn(participantId, trackId);
     console.log(
@@ -116,6 +128,13 @@ chromium.use(stealth);
     mapper.markAsPresentation(participantId);
   });
 
+  await page.exposeFunction("__saveChunk", (participantId, byteArray) => {
+    const safeName = participantId.replace(/[^a-zA-Z0-9]/g, "_");
+    const filePath = path.join(outputDir, `${safeName}.webm`);
+    fs.appendFileSync(filePath, Buffer.from(byteArray));
+    console.log(`[CHUNK_WRITTEN] ${safeName} bytes=${byteArray.length}`);
+  });
+
   await context.addInitScript(() => {
     const OriginalRTCPeerConnection = window.RTCPeerConnection;
     let pcCounter = 0;
@@ -128,7 +147,7 @@ chromium.use(stealth);
     window.__audioActiveParticipants = window.__audioActiveParticipants || {};
     window.__ssrcToParticipant = window.__ssrcToParticipant || {};
     window.__presentationParticipants = window.__presentationParticipants || {};
-    const AUDIO_SPIKE_THRESHOLD = 0.02;
+    const AUDIO_SPIKE_THRESHOLD = 0.005;
     const CORRELATION_WINDOW_MS = 400;
     const AUDIO_SILENCE_TIMEOUT_MS = 1500;
 
@@ -163,6 +182,7 @@ chromium.use(stealth);
       pc.addEventListener("track", (event) => {
         const track = event.track;
         window.__trackObjects[track.id] = track;
+
         console.log(
           `[WEBRTC_TRACK] pcId=${pcId} kind=${track.kind} trackId=${track.id} readyState=${track.readyState} muted=${track.muted} streams=${event.streams.map((s) => s.id).join(",")}`,
         );
@@ -479,6 +499,24 @@ chromium.use(stealth);
                 window.__audioTrackToParticipant[bestTrackId] = participantId;
                 window.__lastAudioActivity[participantId] = now;
 
+                // Start recording now that we know THIS participant's own audio track
+                const vTrackId = Object.keys(
+                  window.__videoTrackToParticipant,
+                ).find(
+                  (t) => window.__videoTrackToParticipant[t] === participantId,
+                );
+                console.log(
+                  `[RECORDER_TRIGGER] participantId=${participantId} vTrackId=${vTrackId || "NOT_FOUND"} audioTrackId=${bestTrackId}`,
+                );
+                if (vTrackId) {
+                  window.__startRecordingForParticipant(
+                    participantId,
+                    vTrackId,
+                    name,
+                    bestTrackId,
+                  );
+                }
+
                 if (!window.__audioActiveParticipants[participantId]) {
                   window.__audioActiveParticipants[participantId] = true;
                   window.__markAudioOn(participantId, bestTrackId);
@@ -505,19 +543,22 @@ chromium.use(stealth);
     // still holding "unknown" — catches tiles (especially screen shares) whose
     // label renders after the stream was already bound.
     function startNameResolutionSweep() {
+      let knownTiles = new Set();
+
       setInterval(() => {
+        const currentTiles = new Set();
+
         document.querySelectorAll("[data-participant-id]").forEach((tile) => {
           const pid = tile.getAttribute("data-participant-id");
           if (!pid) return;
+          currentTiles.add(pid);
 
-          // Primary: regular participant tiles have a name span
           const nameEl = tile.querySelector("span.notranslate");
           if (nameEl && nameEl.textContent) {
             window.__updateName(pid, nameEl.textContent);
             return;
           }
 
-          // Fallback: presentation tiles expose the name only via aria-label
           const labelled = tile.querySelector('[aria-label*="presentation"]');
           if (labelled) {
             const label = labelled.getAttribute("aria-label");
@@ -531,6 +572,16 @@ chromium.use(stealth);
             }
           }
         });
+
+        // Tiles that existed last pass but are gone now → participant left
+        knownTiles.forEach((pid) => {
+          if (!currentTiles.has(pid)) {
+            console.log(`[PARTICIPANT_LEFT] participantId=${pid}`);
+            window.__stopRecordingForParticipant(pid);
+          }
+        });
+
+        knownTiles = currentTiles;
       }, 2000);
 
       console.log("[NAME_SWEEP] Started periodic name resolution");
@@ -579,23 +630,22 @@ chromium.use(stealth);
       text.includes("PC_CREATED") ||
       text.includes("TRACK_MUTED") ||
       text.includes("TRACK_UNMUTED") ||
-      text.includes("TILE_INFO") ||
-      text.includes("SSRC_CHANGE") ||
       text.includes("DOM_OBSERVER") ||
       text.includes("SPEAKER_OBSERVER") ||
       text.includes("EVENT_VIDEO_ON") ||
       text.includes("EVENT_VIDEO_OFF") ||
       text.includes("EVENT_AUDIO_ON") ||
       text.includes("EVENT_AUDIO_OFF") ||
-      text.includes("PCM_FRAME") ||
-      text.includes("YUV_FRAME") ||
-      text.includes("FRAME_DEMO") ||
-      text.includes("AUDIO_LEVEL") ||
-      text.includes("SPEAKER_CLASS_CHANGE") ||
       text.includes("NAME_SWEEP") ||
-      text.includes("CORRELATION_MATCH") ||
       text.includes("EVENT_SCREEN_SHARE_ON") ||
-      text.includes("EVENT_SCREEN_SHARE_OFF")
+      text.includes("EVENT_SCREEN_SHARE_OFF") ||
+      text.includes("RECORDER_STARTED") ||
+      text.includes("RECORDER_ERROR") ||
+      text.includes("RECORDER_STOPPED") ||
+      text.includes("PARTICIPANT_LEFT") ||
+      text.includes("RENDER_LOOP") ||
+      text.includes("RENDER_TICK_ERROR") ||
+      text.includes("CHUNK_ERROR")
     ) {
       console.log("BROWSER LOG:", text);
     }
@@ -604,7 +654,7 @@ chromium.use(stealth);
   page.on("close", () => console.log("PAGE CLOSED EVENT FIRED"));
   context.on("close", () => console.log("CONTEXT CLOSED EVENT FIRED"));
 
-  await page.goto("https://meet.google.com/xny-zfed-zge?hs=224");
+  await page.goto("https://meet.google.com/org-jcxv-xvu");
 
   console.log("Page loaded, taking screenshot...");
   await page.screenshot({ path: "debug_screenshot.png" });
@@ -636,6 +686,41 @@ chromium.use(stealth);
   }
 
   console.log("=== READY: say something now, wait 3s, then stay silent ===");
+
+  let shuttingDown = false;
+
+  const shutdown = async () => {
+    if (shuttingDown) return;
+    shuttingDown = true;
+
+    console.log("Shutting down — stopping recorders...");
+    try {
+      await page.evaluate(() => window.__stopAllRecorders());
+      await new Promise((r) => setTimeout(r, 3000));
+    } catch (e) {
+      console.log("Shutdown error:", e.message);
+    }
+
+    console.log(
+      "[FINAL_MAPPER]",
+      JSON.stringify(mapper.getMapperSnapshot(), null, 2),
+    );
+    console.log(
+      "[FINAL_EVENT_HISTORY]",
+      JSON.stringify(mapper.getEventHistorySnapshot(), null, 2),
+    );
+    console.log(
+      "[FINAL_BINDING_HISTORY]",
+      JSON.stringify(mapper.getBindingHistorySnapshot(), null, 2),
+    );
+
+    try {
+      await context.close();
+    } catch (e) {}
+    process.exit(0);
+  };
+
+  process.on("SIGINT", shutdown);
 
   await new Promise(() => {});
 
