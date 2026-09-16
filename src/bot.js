@@ -3,6 +3,8 @@ const stealth = require("puppeteer-extra-plugin-stealth")();
 const mapper = require("./mapper.js");
 const fs = require("fs");
 const path = require("path");
+const { WebSocketServer } = require("ws");
+const chunkStreams = {}; // participantId -> fs.WriteStream
 const outputDir = path.join(__dirname, "recordings");
 if (!fs.existsSync(outputDir)) fs.mkdirSync(outputDir, { recursive: true });
 
@@ -27,6 +29,53 @@ chromium.use(stealth);
 
   const page = context.pages()[0] || (await context.newPage());
 
+  const wss = new WebSocketServer({ host: "127.0.0.1", port: 8765 });
+
+  wss.on("connection", (ws, req) => {
+    const url = new URL(req.url, "http://localhost");
+    const participantId = url.searchParams.get("participantId");
+    if (!participantId) {
+      ws.close();
+      return;
+    }
+
+    if (!chunkStreams[participantId]) {
+      const safeName = participantId.replace(/[^a-zA-Z0-9]/g, "_");
+      const filePath = path.join(outputDir, `${safeName}.webm`);
+      chunkStreams[participantId] = fs.createWriteStream(filePath, {
+        flags: "a",
+      });
+      console.log(
+        `[WS_STREAM_OPEN] participantId=${participantId} -> ${filePath}`,
+      );
+    }
+
+    const stream = chunkStreams[participantId];
+
+    ws.on("message", (data) => {
+      stream.write(data);
+      console.log(
+        `[WS_CHUNK_WRITTEN] participantId=${participantId} bytes=${data.length}`,
+      );
+    });
+
+    ws.on("close", () => {
+      console.log(`[WS_CLOSED] participantId=${participantId}`);
+    });
+
+    ws.on("error", (err) => {
+      console.log(`[WS_ERROR] participantId=${participantId}: ${err.message}`);
+    });
+  });
+
+  function closeAllChunkStreams() {
+    Object.keys(chunkStreams).forEach((pid) => {
+      chunkStreams[pid].end();
+      console.log(`[WS_STREAM_CLOSED] participantId=${pid}`);
+    });
+    wss.close();
+  }
+
   let snapshotTimer = null;
   function scheduleSnapshotPrint() {
     if (snapshotTimer) clearTimeout(snapshotTimer);
@@ -46,18 +95,18 @@ chromium.use(stealth);
     "__bindVideo",
     (participantId, name, ssrc, trackId) => {
       mapper.bindVideo(participantId, name, ssrc, trackId);
-      console.log(
-        `[MAPPER_BIND_VIDEO] participantId=${participantId} name=${name} ssrc=${ssrc} trackId=${trackId}`,
-      );
+      // console.log(
+      //   `[MAPPER_BIND_VIDEO] participantId=${participantId} name=${name} ssrc=${ssrc} trackId=${trackId}`,
+      // );
       scheduleSnapshotPrint();
     },
   );
 
   await page.exposeFunction("__bindAudio", (participantId, name, trackId) => {
     mapper.bindAudio(participantId, name, trackId);
-    console.log(
-      `[MAPPER_BIND_AUDIO] participantId=${participantId} name=${name} trackId=${trackId}`,
-    );
+    // console.log(
+    //   `[MAPPER_BIND_AUDIO] participantId=${participantId} name=${name} trackId=${trackId}`,
+    // );
     scheduleSnapshotPrint();
   });
 
@@ -128,16 +177,23 @@ chromium.use(stealth);
     mapper.markAsPresentation(participantId);
   });
 
-  await page.exposeFunction("__saveChunk", (participantId, byteArray) => {
-    const safeName = participantId.replace(/[^a-zA-Z0-9]/g, "_");
-    const filePath = path.join(outputDir, `${safeName}.webm`);
-    fs.appendFileSync(filePath, Buffer.from(byteArray));
-    console.log(`[CHUNK_WRITTEN] ${safeName} bytes=${byteArray.length}`);
-  });
+  // await page.exposeFunction("__saveChunk", (participantId, base64Data) => {
+  //   const safeName = participantId.replace(/[^a-zA-Z0-9]/g, "_");
+  //   const filePath = path.join(outputDir, `${safeName}.webm`);
+  //   const buffer = Buffer.from(base64Data, "base64");
+  //   fs.appendFileSync(filePath, buffer);
+  //   console.log(`[CHUNK_WRITTEN] ${safeName} bytes=${buffer.length}`);
+  // });
 
   await context.addInitScript(() => {
     const OriginalRTCPeerConnection = window.RTCPeerConnection;
     let pcCounter = 0;
+
+    document.addEventListener("securitypolicyviolation", (e) => {
+      console.log(
+        `[CSP_VIOLATION] directive=${e.violatedDirective} blockedURI=${e.blockedURI}`,
+      );
+    });
 
     window.__streamToTrack = window.__streamToTrack || {};
     window.__recentAudioSpikes = window.__recentAudioSpikes || {};
@@ -147,37 +203,91 @@ chromium.use(stealth);
     window.__audioActiveParticipants = window.__audioActiveParticipants || {};
     window.__ssrcToParticipant = window.__ssrcToParticipant || {};
     window.__presentationParticipants = window.__presentationParticipants || {};
-    const AUDIO_SPIKE_THRESHOLD = 0.005;
-    const CORRELATION_WINDOW_MS = 400;
-    const AUDIO_SILENCE_TIMEOUT_MS = 1500;
+    const AUDIO_SPIKE_THRESHOLD = 0.06;
+    const CORRELATION_WINDOW_MS = 200;
+    const AUDIO_SILENCE_TIMEOUT_MS = 4000;
+
+    // --- Block A (moved here from inside window.RTCPeerConnection) ---
+
+    // --- Block B (moved here from inside window.RTCPeerConnection) ---
+
+    async function attachEventDrivenSpikeDetection(track) {
+      if (!window.__audioSpikeCtx) {
+        window.__audioSpikeCtx = new AudioContext();
+      }
+      if (!window.__spikeWorkletModuleLoaded) {
+        const SPIKE_WORKLET_CODE = `
+  class SpikeProcessor extends AudioWorkletProcessor {
+    constructor() {
+      super();
+      this.sampleCounter = 0;
+    }
+    process(inputs) {
+      const input = inputs[0];
+      if (input.length > 0) {
+        const channel = input[0];
+        let sumSquares = 0;
+        for (let i = 0; i < channel.length; i++) {
+          sumSquares += channel[i] * channel[i];
+        }
+        const rms = Math.sqrt(sumSquares / channel.length);
+
+        this.sampleCounter++;
+        if (this.sampleCounter % 10 === 0) {
+          this.port.postMessage({ level: rms, timestamp: currentTime });
+        }
+      }
+      return true;
+    }
+  }
+  registerProcessor('spike-processor', SpikeProcessor);
+`;
+        window.__spikeWorkletModuleLoaded =
+          window.__audioSpikeCtx.audioWorklet.addModule(
+            URL.createObjectURL(
+              new Blob([SPIKE_WORKLET_CODE], {
+                type: "application/javascript",
+              }),
+            ),
+          );
+      }
+
+      await window.__spikeWorkletModuleLoaded;
+
+      const source = window.__audioSpikeCtx.createMediaStreamSource(
+        new MediaStream([track]),
+      );
+      const workletNode = new AudioWorkletNode(
+        window.__audioSpikeCtx,
+        "spike-processor",
+      );
+
+      workletNode.port.onmessage = (event) => {
+        const { level } = event.data;
+        const now = Date.now();
+
+        if (level > AUDIO_SPIKE_THRESHOLD) {
+          console.log(
+            `[AUDIO_LEVEL] trackId~${track.id} level=${level} timestamp=${now}`,
+          );
+          window.__recentAudioSpikes[track.id] = { level, timestamp: now };
+        }
+      };
+
+      source.connect(workletNode);
+
+      track.addEventListener("ended", () => {
+        workletNode.port.onmessage = null;
+        source.disconnect();
+        workletNode.disconnect();
+      });
+    }
 
     window.RTCPeerConnection = function (...args) {
       const pc = new OriginalRTCPeerConnection(...args);
       const pcId = ++pcCounter;
 
       console.log(`[PC_CREATED] pcId=${pcId}`);
-
-      async function checkAudioLevel(pcInstance, trackId) {
-        const stats = await pcInstance.getStats();
-        stats.forEach((report) => {
-          if (
-            report.type === "inbound-rtp" &&
-            report.kind === "audio" &&
-            report.trackIdentifier === trackId
-          ) {
-            const now = Date.now();
-            if (report.audioLevel > AUDIO_SPIKE_THRESHOLD) {
-              console.log(
-                `[AUDIO_LEVEL] trackId~${trackId} level=${report.audioLevel} timestamp=${now}`,
-              );
-              window.__recentAudioSpikes[trackId] = {
-                level: report.audioLevel,
-                timestamp: now,
-              };
-            }
-          }
-        });
-      }
 
       pc.addEventListener("track", (event) => {
         const track = event.track;
@@ -266,11 +376,10 @@ chromium.use(stealth);
           );
         });
 
+        // --- Block C (moved here from directly inside window.RTCPeerConnection,
+        // where `track` did not exist yet — this is the only scope that has it) ---
         if (track.kind === "audio") {
-          const levelInterval = setInterval(() => {
-            checkAudioLevel(pc, track.id);
-            if (track.readyState === "ended") clearInterval(levelInterval);
-          }, 500);
+          attachEventDrivenSpikeDetection(track);
         }
 
         if (track.kind === "video") {
@@ -492,6 +601,14 @@ chromium.use(stealth);
               });
 
               if (bestTrackId) {
+                window.__correlationAttempts =
+                  window.__correlationAttempts || {};
+                window.__correlationAttempts[participantId] = window
+                  .__correlationAttempts[participantId] || {
+                  count: 0,
+                  firstSeen: now,
+                };
+                window.__correlationAttempts[participantId].count++;
                 console.log(
                   `[CORRELATION_MATCH] name="${name}" participantId=${participantId} matched audio trackId=${bestTrackId} gap=${bestGap}ms`,
                 );
@@ -499,21 +616,67 @@ chromium.use(stealth);
                 window.__audioTrackToParticipant[bestTrackId] = participantId;
                 window.__lastAudioActivity[participantId] = now;
 
-                // Start recording now that we know THIS participant's own audio track
-                const vTrackId = Object.keys(
-                  window.__videoTrackToParticipant,
-                ).find(
-                  (t) => window.__videoTrackToParticipant[t] === participantId,
+                // Don't start a recorder while more than one track is spiking —
+                // the recorder locks its audio track permanently, so a wrong pick
+                // here would corrupt the entire recording. Wait for a clean moment.
+                const competingSpikes = Object.keys(
+                  window.__recentAudioSpikes,
+                ).filter(
+                  (tid) =>
+                    tid !== bestTrackId &&
+                    Math.abs(now - window.__recentAudioSpikes[tid].timestamp) <=
+                      CORRELATION_WINDOW_MS,
                 );
-                console.log(
-                  `[RECORDER_TRIGGER] participantId=${participantId} vTrackId=${vTrackId || "NOT_FOUND"} audioTrackId=${bestTrackId}`,
-                );
-                if (vTrackId) {
-                  window.__startRecordingForParticipant(
-                    participantId,
-                    vTrackId,
-                    name,
-                    bestTrackId,
+
+                if (competingSpikes.length === 0) {
+                  const spikeLevel =
+                    window.__recentAudioSpikes[bestTrackId].level;
+                  const isStrongMatch = bestGap <= 150 && spikeLevel >= 0.1;
+
+                  if (isStrongMatch) {
+                    const attempt = window.__correlationAttempts[participantId];
+                    console.log(
+                      `[RECORDER_LOCKED] ${name} after ${attempt.count} attempt(s), first-seen-to-locked: ${now - attempt.firstSeen}ms`,
+                    );
+                    const vTrackId = Object.keys(
+                      window.__videoTrackToParticipant,
+                    ).find(
+                      (t) =>
+                        window.__videoTrackToParticipant[t] === participantId,
+                    );
+                    if (vTrackId) {
+                      window.__startRecordingForParticipant(
+                        participantId,
+                        vTrackId,
+                        name,
+                        bestTrackId,
+                      );
+                    }
+                  } else {
+                    console.log(
+                      `[RECORDER_WEAK_MATCH] ${name} gap=${bestGap}ms level=${spikeLevel.toFixed(4)} — not confident enough to claim yet`,
+                    );
+                  }
+                } else {
+                  console.log(
+                    `[RECORDER_DEFERRED] ${name} (gap=${bestGap}ms, level=${window.__recentAudioSpikes[bestTrackId].level.toFixed(4)}) — competing: ${competingSpikes
+                      .map((tid) => {
+                        const competitorName =
+                          window.__audioTrackToParticipant[tid] &&
+                          window.__recorderState &&
+                          window.__recorderState[
+                            window.__audioTrackToParticipant[tid]
+                          ]
+                            ? window.__recorderState[
+                                window.__audioTrackToParticipant[tid]
+                              ].displayName
+                            : window.__audioTrackToParticipant[tid] ||
+                              "unbound";
+                        const age =
+                          now - window.__recentAudioSpikes[tid].timestamp;
+                        return `${competitorName}@${window.__recentAudioSpikes[tid].level.toFixed(4)} (${age}ms ago)`;
+                      })
+                      .join(", ")}`,
                   );
                 }
 
@@ -604,17 +767,35 @@ chromium.use(stealth);
       }, 500);
     }
 
+    // Remove spike entries older than the correlation window — without this they
+    // linger and look like competing speakers long after the sound ended.
+    function startSpikeCleanup() {
+      setInterval(() => {
+        const now = Date.now();
+        Object.keys(window.__recentAudioSpikes).forEach((tid) => {
+          if (
+            now - window.__recentAudioSpikes[tid].timestamp >
+            CORRELATION_WINDOW_MS
+          ) {
+            delete window.__recentAudioSpikes[tid];
+          }
+        });
+      }, 200);
+    }
+
     if (document.body) {
       startDomObserver();
       startSpeakerObserver();
       startAudioSilenceWatchdog();
       startNameResolutionSweep();
+      startSpikeCleanup();
     } else {
       document.addEventListener("DOMContentLoaded", () => {
         startDomObserver();
         startSpeakerObserver();
         startAudioSilenceWatchdog();
         startNameResolutionSweep();
+        startSpikeCleanup();
       });
     }
   });
@@ -625,27 +806,39 @@ chromium.use(stealth);
       text.includes("WEBRTC_TRACK") ||
       text.includes("MEDIA_STREAM") ||
       text.includes("TRACK_ENDED") ||
-      text.includes("VIDEO_STOPPED") ||
-      text.includes("VIDEO_RESUMED") ||
+      // text.includes("VIDEO_STOPPED") ||
+      // text.includes("VIDEO_RESUMED") ||
       text.includes("PC_CREATED") ||
-      text.includes("TRACK_MUTED") ||
-      text.includes("TRACK_UNMUTED") ||
-      text.includes("DOM_OBSERVER") ||
-      text.includes("SPEAKER_OBSERVER") ||
+      // text.includes("TRACK_MUTED") ||
+      // text.includes("TRACK_UNMUTED") ||
+      // text.includes("DOM_OBSERVER") ||
+      // text.includes("SPEAKER_OBSERVER") ||
       text.includes("EVENT_VIDEO_ON") ||
       text.includes("EVENT_VIDEO_OFF") ||
       text.includes("EVENT_AUDIO_ON") ||
       text.includes("EVENT_AUDIO_OFF") ||
-      text.includes("NAME_SWEEP") ||
-      text.includes("EVENT_SCREEN_SHARE_ON") ||
-      text.includes("EVENT_SCREEN_SHARE_OFF") ||
+      // text.includes("NAME_SWEEP") ||
+      // text.includes("EVENT_SCREEN_SHARE_ON") ||
+      // text.includes("EVENT_SCREEN_SHARE_OFF") ||
       text.includes("RECORDER_STARTED") ||
+      text.includes("CHUNK_EVENT") ||
+      text.includes("CHUNK_SENT") ||
+      text.includes("RECORDER_LOCKED") ||
       text.includes("RECORDER_ERROR") ||
       text.includes("RECORDER_STOPPED") ||
-      text.includes("PARTICIPANT_LEFT") ||
-      text.includes("RENDER_LOOP") ||
+      // text.includes("PARTICIPANT_LEFT") ||
+      // text.includes("RENDER_LOOP") ||
       text.includes("RENDER_TICK_ERROR") ||
-      text.includes("CHUNK_ERROR")
+      text.includes("RECORDER_DEFERRED") ||
+      text.includes("CHUNK_ERROR") ||
+      // text.includes("AUDIO_LEVEL") ||
+      text.includes("RECORDER_WEAK_MATCH") ||
+      text.includes("CORRELATION_MATCH") ||
+      text.includes("WS_OPEN") ||
+      text.includes("WS_CLIENT_ERROR") ||
+      text.includes("WS_CLIENT_CLOSED") ||
+      text.includes("CHUNK_QUEUED") ||
+      text.includes("SPEAKER_CLASS_CHANGE")
     ) {
       console.log("BROWSER LOG:", text);
     }
@@ -654,8 +847,10 @@ chromium.use(stealth);
   page.on("close", () => console.log("PAGE CLOSED EVENT FIRED"));
   context.on("close", () => console.log("CONTEXT CLOSED EVENT FIRED"));
 
-  await page.goto("https://meet.google.com/org-jcxv-xvu");
 
+  await page.goto("https://meet.google.com/yhi-ausb-sgt");
+
+  
   console.log("Page loaded, taking screenshot...");
   await page.screenshot({ path: "debug_screenshot.png" });
   console.log("Screenshot saved.");
@@ -695,7 +890,15 @@ chromium.use(stealth);
 
     console.log("Shutting down — stopping recorders...");
     try {
-      await page.evaluate(() => window.__stopAllRecorders());
+      await Promise.race([
+        page.evaluate(() => window.__stopAllRecorders()),
+        new Promise((_, reject) =>
+          setTimeout(
+            () => reject(new Error("stopAllRecorders timed out")),
+            5000,
+          ),
+        ),
+      ]);
       await new Promise((r) => setTimeout(r, 3000));
     } catch (e) {
       console.log("Shutdown error:", e.message);
@@ -713,6 +916,12 @@ chromium.use(stealth);
       "[FINAL_BINDING_HISTORY]",
       JSON.stringify(mapper.getBindingHistorySnapshot(), null, 2),
     );
+
+    // Give browser-side sockets a moment to flush their last chunk before
+    // closing streams — recorder.js already waits ~500ms after recorder.stop()
+    // before calling ws.close(), so wait a bit longer than that here.
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    closeAllChunkStreams();
 
     try {
       await context.close();

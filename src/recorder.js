@@ -35,6 +35,19 @@ if (window.self !== window.top) {
       .catch((e) => console.log("[AUDIO_CONTEXT_ERROR] " + e.message));
   }
 
+  function arrayBufferToBase64(buffer) {
+    let binary = "";
+    const bytes = new Uint8Array(buffer);
+    const chunkSize = 0x8000;
+    for (let i = 0; i < bytes.length; i += chunkSize) {
+      binary += String.fromCharCode.apply(
+        null,
+        bytes.subarray(i, i + chunkSize),
+      );
+    }
+    return btoa(binary);
+  }
+
   function startRecordingForParticipant(
     participantId,
     videoTrackId,
@@ -54,6 +67,34 @@ if (window.self !== window.top) {
     }
 
     try {
+      const ws = new WebSocket(
+        `ws://127.0.0.1:8765?participantId=${encodeURIComponent(participantId)}`,
+      );
+      ws.binaryType = "arraybuffer";
+
+      const chunkQueue = [];
+      let wsOpen = false;
+
+      ws.onopen = () => {
+        wsOpen = true;
+        console.log(`[WS_OPEN] participantId=${participantId}`);
+        while (chunkQueue.length > 0) {
+          ws.send(chunkQueue.shift());
+        }
+      };
+
+      ws.onerror = () => {
+        console.log(
+          `[WS_CLIENT_ERROR] participantId=${participantId} origin=${location.origin} url=${location.href}`,
+        );
+      };
+
+      ws.onclose = (event) => {
+        console.log(
+          `[WS_CLIENT_CLOSED] participantId=${participantId} code=${event.code} reason="${event.reason}" wasClean=${event.wasClean}`,
+        );
+      };
+
       // --- Canvas setup (hidden, never attached to the DOM) ---
       const canvas = document.createElement("canvas");
       canvas.width = CANVAS_WIDTH;
@@ -85,13 +126,17 @@ if (window.self !== window.top) {
         if (event.data && event.data.size > 0) {
           try {
             const buffer = await event.data.arrayBuffer();
-            await window.__saveChunk(
-              participantId,
-              Array.from(new Uint8Array(buffer)),
-            );
-            console.log(
-              `[CHUNK_SENT] participantId=${participantId} bytes=${buffer.byteLength}`,
-            );
+            if (wsOpen && ws.readyState === WebSocket.OPEN) {
+              ws.send(buffer);
+              console.log(
+                `[CHUNK_SENT] participantId=${participantId} bytes=${buffer.byteLength}`,
+              );
+            } else {
+              chunkQueue.push(buffer);
+              console.log(
+                `[CHUNK_QUEUED] participantId=${participantId} bytes=${buffer.byteLength} — socket not open yet`,
+              );
+            }
           } catch (err) {
             console.log(
               `[CHUNK_ERROR] participantId=${participantId}: ${err.message}`,
@@ -99,6 +144,26 @@ if (window.self !== window.top) {
           }
         }
       };
+
+      // recorder.ondataavailable = async (event) => {
+      //   console.log(
+      //     `[CHUNK_EVENT] participantId=${participantId} size=${event.data ? event.data.size : 0}`,
+      //   );
+      //   if (event.data && event.data.size > 0) {
+      //     try {
+      //       const buffer = await event.data.arrayBuffer();
+      //       const base64 = arrayBufferToBase64(buffer);
+      //       await window.__saveChunk(participantId, base64);
+      //       console.log(
+      //         `[CHUNK_SENT] participantId=${participantId} bytes=${buffer.byteLength}`,
+      //       );
+      //     } catch (err) {
+      //       console.log(
+      //         `[CHUNK_ERROR] participantId=${participantId}: ${err.message}`,
+      //       );
+      //     }
+      //   }
+      // };
 
       recorder.onerror = (e) =>
         console.log(`[RECORDER_ERROR] ${participantId}: ${e.error}`);
@@ -114,6 +179,7 @@ if (window.self !== window.top) {
         displayName: displayName || "Unknown",
         lastFrameTime: 0,
         lastVideoTime: 0,
+        ws,
       };
 
       console.log(
@@ -126,30 +192,30 @@ if (window.self !== window.top) {
 
   // Called when speaker-correlation identifies this participant's audio track.
   // Connects it into the ALREADY-RUNNING audio graph — no track swap, no restart.
-  function attachAudioToRecording(participantId, audioTrackId) {
-    const state = window.__recorderState[participantId];
-    if (!state || state.audioConnected) return;
+  // function attachAudioToRecording(participantId, audioTrackId) {
+  //   const state = window.__recorderState[participantId];
+  //   if (!state || state.audioConnected) return;
 
-    const audioTrack = window.__trackObjects[audioTrackId];
-    if (!audioTrack) return;
+  //   const audioTrack = window.__trackObjects[audioTrackId];
+  //   if (!audioTrack) return;
 
-    try {
-      const source = state.audioCtx.createMediaStreamSource(
-        new MediaStream([audioTrack]),
-      );
-      source.connect(state.gainNode);
-      state.audioConnected = true;
-      state.audioSource = source;
+  //   try {
+  //     const source = state.audioCtx.createMediaStreamSource(
+  //       new MediaStream([audioTrack]),
+  //     );
+  //     source.connect(state.gainNode);
+  //     state.audioConnected = true;
+  //     state.audioSource = source;
 
-      console.log(
-        `[RECORDER_AUDIO_ATTACHED] participantId=${participantId} audioTrackId=${audioTrackId}`,
-      );
-    } catch (err) {
-      console.log(
-        `[RECORDER_ERROR] audio attach failed for ${participantId}: ${err.message}`,
-      );
-    }
-  }
+  //     console.log(
+  //       `[RECORDER_AUDIO_ATTACHED] participantId=${participantId} audioTrackId=${audioTrackId}`,
+  //     );
+  //   } catch (err) {
+  //     console.log(
+  //       `[RECORDER_ERROR] audio attach failed for ${participantId}: ${err.message}`,
+  //     );
+  //   }
+  // }
 
   // --- Single shared render loop for ALL participants ---
   function renderTick() {
@@ -230,6 +296,10 @@ if (window.self !== window.top) {
       delete window.__recorders[participantId];
       console.log(`[RECORDER_STOPPED] participantId=${participantId}`);
     }
+    const state = window.__recorderState[participantId];
+    if (state && state.ws) {
+      setTimeout(() => state.ws.close(), 500);
+    }
     delete window.__recorderState[participantId];
   }
 
@@ -246,7 +316,7 @@ if (window.self !== window.top) {
   }
 
   window.__startRecordingForParticipant = startRecordingForParticipant;
-  window.__attachAudioToRecording = attachAudioToRecording;
+  // window.__attachAudioToRecording = attachAudioToRecording;
   window.__stopRecordingForParticipant = stopRecordingForParticipant;
   window.__stopAllRecorders = stopAllRecorders;
 
