@@ -203,7 +203,7 @@ chromium.use(stealth);
     window.__audioActiveParticipants = window.__audioActiveParticipants || {};
     window.__ssrcToParticipant = window.__ssrcToParticipant || {};
     window.__presentationParticipants = window.__presentationParticipants || {};
-    const AUDIO_SPIKE_THRESHOLD = 0.06;
+    const AUDIO_SPIKE_THRESHOLD = 0.01;
     const CORRELATION_WINDOW_MS = 200;
     const AUDIO_SILENCE_TIMEOUT_MS = 4000;
 
@@ -316,6 +316,11 @@ chromium.use(stealth);
               window.__demonstrateFrameAccess(track.id, "video");
               window.__videoTrackToParticipant[track.id] =
                 pending.participantId;
+              window.__startRecordingForParticipant(
+                pending.participantId,
+                track.id,
+                pending.name,
+              );
             }
           }
 
@@ -336,6 +341,11 @@ chromium.use(stealth);
                 );
                 window.__videoTrackToParticipant[e.track.id] =
                   pending.participantId;
+                window.__startRecordingForParticipant(
+                  pending.participantId,
+                  e.track.id,
+                  pending.name,
+                );
               }
             }
           });
@@ -506,6 +516,7 @@ chromium.use(stealth);
           window.__bindVideo(participantId, name, ssrc, trackId);
           window.__demonstrateFrameAccess(trackId, "video");
           window.__videoTrackToParticipant[trackId] = participantId;
+          window.__startRecordingForParticipant(participantId, trackId, name);
         }
       }
     }
@@ -631,7 +642,7 @@ chromium.use(stealth);
                 if (competingSpikes.length === 0) {
                   const spikeLevel =
                     window.__recentAudioSpikes[bestTrackId].level;
-                  const isStrongMatch = bestGap <= 150 && spikeLevel >= 0.1;
+                  const isStrongMatch = bestGap <= 150 && spikeLevel >= 0.01;
 
                   if (isStrongMatch) {
                     const attempt = window.__correlationAttempts[participantId];
@@ -645,7 +656,13 @@ chromium.use(stealth);
                         window.__videoTrackToParticipant[t] === participantId,
                     );
                     if (vTrackId) {
-                      window.__startRecordingForParticipant(
+                      // window.__startRecordingForParticipant(
+                      //   participantId,
+                      //   vTrackId,
+                      //   name,
+                      //   bestTrackId,
+                      // );
+                      window.__upgradeToFullRecording(
                         participantId,
                         vTrackId,
                         name,
@@ -847,10 +864,8 @@ chromium.use(stealth);
   page.on("close", () => console.log("PAGE CLOSED EVENT FIRED"));
   context.on("close", () => console.log("CONTEXT CLOSED EVENT FIRED"));
 
+  await page.goto("https://meet.google.com/rec-rqes-edt");
 
-  await page.goto("https://meet.google.com/yhi-ausb-sgt");
-
-  
   console.log("Page loaded, taking screenshot...");
   await page.screenshot({ path: "debug_screenshot.png" });
   console.log("Screenshot saved.");

@@ -11,6 +11,9 @@ chrome-profile/
 debug_screenshot.png
 output/
 
+# Recorded meeting files (heavy, per-participant .webm segments)
+src/recordings/
+
 # Playwright test artifacts
 test-results/
 playwright-report/

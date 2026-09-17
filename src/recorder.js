@@ -14,6 +14,7 @@ if (window.self !== window.top) {
 
   window.__recorders = window.__recorders || {};
   window.__recorderState = window.__recorderState || {}; // participantId -> state bundle
+  window.__segmentCounters = window.__segmentCounters || {};
 
   const CANVAS_FPS = 15;
   const CANVAS_WIDTH = 640;
@@ -35,40 +36,53 @@ if (window.self !== window.top) {
       .catch((e) => console.log("[AUDIO_CONTEXT_ERROR] " + e.message));
   }
 
-  function arrayBufferToBase64(buffer) {
-    let binary = "";
-    const bytes = new Uint8Array(buffer);
-    const chunkSize = 0x8000;
-    for (let i = 0; i < bytes.length; i += chunkSize) {
-      binary += String.fromCharCode.apply(
-        null,
-        bytes.subarray(i, i + chunkSize),
-      );
-    }
-    return btoa(binary);
+  // function arrayBufferToBase64(buffer) {
+  //   let binary = "";
+  //   const bytes = new Uint8Array(buffer);
+  //   const chunkSize = 0x8000;
+  //   for (let i = 0; i < bytes.length; i += chunkSize) {
+  //     binary += String.fromCharCode.apply(
+  //       null,
+  //       bytes.subarray(i, i + chunkSize),
+  //     );
+  //   }
+  //   return btoa(binary);
+  // }
+
+  function nextSegment(participantId) {
+    window.__segmentCounters[participantId] =
+      (window.__segmentCounters[participantId] || 0) + 1;
+    return window.__segmentCounters[participantId];
   }
 
   function startRecordingForParticipant(
     participantId,
     videoTrackId,
     displayName,
-    audioTrackId,
+    audioTrackId, // now optional — null/undefined means video-only mode
   ) {
     if (window.__recorders[participantId]) return;
 
     const videoTrack = window.__trackObjects[videoTrackId];
-    const audioTrack = window.__trackObjects[audioTrackId];
+    const audioTrack = audioTrackId
+      ? window.__trackObjects[audioTrackId]
+      : null;
 
-    if (!videoTrack || !audioTrack) {
-      console.log(
-        `[RECORDER] Waiting — video=${!!videoTrack} audio=${!!audioTrack} for ${participantId}`,
-      );
+    if (!videoTrack) {
+      console.log(`[RECORDER] Waiting — video not ready for ${participantId}`);
+      return;
+    }
+    if (audioTrackId && !audioTrack) {
+      console.log(`[RECORDER] Waiting — audio not ready for ${participantId}`);
       return;
     }
 
     try {
+      const segmentIndex = nextSegment(participantId);
+      const segKey = `${participantId}::seg${segmentIndex}`;
+
       const ws = new WebSocket(
-        `ws://127.0.0.1:8765?participantId=${encodeURIComponent(participantId)}`,
+        `ws://127.0.0.1:8765?participantId=${encodeURIComponent(segKey)}`,
       );
       ws.binaryType = "arraybuffer";
 
@@ -77,7 +91,7 @@ if (window.self !== window.top) {
 
       ws.onopen = () => {
         wsOpen = true;
-        console.log(`[WS_OPEN] participantId=${participantId}`);
+        console.log(`[WS_OPEN] participantId=${segKey}`);
         while (chunkQueue.length > 0) {
           ws.send(chunkQueue.shift());
         }
@@ -85,43 +99,39 @@ if (window.self !== window.top) {
 
       ws.onerror = () => {
         console.log(
-          `[WS_CLIENT_ERROR] participantId=${participantId} origin=${location.origin} url=${location.href}`,
+          `[WS_CLIENT_ERROR] participantId=${segKey} origin=${location.origin} url=${location.href}`,
         );
       };
 
       ws.onclose = (event) => {
         console.log(
-          `[WS_CLIENT_CLOSED] participantId=${participantId} code=${event.code} reason="${event.reason}" wasClean=${event.wasClean}`,
+          `[WS_CLIENT_CLOSED] participantId=${segKey} code=${event.code} reason="${event.reason}" wasClean=${event.wasClean}`,
         );
       };
 
-      // --- Canvas setup (hidden, never attached to the DOM) ---
       const canvas = document.createElement("canvas");
       canvas.width = CANVAS_WIDTH;
       canvas.height = CANVAS_HEIGHT;
       const ctx = canvas.getContext("2d");
 
-      // A hidden <video> element is what actually decodes the incoming track;
-      // we draw from it onto the canvas each tick.
       const videoEl = document.createElement("video");
       videoEl.srcObject = new MediaStream([videoTrack]);
       videoEl.muted = true;
       videoEl.play().catch(() => {});
 
-      // --- Combine canvas video + stable audio into one stream ---
       const canvasStream = canvas.captureStream(CANVAS_FPS);
-      const combined = new MediaStream([
-        canvasStream.getVideoTracks()[0],
-        audioTrack,
-      ]);
+      const tracks = [canvasStream.getVideoTracks()[0]];
+      if (audioTrack) tracks.push(audioTrack);
+      const combined = new MediaStream(tracks);
 
-      const recorder = new MediaRecorder(combined, {
-        mimeType: "video/webm;codecs=vp8,opus",
-      });
+      const mimeType = audioTrack
+        ? "video/webm;codecs=vp8,opus"
+        : "video/webm;codecs=vp8";
+      const recorder = new MediaRecorder(combined, { mimeType });
 
       recorder.ondataavailable = async (event) => {
         console.log(
-          `[CHUNK_EVENT] participantId=${participantId} size=${event.data ? event.data.size : 0}`,
+          `[CHUNK_EVENT] participantId=${segKey} size=${event.data ? event.data.size : 0}`,
         );
         if (event.data && event.data.size > 0) {
           try {
@@ -129,49 +139,28 @@ if (window.self !== window.top) {
             if (wsOpen && ws.readyState === WebSocket.OPEN) {
               ws.send(buffer);
               console.log(
-                `[CHUNK_SENT] participantId=${participantId} bytes=${buffer.byteLength}`,
+                `[CHUNK_SENT] participantId=${segKey} bytes=${buffer.byteLength}`,
               );
             } else {
               chunkQueue.push(buffer);
               console.log(
-                `[CHUNK_QUEUED] participantId=${participantId} bytes=${buffer.byteLength} — socket not open yet`,
+                `[CHUNK_QUEUED] participantId=${segKey} bytes=${buffer.byteLength} — socket not open yet`,
               );
             }
           } catch (err) {
             console.log(
-              `[CHUNK_ERROR] participantId=${participantId}: ${err.message}`,
+              `[CHUNK_ERROR] participantId=${segKey}: ${err.message}`,
             );
           }
         }
       };
 
-      // recorder.ondataavailable = async (event) => {
-      //   console.log(
-      //     `[CHUNK_EVENT] participantId=${participantId} size=${event.data ? event.data.size : 0}`,
-      //   );
-      //   if (event.data && event.data.size > 0) {
-      //     try {
-      //       const buffer = await event.data.arrayBuffer();
-      //       const base64 = arrayBufferToBase64(buffer);
-      //       await window.__saveChunk(participantId, base64);
-      //       console.log(
-      //         `[CHUNK_SENT] participantId=${participantId} bytes=${buffer.byteLength}`,
-      //       );
-      //     } catch (err) {
-      //       console.log(
-      //         `[CHUNK_ERROR] participantId=${participantId}: ${err.message}`,
-      //       );
-      //     }
-      //   }
-      // };
-
       recorder.onerror = (e) =>
-        console.log(`[RECORDER_ERROR] ${participantId}: ${e.error}`);
+        console.log(`[RECORDER_ERROR] ${segKey}: ${e.error}`);
 
       recorder.start(2000);
       window.__recorders[participantId] = recorder;
 
-      // Store everything this participant's render loop needs
       window.__recorderState[participantId] = {
         canvas,
         ctx,
@@ -180,13 +169,45 @@ if (window.self !== window.top) {
         lastFrameTime: 0,
         lastVideoTime: 0,
         ws,
+        mode: audioTrack ? "full" : "video-only",
+        segmentIndex,
+        videoTrackId,
+        audioTrackId: audioTrackId || null,
       };
 
       console.log(
-        `[RECORDER_STARTED] participantId=${participantId} videoTrackId=${videoTrackId} audioTrackId=${audioTrackId} (canvas ${CANVAS_WIDTH}x${CANVAS_HEIGHT} @${CANVAS_FPS}fps)`,
+        `[RECORDER_STARTED] participantId=${participantId} segment=${segmentIndex} mode=${audioTrack ? "full" : "video-only"} videoTrackId=${videoTrackId} audioTrackId=${audioTrackId || "none"} (canvas ${CANVAS_WIDTH}x${CANVAS_HEIGHT} @${CANVAS_FPS}fps)`,
       );
     } catch (err) {
       console.log(`[RECORDER_ERROR] ${participantId}: ${err.message}`);
+    }
+  }
+
+  function upgradeToFullRecording(
+    participantId,
+    videoTrackId,
+    displayName,
+    audioTrackId,
+  ) {
+    const state = window.__recorderState[participantId];
+    if (state && state.mode === "video-only") {
+      console.log(
+        `[RECORDER_HANDOFF] participantId=${participantId} video-only -> full at ${Date.now()}`,
+      );
+      stopRecordingForParticipant(participantId);
+      startRecordingForParticipant(
+        participantId,
+        videoTrackId,
+        displayName,
+        audioTrackId,
+      );
+    } else if (!window.__recorders[participantId]) {
+      startRecordingForParticipant(
+        participantId,
+        videoTrackId,
+        displayName,
+        audioTrackId,
+      );
     }
   }
 
@@ -316,6 +337,7 @@ if (window.self !== window.top) {
   }
 
   window.__startRecordingForParticipant = startRecordingForParticipant;
+  window.__upgradeToFullRecording = upgradeToFullRecording;
   // window.__attachAudioToRecording = attachAudioToRecording;
   window.__stopRecordingForParticipant = stopRecordingForParticipant;
   window.__stopAllRecorders = stopAllRecorders;
