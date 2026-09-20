@@ -15,6 +15,8 @@ if (window.self !== window.top) {
   window.__recorders = window.__recorders || {};
   window.__recorderState = window.__recorderState || {}; // participantId -> state bundle
   window.__segmentCounters = window.__segmentCounters || {};
+  window.__lastRenegotiationAt = window.__lastRenegotiationAt || {};
+  window.__shuttingDown = window.__shuttingDown || false;
 
   const CANVAS_FPS = 15;
   const CANVAS_WIDTH = 640;
@@ -61,6 +63,13 @@ if (window.self !== window.top) {
     displayName,
     audioTrackId, // now optional — null/undefined means video-only mode
   ) {
+    if (window.__shuttingDown) return;
+    if (window.__presentationParticipants[participantId]) {
+      console.log(
+        `[RECORDER_SKIP_SCREEN_SHARE] participantId=${participantId} — screen-share recording not implemented yet`,
+      );
+      return;
+    }
     if (window.__recorders[participantId]) return;
 
     const videoTrack = window.__trackObjects[videoTrackId];
@@ -81,15 +90,17 @@ if (window.self !== window.top) {
       const segmentIndex = nextSegment(participantId);
       const segKey = `${participantId}::seg${segmentIndex}`;
 
-      const ws = new WebSocket(
-        `ws://127.0.0.1:8765?participantId=${encodeURIComponent(segKey)}`,
+      let ws = new WebSocket(
+        `ws://127.0.0.1:8765?participantId=${encodeURIComponent(segKey)}&hasAudio=${audioTrack ? "1" : "0"}`,
       );
       ws.binaryType = "arraybuffer";
 
       const chunkQueue = [];
       let wsOpen = false;
+      let connectionSettled = false;
 
       ws.onopen = () => {
+        connectionSettled = true;
         wsOpen = true;
         console.log(`[WS_OPEN] participantId=${segKey}`);
         while (chunkQueue.length > 0) {
@@ -108,6 +119,42 @@ if (window.self !== window.top) {
           `[WS_CLIENT_CLOSED] participantId=${segKey} code=${event.code} reason="${event.reason}" wasClean=${event.wasClean}`,
         );
       };
+
+      setTimeout(() => {
+        if (connectionSettled) return;
+        console.log(
+          `[WS_CONNECT_TIMEOUT] participantId=${segKey} — retrying once`,
+        );
+        try {
+          ws.close();
+        } catch (e) {}
+
+        const retryWs = new WebSocket(
+          `ws://127.0.0.1:8765?participantId=${encodeURIComponent(segKey)}&hasAudio=${audioTrack ? "1" : "0"}`,
+        );
+        retryWs.binaryType = "arraybuffer";
+
+        retryWs.onopen = () => {
+          connectionSettled = true;
+          wsOpen = true;
+          ws = retryWs;
+          if (window.__recorderState[participantId]) {
+            window.__recorderState[participantId].ws = retryWs;
+          }
+          console.log(`[WS_OPEN_AFTER_RETRY] participantId=${segKey}`);
+          while (chunkQueue.length > 0) {
+            retryWs.send(chunkQueue.shift());
+          }
+        };
+        retryWs.onerror = () => {
+          console.log(`[WS_RETRY_FAILED] participantId=${segKey}`);
+        };
+        retryWs.onclose = (event) => {
+          console.log(
+            `[WS_RETRY_CLOSED] participantId=${segKey} code=${event.code} reason="${event.reason}"`,
+          );
+        };
+      }, 5000);
 
       const canvas = document.createElement("canvas");
       canvas.width = CANVAS_WIDTH;
@@ -130,17 +177,17 @@ if (window.self !== window.top) {
       const recorder = new MediaRecorder(combined, { mimeType });
 
       recorder.ondataavailable = async (event) => {
-        console.log(
-          `[CHUNK_EVENT] participantId=${segKey} size=${event.data ? event.data.size : 0}`,
-        );
+        // console.log(
+        //   `[CHUNK_EVENT] participantId=${segKey} size=${event.data ? event.data.size : 0}`,
+        // );
         if (event.data && event.data.size > 0) {
           try {
             const buffer = await event.data.arrayBuffer();
             if (wsOpen && ws.readyState === WebSocket.OPEN) {
               ws.send(buffer);
-              console.log(
-                `[CHUNK_SENT] participantId=${segKey} bytes=${buffer.byteLength}`,
-              );
+              // console.log(
+              //   `[CHUNK_SENT] participantId=${segKey} bytes=${buffer.byteLength}`,
+              // );
             } else {
               chunkQueue.push(buffer);
               console.log(
@@ -183,14 +230,28 @@ if (window.self !== window.top) {
     }
   }
 
-  function upgradeToFullRecording(
+  function handleAudioIdentified(
     participantId,
     videoTrackId,
     displayName,
     audioTrackId,
   ) {
+    if (window.__shuttingDown) return;
+    if (window.__presentationParticipants[participantId]) return;
+
     const state = window.__recorderState[participantId];
-    if (state && state.mode === "video-only") {
+
+    if (!state) {
+      startRecordingForParticipant(
+        participantId,
+        videoTrackId,
+        displayName,
+        audioTrackId,
+      );
+      return;
+    }
+
+    if (state.mode === "video-only") {
       console.log(
         `[RECORDER_HANDOFF] participantId=${participantId} video-only -> full at ${Date.now()}`,
       );
@@ -201,42 +262,109 @@ if (window.self !== window.top) {
         displayName,
         audioTrackId,
       );
-    } else if (!window.__recorders[participantId]) {
+      return;
+    }
+
+    // Already fully recording — is this a genuinely different audio track
+    // than what's currently in use? If so, that's a renegotiation.
+    // Already fully recording — is this a genuinely different audio track
+    // than what's currently in use?
+    if (state.audioTrackId && state.audioTrackId !== audioTrackId) {
+      const oldPcId = window.__trackToPcId
+        ? window.__trackToPcId[state.audioTrackId]
+        : undefined;
+      const newPcId = window.__trackToPcId
+        ? window.__trackToPcId[audioTrackId]
+        : undefined;
+
+      // Same connection, just the SFU reassigning which track carries this
+      // person's voice — NOT a real renegotiation. Update bookkeeping only,
+      // do not touch the running recorder.
+      if (newPcId === oldPcId) {
+        console.log(
+          `[AUDIO_SLOT_REASSIGNED_SAME_PC] participantId=${participantId} oldAudioTrackId=${state.audioTrackId} newAudioTrackId=${audioTrackId} pcId=${newPcId} — ignoring, not a real renegotiation`,
+        );
+        return;
+      }
+
+      const RENEGOTIATION_COOLDOWN_MS = 2000;
+      const lastReneg = window.__lastRenegotiationAt[participantId] || 0;
+      if (Date.now() - lastReneg < RENEGOTIATION_COOLDOWN_MS) {
+        console.log(
+          `[RENEGOTIATION_DEBOUNCED] participantId=${participantId} — too soon after last restart, skipping`,
+        );
+        return;
+      }
+      window.__lastRenegotiationAt[participantId] = Date.now();
+
+      const pairedVideoTrackId =
+        (newPcId &&
+          window.__pcIdTracks[newPcId] &&
+          window.__pcIdTracks[newPcId].video) ||
+        state.videoTrackId;
+
+      console.log(
+        `[RECORDER_RENEGOTIATION_DETECTED] participantId=${participantId} oldAudioTrackId=${state.audioTrackId} newAudioTrackId=${audioTrackId} oldPcId=${oldPcId} newPcId=${newPcId} (via audio correlation)`,
+      );
+      stopRecordingForParticipant(participantId);
       startRecordingForParticipant(
         participantId,
-        videoTrackId,
+        pairedVideoTrackId,
         displayName,
         audioTrackId,
+      );
+      console.log(
+        `[RECORDER_RENEGOTIATION_RESTART] participantId=${participantId} newVideoTrackId=${pairedVideoTrackId} newAudioTrackId=${audioTrackId}`,
       );
     }
   }
 
-  // Called when speaker-correlation identifies this participant's audio track.
-  // Connects it into the ALREADY-RUNNING audio graph — no track swap, no restart.
-  // function attachAudioToRecording(participantId, audioTrackId) {
-  //   const state = window.__recorderState[participantId];
-  //   if (!state || state.audioConnected) return;
+  function handleVideoIdentified(participantId, videoTrackId, displayName) {
+    if (window.__shuttingDown) return;
+    if (window.__presentationParticipants[participantId]) return;
 
-  //   const audioTrack = window.__trackObjects[audioTrackId];
-  //   if (!audioTrack) return;
+    const state = window.__recorderState[participantId];
+    if (!state) return; // not recording yet — the audio path or initial join handles first start
 
-  //   try {
-  //     const source = state.audioCtx.createMediaStreamSource(
-  //       new MediaStream([audioTrack]),
-  //     );
-  //     source.connect(state.gainNode);
-  //     state.audioConnected = true;
-  //     state.audioSource = source;
+    if (state.videoTrackId && state.videoTrackId !== videoTrackId) {
+      const RENEGOTIATION_COOLDOWN_MS = 2000;
+      const lastReneg = window.__lastRenegotiationAt[participantId] || 0;
+      if (Date.now() - lastReneg < RENEGOTIATION_COOLDOWN_MS) {
+        console.log(
+          `[RENEGOTIATION_DEBOUNCED] participantId=${participantId} — too soon after last restart, skipping`,
+        );
+        return;
+      }
+      window.__lastRenegotiationAt[participantId] = Date.now();
 
-  //     console.log(
-  //       `[RECORDER_AUDIO_ATTACHED] participantId=${participantId} audioTrackId=${audioTrackId}`,
-  //     );
-  //   } catch (err) {
-  //     console.log(
-  //       `[RECORDER_ERROR] audio attach failed for ${participantId}: ${err.message}`,
-  //     );
-  //   }
-  // }
+      const newPcId = window.__trackToPcId
+        ? window.__trackToPcId[videoTrackId]
+        : undefined;
+      const pairedAudioTrackId =
+        (newPcId &&
+          window.__pcIdTracks[newPcId] &&
+          window.__pcIdTracks[newPcId].audio) ||
+        null;
+      const finalAudioTrackId = pairedAudioTrackId || state.audioTrackId;
+
+      console.log(
+        `[RECORDER_RENEGOTIATION_DETECTED] participantId=${participantId} oldVideoTrackId=${state.videoTrackId} newVideoTrackId=${videoTrackId} (via srcObject video identification)`,
+      );
+      stopRecordingForParticipant(participantId);
+      startRecordingForParticipant(
+        participantId,
+        videoTrackId,
+        displayName,
+        finalAudioTrackId,
+      );
+      console.log(
+        `[RECORDER_RENEGOTIATION_RESTART] participantId=${participantId} newVideoTrackId=${videoTrackId} newAudioTrackId=${finalAudioTrackId || "pending"}`,
+      );
+    }
+  }
+
+  window.__handleAudioIdentified = handleAudioIdentified;
+  window.__handleVideoIdentified = handleVideoIdentified;
 
   // --- Single shared render loop for ALL participants ---
   function renderTick() {
@@ -325,19 +453,37 @@ if (window.self !== window.top) {
   }
 
   function stopAllRecorders() {
-    Object.keys(window.__recorders).forEach((pid) => {
+    const pids = Object.keys(window.__recorders);
+
+    pids.forEach((pid) => {
       const r = window.__recorders[pid];
       if (r && r.state !== "inactive") {
         r.stop();
         console.log(`[RECORDER_STOPPED] participantId=${pid}`);
       }
     });
-    window.__recorders = {};
-    window.__recorderState = {};
+
+    // Give MediaRecorder's final async dataavailable event time to fire and
+    // send before we close the sockets out from under it.
+    setTimeout(() => {
+      pids.forEach((pid) => {
+        const state = window.__recorderState[pid];
+        if (state && state.ws) {
+          try {
+            state.ws.close();
+          } catch (e) {}
+          console.log(`[WS_CLOSED_ON_SHUTDOWN] participantId=${pid}`);
+        }
+      });
+
+      window.__recorders = {};
+      window.__recorderState = {};
+      console.log("[STOP_ALL_RECORDERS_COMPLETE]");
+    }, 2000);
   }
 
   window.__startRecordingForParticipant = startRecordingForParticipant;
-  window.__upgradeToFullRecording = upgradeToFullRecording;
+  // window.__upgradeToFullRecording = upgradeToFullRecording;
   // window.__attachAudioToRecording = attachAudioToRecording;
   window.__stopRecordingForParticipant = stopRecordingForParticipant;
   window.__stopAllRecorders = stopAllRecorders;

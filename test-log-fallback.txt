@@ -1,0 +1,89 @@
+   (function interceptSrcObject() {
+      const descriptor = Object.getOwnPropertyDescriptor(
+        HTMLMediaElement.prototype,
+        "srcObject",
+      );
+      if (!descriptor || !descriptor.set) {
+        console.log(
+          "[SRCOBJECT_INTERCEPTOR_FAILED] No native srcObject setter found",
+        );
+        return;
+      }
+
+      Object.defineProperty(HTMLMediaElement.prototype, "srcObject", {
+        configurable: true,
+        enumerable: descriptor.enumerable,
+        get: descriptor.get,
+        set: function (stream) {
+
+          try {
+            if (stream && this.tagName === "VIDEO") {
+              const videoTracks = stream.getVideoTracks
+                ? stream.getVideoTracks()
+                : [];
+              const newVideoTrackId =
+                videoTracks.length > 0 ? videoTracks[0].id : "none";
+
+              const tile =
+                this.closest && this.closest("[data-participant-id]");
+              const participantId = tile
+                ? tile.getAttribute("data-participant-id")
+                : "unknown";
+              const nameEl = tile
+                ? tile.querySelector("span.notranslate")
+                : null;
+              const name = nameEl ? nameEl.textContent : "unknown";
+
+              console.log(
+                `[SRCOBJECT_REBIND] participantId=${participantId} name=${name} newVideoTrackId=${newVideoTrackId} streamId=${stream.id} timestamp=${Date.now()}`,
+              );
+              
+              // --- end handoff detection ---
+
+              // If the element isn't nested inside its tile yet, keep checking
+              // every 500ms for up to 60s — long enough to observe real
+              // worst-case timing, but bounded so elements that never attach
+              // to a tile (e.g. recorder.js's own hidden video elements) don't
+              // leave an interval running forever.
+              if (participantId === "unknown") {
+                const el = this;
+                const startTime = Date.now();
+                let attempts = 0;
+                const maxAttempts = 120; // 120 x 500ms = 60s window
+                const retryInterval = setInterval(() => {
+                  attempts++;
+                  const retryTile =
+                    el.closest && el.closest("[data-participant-id]");
+                  if (retryTile) {
+                    const retryParticipantId = retryTile.getAttribute(
+                      "data-participant-id",
+                    );
+                    const retryNameEl =
+                      retryTile.querySelector("span.notranslate");
+                    const retryName = retryNameEl
+                      ? retryNameEl.textContent
+                      : "unknown";
+                    console.log(
+                      `[SRCOBJECT_REBIND_RETRY] participantId=${retryParticipantId} name=${retryName} newVideoTrackId=${newVideoTrackId} streamId=${stream.id} attempts=${attempts} resolvedAfterMs=${Date.now() - startTime} timestamp=${Date.now()}`,
+                    );
+                    clearInterval(retryInterval);
+                  } else if (attempts >= maxAttempts) {
+                    console.log(
+                      `[SRCOBJECT_REBIND_RETRY_GAVE_UP] newVideoTrackId=${newVideoTrackId} streamId=${stream.id} after ${attempts} attempts (${Date.now() - startTime}ms)`,
+                    );
+                    clearInterval(retryInterval);
+                  }
+                }, 500);
+              }
+            }
+          } catch (err) {
+            console.log(`[SRCOBJECT_REBIND_ERROR] ${err.message}`);
+          }
+          return descriptor.set.call(this, stream);
+        },
+      });
+
+      console.log(
+        "[SRCOBJECT_INTERCEPTOR] Installed on HTMLMediaElement.prototype.srcObject",
+      );
+    })();

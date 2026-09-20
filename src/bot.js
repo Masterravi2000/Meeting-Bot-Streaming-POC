@@ -1,13 +1,17 @@
 const { chromium } = require("playwright-extra");
 const stealth = require("puppeteer-extra-plugin-stealth")();
 const mapper = require("./mapper.js");
+const { stitchAllRecordings, killAllActiveFfmpeg } = require("./stitch.js");
 const fs = require("fs");
 const path = require("path");
 const { WebSocketServer } = require("ws");
+
 const chunkStreams = {}; // participantId -> fs.WriteStream
 const outputDir = path.join(__dirname, "recordings");
 if (!fs.existsSync(outputDir)) fs.mkdirSync(outputDir, { recursive: true });
 
+const stopFilePath = path.join(__dirname, "..", "STOP_BOT.txt");
+if (fs.existsSync(stopFilePath)) fs.unlinkSync(stopFilePath); // clean up any stale file from a previous run
 chromium.use(stealth);
 
 (async () => {
@@ -34,6 +38,7 @@ chromium.use(stealth);
   wss.on("connection", (ws, req) => {
     const url = new URL(req.url, "http://localhost");
     const participantId = url.searchParams.get("participantId");
+    const hasAudio = url.searchParams.get("hasAudio") === "1";
     if (!participantId) {
       ws.close();
       return;
@@ -45,8 +50,12 @@ chromium.use(stealth);
       chunkStreams[participantId] = fs.createWriteStream(filePath, {
         flags: "a",
       });
+      fs.writeFileSync(
+        path.join(outputDir, `${safeName}.meta.json`),
+        JSON.stringify({ hasAudio }),
+      );
       console.log(
-        `[WS_STREAM_OPEN] participantId=${participantId} -> ${filePath}`,
+        `[WS_STREAM_OPEN] participantId=${participantId} -> ${filePath} hasAudio=${hasAudio}`,
       );
     }
 
@@ -54,9 +63,9 @@ chromium.use(stealth);
 
     ws.on("message", (data) => {
       stream.write(data);
-      console.log(
-        `[WS_CHUNK_WRITTEN] participantId=${participantId} bytes=${data.length}`,
-      );
+      // console.log(
+      //   `[WS_CHUNK_WRITTEN] participantId=${participantId} bytes=${data.length}`,
+      // );
     });
 
     ws.on("close", () => {
@@ -69,11 +78,17 @@ chromium.use(stealth);
   });
 
   function closeAllChunkStreams() {
-    Object.keys(chunkStreams).forEach((pid) => {
-      chunkStreams[pid].end();
-      console.log(`[WS_STREAM_CLOSED] participantId=${pid}`);
-    });
-    wss.close();
+    return Promise.all(
+      Object.keys(chunkStreams).map(
+        (pid) =>
+          new Promise((resolve) => {
+            chunkStreams[pid].end(() => {
+              console.log(`[WS_STREAM_CLOSED] participantId=${pid}`);
+              resolve();
+            });
+          }),
+      ),
+    ).then(() => wss.close());
   }
 
   let snapshotTimer = null;
@@ -203,9 +218,118 @@ chromium.use(stealth);
     window.__audioActiveParticipants = window.__audioActiveParticipants || {};
     window.__ssrcToParticipant = window.__ssrcToParticipant || {};
     window.__presentationParticipants = window.__presentationParticipants || {};
-    const AUDIO_SPIKE_THRESHOLD = 0.01;
-    const CORRELATION_WINDOW_MS = 200;
-    const AUDIO_SILENCE_TIMEOUT_MS = 4000;
+    window.__pcIdTracks = window.__pcIdTracks || {}; // pcId -> {audio: trackId|null, video: trackId|null}
+    window.__trackToPcId = window.__trackToPcId || {}; // trackId -> pcId
+    const AUDIO_SPIKE_THRESHOLD = 0.09;
+    const CORRELATION_WINDOW_MS = 150;
+    const AUDIO_SILENCE_TIMEOUT_MS = 6000;
+
+    (function interceptSrcObject() {
+      const descriptor = Object.getOwnPropertyDescriptor(
+        HTMLMediaElement.prototype,
+        "srcObject",
+      );
+      if (!descriptor || !descriptor.set) {
+        console.log(
+          "[SRCOBJECT_INTERCEPTOR_FAILED] No native srcObject setter found",
+        );
+        return;
+      }
+
+      Object.defineProperty(HTMLMediaElement.prototype, "srcObject", {
+        configurable: true,
+        enumerable: descriptor.enumerable,
+        get: descriptor.get,
+        set: function (stream) {
+          try {
+            if (stream && this.tagName === "VIDEO") {
+              const videoTracks = stream.getVideoTracks
+                ? stream.getVideoTracks()
+                : [];
+              const newVideoTrackId =
+                videoTracks.length > 0 ? videoTracks[0].id : "none";
+
+              const tile =
+                this.closest && this.closest("[data-participant-id]");
+              const participantId = tile
+                ? tile.getAttribute("data-participant-id")
+                : "unknown";
+              const nameEl = tile
+                ? tile.querySelector("span.notranslate")
+                : null;
+              const name = nameEl ? nameEl.textContent : "unknown";
+
+              console.log(
+                `[SRCOBJECT_REBIND] participantId=${participantId} name=${name} newVideoTrackId=${newVideoTrackId} streamId=${stream.id} timestamp=${Date.now()}`,
+              );
+
+              if (
+                participantId !== "unknown" &&
+                window.__handleVideoIdentified
+              ) {
+                window.__handleVideoIdentified(
+                  participantId,
+                  newVideoTrackId,
+                  name,
+                );
+              }
+
+              // --- end handoff detection ---
+
+              // If the element isn't nested inside its tile yet, keep checking
+              // every 500ms for up to 60s — long enough to observe real
+              // worst-case timing, but bounded so elements that never attach
+              // to a tile (e.g. recorder.js's own hidden video elements) don't
+              // leave an interval running forever.
+              if (participantId === "unknown") {
+                const el = this;
+                const startTime = Date.now();
+                let attempts = 0;
+                const maxAttempts = 120; // 120 x 500ms = 60s window
+                const retryInterval = setInterval(() => {
+                  attempts++;
+                  const retryTile =
+                    el.closest && el.closest("[data-participant-id]");
+                  if (retryTile) {
+                    const retryParticipantId = retryTile.getAttribute(
+                      "data-participant-id",
+                    );
+                    const retryNameEl =
+                      retryTile.querySelector("span.notranslate");
+                    const retryName = retryNameEl
+                      ? retryNameEl.textContent
+                      : "unknown";
+                    console.log(
+                      `[SRCOBJECT_REBIND_RETRY] participantId=${retryParticipantId} name=${retryName} newVideoTrackId=${newVideoTrackId} streamId=${stream.id} attempts=${attempts} resolvedAfterMs=${Date.now() - startTime} timestamp=${Date.now()}`,
+                    );
+                    if (window.__handleVideoIdentified) {
+                      window.__handleVideoIdentified(
+                        retryParticipantId,
+                        newVideoTrackId,
+                        retryName,
+                      );
+                    }
+                    clearInterval(retryInterval);
+                  } else if (attempts >= maxAttempts) {
+                    console.log(
+                      `[SRCOBJECT_REBIND_RETRY_GAVE_UP] newVideoTrackId=${newVideoTrackId} streamId=${stream.id} after ${attempts} attempts (${Date.now() - startTime}ms)`,
+                    );
+                    clearInterval(retryInterval);
+                  }
+                }, 500);
+              }
+            }
+          } catch (err) {
+            console.log(`[SRCOBJECT_REBIND_ERROR] ${err.message}`);
+          }
+          return descriptor.set.call(this, stream);
+        },
+      });
+
+      console.log(
+        "[SRCOBJECT_INTERCEPTOR] Installed on HTMLMediaElement.prototype.srcObject",
+      );
+    })();
 
     // --- Block A (moved here from inside window.RTCPeerConnection) ---
 
@@ -292,6 +416,13 @@ chromium.use(stealth);
       pc.addEventListener("track", (event) => {
         const track = event.track;
         window.__trackObjects[track.id] = track;
+
+        window.__trackToPcId[track.id] = pcId;
+        window.__pcIdTracks[pcId] = window.__pcIdTracks[pcId] || {
+          audio: null,
+          video: null,
+        };
+        window.__pcIdTracks[pcId][track.kind] = track.id;
 
         console.log(
           `[WEBRTC_TRACK] pcId=${pcId} kind=${track.kind} trackId=${track.id} readyState=${track.readyState} muted=${track.muted} streams=${event.streams.map((s) => s.id).join(",")}`,
@@ -594,9 +725,10 @@ chromium.use(stealth);
                 : null;
               const name = nameEl ? nameEl.textContent : "unknown";
 
-              console.log(
-                `[SPEAKER_CLASS_CHANGE] participantId=${participantId} name=${name} newClass="${el.className}" timestamp=${now}`,
-              );
+              console
+                .log
+                // `[SPEAKER_CLASS_CHANGE] participantId=${participantId} name=${name} newClass="${el.className}" timestamp=${now}`,
+                ();
 
               if (participantId === "unknown") return;
 
@@ -620,9 +752,10 @@ chromium.use(stealth);
                   firstSeen: now,
                 };
                 window.__correlationAttempts[participantId].count++;
-                console.log(
-                  `[CORRELATION_MATCH] name="${name}" participantId=${participantId} matched audio trackId=${bestTrackId} gap=${bestGap}ms`,
-                );
+                console
+                  .log
+                  // `[CORRELATION_MATCH] name="${name}" participantId=${participantId} matched audio trackId=${bestTrackId} gap=${bestGap}ms`,
+                  ();
                 window.__bindAudio(participantId, name, bestTrackId);
                 window.__audioTrackToParticipant[bestTrackId] = participantId;
                 window.__lastAudioActivity[participantId] = now;
@@ -642,13 +775,13 @@ chromium.use(stealth);
                 if (competingSpikes.length === 0) {
                   const spikeLevel =
                     window.__recentAudioSpikes[bestTrackId].level;
-                  const isStrongMatch = bestGap <= 150 && spikeLevel >= 0.01;
+                  const isStrongMatch = bestGap <= 100 && spikeLevel >= 0.1;
 
                   if (isStrongMatch) {
                     const attempt = window.__correlationAttempts[participantId];
-                    console.log(
-                      `[RECORDER_LOCKED] ${name} after ${attempt.count} attempt(s), first-seen-to-locked: ${now - attempt.firstSeen}ms`,
-                    );
+                    // console.log(
+                    //   `[RECORDER_LOCKED] ${name} after ${attempt.count} attempt(s), first-seen-to-locked: ${now - attempt.firstSeen}ms`,
+                    // );
                     const vTrackId = Object.keys(
                       window.__videoTrackToParticipant,
                     ).find(
@@ -662,7 +795,7 @@ chromium.use(stealth);
                       //   name,
                       //   bestTrackId,
                       // );
-                      window.__upgradeToFullRecording(
+                      window.__handleAudioIdentified(
                         participantId,
                         vTrackId,
                         name,
@@ -670,9 +803,10 @@ chromium.use(stealth);
                       );
                     }
                   } else {
-                    console.log(
-                      `[RECORDER_WEAK_MATCH] ${name} gap=${bestGap}ms level=${spikeLevel.toFixed(4)} — not confident enough to claim yet`,
-                    );
+                    console
+                      .log
+                      // `[RECORDER_WEAK_MATCH] ${name} gap=${bestGap}ms level=${spikeLevel.toFixed(4)} — not confident enough to claim yet`,
+                      ();
                   }
                 } else {
                   console.log(
@@ -838,9 +972,9 @@ chromium.use(stealth);
       // text.includes("EVENT_SCREEN_SHARE_ON") ||
       // text.includes("EVENT_SCREEN_SHARE_OFF") ||
       text.includes("RECORDER_STARTED") ||
-      text.includes("CHUNK_EVENT") ||
-      text.includes("CHUNK_SENT") ||
-      text.includes("RECORDER_LOCKED") ||
+      // text.includes("CHUNK_EVENT") ||       // removed from source
+      // text.includes("CHUNK_SENT") ||        // removed from source
+      // text.includes("RECORDER_LOCKED") ||
       text.includes("RECORDER_ERROR") ||
       text.includes("RECORDER_STOPPED") ||
       // text.includes("PARTICIPANT_LEFT") ||
@@ -849,13 +983,44 @@ chromium.use(stealth);
       text.includes("RECORDER_DEFERRED") ||
       text.includes("CHUNK_ERROR") ||
       // text.includes("AUDIO_LEVEL") ||
-      text.includes("RECORDER_WEAK_MATCH") ||
-      text.includes("CORRELATION_MATCH") ||
+      // text.includes("RECORDER_WEAK_MATCH") ||
+      // text.includes("CORRELATION_MATCH") ||
       text.includes("WS_OPEN") ||
       text.includes("WS_CLIENT_ERROR") ||
       text.includes("WS_CLIENT_CLOSED") ||
       text.includes("CHUNK_QUEUED") ||
-      text.includes("SPEAKER_CLASS_CHANGE")
+      text.includes("SRCOBJECT_REBIND") ||
+      text.includes("SRCOBJECT_REBIND_RETRY") ||
+      // text.includes("TRACK_HANDOFF_REJECTED") ||          // removed from source
+      // text.includes("RECORDER_RENEGOTIATION_RESTART") ||  // removed from source
+      // text.includes("ACTIVE_SSRC_SCAN_MATCH") ||          // removed from source
+      // text.includes("ACTIVE_SSRC_SCAN_MISS") ||           // removed from source
+      // text.includes("ACTIVE_SSRC_SCAN_GAVE_UP") ||        // removed from source
+      // text.includes("CSRC_CHECK") ||                      // removed from source
+      // text.includes("CSRC_MONITOR") ||                    // removed from source
+      // text.includes("CSRC_ERROR") ||                      // removed from source
+      // text.includes("COLLECTIONS_DEVICE_OUTPUT") ||       // removed from source
+      // text.includes("COLLECTIONS_CHANNEL_FOUND") ||       // removed from source
+      // text.includes("COLLECTIONS_DECODE_ERROR") ||        // removed from source
+      // text.includes("COLLECTIONS_HOOK_ERROR") ||          // removed from source
+      // text.includes("CSRC_MONITOR_ERROR") ||              // removed from source
+      text.includes("SRCOBJECT_INTERCEPTOR") ||
+      text.includes("WS_CONNECT_TIMEOUT") ||
+      text.includes("WS_OPEN_AFTER_RETRY") ||
+      text.includes("WS_RETRY_FAILED") ||
+      text.includes("WS_RETRY_CLOSED") ||
+      text.includes("WS_CLOSED_ON_SHUTDOWN") ||
+      text.includes("STOP_ALL_RECORDERS_COMPLETE") ||
+      text.includes("RECORDER_SKIP_SCREEN_SHARE") ||
+      text.includes("RECORDER_RENEGOTIATION_DETECTED") ||
+      text.includes("RECORDER_RENEGOTIATION_RESTART") ||
+      text.includes("RENEGOTIATION_DEBOUNCED") ||
+      text.includes("STITCH_SEGMENT_SKIPPED") ||
+      text.includes("STITCH_PARTICIPANT_FAILED") ||
+      text.includes("FFMPEG_CLEANUP") ||
+      text.includes("AUDIO_SLOT_REASSIGNED_SAME_PC") ||
+      text.includes("RECORDER_HANDOFF")
+      // text.includes("SPEAKER_CLASS_CHANGE")
     ) {
       console.log("BROWSER LOG:", text);
     }
@@ -864,7 +1029,7 @@ chromium.use(stealth);
   page.on("close", () => console.log("PAGE CLOSED EVENT FIRED"));
   context.on("close", () => console.log("CONTEXT CLOSED EVENT FIRED"));
 
-  await page.goto("https://meet.google.com/rec-rqes-edt");
+  await page.goto("https://meet.google.com/uvd-nwco-fqg");
 
   console.log("Page loaded, taking screenshot...");
   await page.screenshot({ path: "debug_screenshot.png" });
@@ -903,7 +1068,20 @@ chromium.use(stealth);
     if (shuttingDown) return;
     shuttingDown = true;
 
-    console.log("Shutting down — stopping recorders...");
+    const shutdownStart = Date.now();
+    const heartbeat = setInterval(() => {
+      const elapsed = ((Date.now() - shutdownStart) / 1000).toFixed(0);
+      process.stdout.write(
+        `\r[SHUTDOWN] elapsed: ${elapsed}s — please wait, do not close this window...   `,
+      );
+    }, 1000);
+
+    console.log("\nShutting down — stopping recorders...");
+
+    await page.evaluate(() => {
+      window.__shuttingDown = true;
+    });
+
     try {
       await Promise.race([
         page.evaluate(() => window.__stopAllRecorders()),
@@ -920,7 +1098,7 @@ chromium.use(stealth);
     }
 
     console.log(
-      "[FINAL_MAPPER]",
+      "\n[FINAL_MAPPER]",
       JSON.stringify(mapper.getMapperSnapshot(), null, 2),
     );
     console.log(
@@ -932,11 +1110,20 @@ chromium.use(stealth);
       JSON.stringify(mapper.getBindingHistorySnapshot(), null, 2),
     );
 
-    // Give browser-side sockets a moment to flush their last chunk before
-    // closing streams — recorder.js already waits ~500ms after recorder.stop()
-    // before calling ws.close(), so wait a bit longer than that here.
     await new Promise((resolve) => setTimeout(resolve, 1000));
-    closeAllChunkStreams();
+    await closeAllChunkStreams();
+
+    console.log("\n[STITCH] Starting post-meeting stitch...");
+    try {
+      await stitchAllRecordings();
+    } catch (err) {
+      console.log(`[STITCH_FATAL_ERROR] ${err.message}`);
+      killAllActiveFfmpeg();
+    }
+
+    clearInterval(heartbeat);
+    const totalElapsed = ((Date.now() - shutdownStart) / 1000).toFixed(1);
+    console.log(`\n[SHUTDOWN_COMPLETE] Total shutdown time: ${totalElapsed}s`);
 
     try {
       await context.close();
@@ -945,6 +1132,16 @@ chromium.use(stealth);
   };
 
   process.on("SIGINT", shutdown);
+
+  const stopFileChecker = setInterval(() => {
+    if (fs.existsSync(stopFilePath)) {
+      clearInterval(stopFileChecker);
+      try {
+        fs.unlinkSync(stopFilePath);
+      } catch (e) {}
+      shutdown();
+    }
+  }, 1000);
 
   await new Promise(() => {});
 
