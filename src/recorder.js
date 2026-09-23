@@ -251,72 +251,25 @@ if (window.self !== window.top) {
       return;
     }
 
+    if (state.audioTrackId === audioTrackId) return;
+
     if (state.mode === "video-only") {
       console.log(
         `[RECORDER_HANDOFF] participantId=${participantId} video-only -> full at ${Date.now()}`,
       );
-      stopRecordingForParticipant(participantId);
-      startRecordingForParticipant(
-        participantId,
-        videoTrackId,
-        displayName,
-        audioTrackId,
+    } else {
+      console.log(
+        `[RECORDER_AV_SWITCH] participantId=${participantId} oldAudioTrackId=${state.audioTrackId || "none"} newAudioTrackId=${audioTrackId}`,
       );
-      return;
     }
 
-    // Already fully recording — is this a genuinely different audio track
-    // than what's currently in use? If so, that's a renegotiation.
-    // Already fully recording — is this a genuinely different audio track
-    // than what's currently in use?
-    if (state.audioTrackId && state.audioTrackId !== audioTrackId) {
-      const oldPcId = window.__trackToPcId
-        ? window.__trackToPcId[state.audioTrackId]
-        : undefined;
-      const newPcId = window.__trackToPcId
-        ? window.__trackToPcId[audioTrackId]
-        : undefined;
-
-      // Same connection, just the SFU reassigning which track carries this
-      // person's voice — NOT a real renegotiation. Update bookkeeping only,
-      // do not touch the running recorder.
-      if (newPcId === oldPcId) {
-        console.log(
-          `[AUDIO_SLOT_REASSIGNED_SAME_PC] participantId=${participantId} oldAudioTrackId=${state.audioTrackId} newAudioTrackId=${audioTrackId} pcId=${newPcId} — ignoring, not a real renegotiation`,
-        );
-        return;
-      }
-
-      const RENEGOTIATION_COOLDOWN_MS = 2000;
-      const lastReneg = window.__lastRenegotiationAt[participantId] || 0;
-      if (Date.now() - lastReneg < RENEGOTIATION_COOLDOWN_MS) {
-        console.log(
-          `[RENEGOTIATION_DEBOUNCED] participantId=${participantId} — too soon after last restart, skipping`,
-        );
-        return;
-      }
-      window.__lastRenegotiationAt[participantId] = Date.now();
-
-      const pairedVideoTrackId =
-        (newPcId &&
-          window.__pcIdTracks[newPcId] &&
-          window.__pcIdTracks[newPcId].video) ||
-        state.videoTrackId;
-
-      console.log(
-        `[RECORDER_RENEGOTIATION_DETECTED] participantId=${participantId} oldAudioTrackId=${state.audioTrackId} newAudioTrackId=${audioTrackId} oldPcId=${oldPcId} newPcId=${newPcId} (via audio correlation)`,
-      );
-      stopRecordingForParticipant(participantId);
-      startRecordingForParticipant(
-        participantId,
-        pairedVideoTrackId,
-        displayName,
-        audioTrackId,
-      );
-      console.log(
-        `[RECORDER_RENEGOTIATION_RESTART] participantId=${participantId} newVideoTrackId=${pairedVideoTrackId} newAudioTrackId=${audioTrackId}`,
-      );
-    }
+    stopRecordingForParticipant(participantId);
+    startRecordingForParticipant(
+      participantId,
+      videoTrackId,
+      displayName,
+      audioTrackId,
+    );
   }
 
   function handleVideoIdentified(participantId, videoTrackId, displayName) {
@@ -442,12 +395,23 @@ if (window.self !== window.top) {
     const r = window.__recorders[participantId];
     if (r && r.state !== "inactive") {
       r.stop();
-      delete window.__recorders[participantId];
       console.log(`[RECORDER_STOPPED] participantId=${participantId}`);
     }
+    delete window.__recorders[participantId];
     const state = window.__recorderState[participantId];
     if (state && state.ws) {
       setTimeout(() => state.ws.close(), 500);
+    }
+    if (
+      state &&
+      state.audioTrackId &&
+      window.__audioTrackLock &&
+      window.__audioTrackLock[state.audioTrackId] === participantId
+    ) {
+      delete window.__audioTrackLock[state.audioTrackId];
+      console.log(
+        `[AVBOND_RELEASED] trackId=${state.audioTrackId} participantId=${participantId}`,
+      );
     }
     delete window.__recorderState[participantId];
   }

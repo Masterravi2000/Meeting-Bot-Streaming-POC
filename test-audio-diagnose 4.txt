@@ -1,0 +1,1160 @@
+**********************
+Windows PowerShell transcript start
+Start time: 20260923170507
+Username: DESKTOP-O4FDRR3\ASUS
+RunAs User: DESKTOP-O4FDRR3\ASUS
+Configuration Name: 
+Machine: DESKTOP-O4FDRR3 (Microsoft Windows NT 10.0.19045.0)
+Host Application: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+Process ID: 20156
+PSVersion: 5.1.19041.7725
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.19041.7725
+BuildVersion: 10.0.19041.7725
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+Transcript started, output file is test-log.txt
+Page loaded, taking screenshot...
+Screenshot saved.
+Clicked join button
+=== READY: say something now, wait 3s, then stay silent ===
+[WS_STREAM_OPEN] participantId=spaces/BYc8OSL5FeQB/devices/515::seg1 -> C:\Bot_Streaming_Poc\Meeting
+-Bot-Streaming-POC\src\recordings\spaces_BYc8OSL5FeQB_devices_515__seg1.webm hasAudio=false
+[WS_STREAM_OPEN] participantId=spaces/BYc8OSL5FeQB/devices/514::seg1 -> C:\Bot_Streaming_Poc\Meeting
+-Bot-Streaming-POC\src\recordings\spaces_BYc8OSL5FeQB_devices_514__seg1.webm hasAudio=false
+BROWSER LOG: [STRENGTH_PASSED] name="Ravi Sharma" pid=spaces/BYc8OSL5FeQB/devices/514 gap=11ms level
+=0.4248
+[EVENT_AUDIO_ON] participantId=spaces/BYc8OSL5FeQB/devices/514 trackId=73b6b3cd-d4ec-4238-b7b0-7f908
+1b1761a
+BROWSER LOG: [DUAL_CONFIRM_FAILED] name="Ravi Sharma" pid=spaces/BYc8OSL5FeQB/devices/514 noSecondCo
+rrelation within 500ms
+BROWSER LOG: [STRENGTH_PASSED] name="Gautam gupta" pid=spaces/BYc8OSL5FeQB/devices/515 gap=12ms leve
+l=0.1317
+[EVENT_AUDIO_ON] participantId=spaces/BYc8OSL5FeQB/devices/515 trackId=463b051f-3dfa-4154-b1da-d74ce
+bc17c9b
+BROWSER LOG: [DUAL_CONFIRM_FAILED] name="Gautam gupta" pid=spaces/BYc8OSL5FeQB/devices/515 otherClai
+mantsDuringWait="Ravi Sharma" gate2Claimants="Ravi Sharma"
+BROWSER LOG: [STRENGTH_PASSED] name="Ravi Sharma" pid=spaces/BYc8OSL5FeQB/devices/514 gap=1ms level=
+0.1570
+BROWSER LOG: [DUAL_CONFIRM_PASSED] name="Ravi Sharma" pid=spaces/BYc8OSL5FeQB/devices/514 1st=(gap=1
+ms level=0.1570) 2nd=(gap=101ms level=0.1570) totalMs=100
+BROWSER LOG: [AVBOND_LOCKED] name="Ravi Sharma" pid=spaces/BYc8OSL5FeQB/devices/514 trackId=73b6b3cd
+-d4ec-4238-b7b0-7f9081b1761a
+[WS_STREAM_OPEN] participantId=spaces/BYc8OSL5FeQB/devices/514::seg2 -> C:\Bot_Streaming_Poc\Meeting
+-Bot-Streaming-POC\src\recordings\spaces_BYc8OSL5FeQB_devices_514__seg2.webm hasAudio=true
+[WS_CLOSED] participantId=spaces/BYc8OSL5FeQB/devices/514::seg1
+BROWSER LOG: [STRENGTH_PASSED] name="Gautam gupta" pid=spaces/BYc8OSL5FeQB/devices/515 gap=81ms leve
+l=0.1299
+BROWSER LOG: [DUAL_CONFIRM_PASSED] name="Gautam gupta" pid=spaces/BYc8OSL5FeQB/devices/515 1st=(gap=
+81ms level=0.1299) 2nd=(gap=111ms level=0.1531) totalMs=399
+BROWSER LOG: [AVBOND_LOCKED] name="Gautam gupta" pid=spaces/BYc8OSL5FeQB/devices/515 trackId=463b051
+f-3dfa-4154-b1da-d74cebc17c9b
+[WS_STREAM_OPEN] participantId=spaces/BYc8OSL5FeQB/devices/515::seg2 -> C:\Bot_Streaming_Poc\Meeting
+-Bot-Streaming-POC\src\recordings\spaces_BYc8OSL5FeQB_devices_515__seg2.webm hasAudio=true
+[WS_CLOSED] participantId=spaces/BYc8OSL5FeQB/devices/515::seg1
+[EVENT_AUDIO_OFF] participantId=spaces/BYc8OSL5FeQB/devices/515 trackId=463b051f-3dfa-4154-b1da-d74c
+ebc17c9b
+[EVENT_AUDIO_ON] participantId=spaces/BYc8OSL5FeQB/devices/515 trackId=463b051f-3dfa-4154-b1da-d74ce
+bc17c9b
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/BYc8OSL5FeQB/devices/514 trackId=463b05
+1f-3dfa-4154-b1da-d74cebc17c9b ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/BYc8OSL5FeQB/devices/514 trackId=463b05
+1f-3dfa-4154-b1da-d74cebc17c9b ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/BYc8OSL5FeQB/devices/514 trackId=463b05
+1f-3dfa-4154-b1da-d74cebc17c9b ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/BYc8OSL5FeQB/devices/515 trackId=73b6b
+3cd-d4ec-4238-b7b0-7f9081b1761a ownedBy="Ravi Sharma"
+BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/BYc8OSL5FeQB/devices/515 trackId=73b6b
+3cd-d4ec-4238-b7b0-7f9081b1761a ownedBy="Ravi Sharma"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/BYc8OSL5FeQB/devices/514 trackId=463b05
+1f-3dfa-4154-b1da-d74cebc17c9b ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/BYc8OSL5FeQB/devices/514 trackId=463b05
+1f-3dfa-4154-b1da-d74cebc17c9b ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/BYc8OSL5FeQB/devices/514 trackId=463b05
+1f-3dfa-4154-b1da-d74cebc17c9b ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/BYc8OSL5FeQB/devices/514 trackId=463b05
+1f-3dfa-4154-b1da-d74cebc17c9b ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/BYc8OSL5FeQB/devices/514 trackId=463b05
+1f-3dfa-4154-b1da-d74cebc17c9b ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/BYc8OSL5FeQB/devices/514 trackId=463b05
+1f-3dfa-4154-b1da-d74cebc17c9b ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/BYc8OSL5FeQB/devices/514 trackId=463b05
+1f-3dfa-4154-b1da-d74cebc17c9b ownedBy="Gautam gupta"
+[EVENT_AUDIO_OFF] participantId=spaces/BYc8OSL5FeQB/devices/515 trackId=null
+[EVENT_AUDIO_ON] participantId=spaces/BYc8OSL5FeQB/devices/515 trackId=463b051f-3dfa-4154-b1da-d74ce
+bc17c9b
+[EVENT_AUDIO_OFF] participantId=spaces/BYc8OSL5FeQB/devices/514 trackId=73b6b3cd-d4ec-4238-b7b0-7f90
+81b1761a
+[EVENT_AUDIO_ON] participantId=spaces/BYc8OSL5FeQB/devices/514 trackId=73b6b3cd-d4ec-4238-b7b0-7f908
+1b1761a
+[EVENT_AUDIO_OFF] participantId=spaces/BYc8OSL5FeQB/devices/515 trackId=463b051f-3dfa-4154-b1da-d74c
+ebc17c9b
+BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/BYc8OSL5FeQB/devices/515 trackId=73b6b
+3cd-d4ec-4238-b7b0-7f9081b1761a ownedBy="Ravi Sharma"
+[EVENT_AUDIO_ON] participantId=spaces/BYc8OSL5FeQB/devices/515 trackId=73b6b3cd-d4ec-4238-b7b0-7f908
+1b1761a
+BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/BYc8OSL5FeQB/devices/515 trackId=73b6b
+3cd-d4ec-4238-b7b0-7f9081b1761a ownedBy="Ravi Sharma"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/BYc8OSL5FeQB/devices/514 trackId=463b05
+1f-3dfa-4154-b1da-d74cebc17c9b ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/BYc8OSL5FeQB/devices/514 trackId=463b05
+1f-3dfa-4154-b1da-d74cebc17c9b ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/BYc8OSL5FeQB/devices/514 trackId=463b05
+1f-3dfa-4154-b1da-d74cebc17c9b ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/BYc8OSL5FeQB/devices/514 trackId=463b05
+1f-3dfa-4154-b1da-d74cebc17c9b ownedBy="Gautam gupta"
+[EVENT_AUDIO_OFF] participantId=spaces/BYc8OSL5FeQB/devices/515 trackId=463b051f-3dfa-4154-b1da-d74c
+ebc17c9b
+[EVENT_AUDIO_ON] participantId=spaces/BYc8OSL5FeQB/devices/515 trackId=463b051f-3dfa-4154-b1da-d74ce
+bc17c9b
+[EVENT_AUDIO_OFF] participantId=spaces/BYc8OSL5FeQB/devices/514 trackId=73b6b3cd-d4ec-4238-b7b0-7f90
+81b1761a
+[EVENT_AUDIO_ON] participantId=spaces/BYc8OSL5FeQB/devices/514 trackId=73b6b3cd-d4ec-4238-b7b0-7f908
+1b1761a
+[EVENT_AUDIO_OFF] participantId=spaces/BYc8OSL5FeQB/devices/515 trackId=463b051f-3dfa-4154-b1da-d74c
+ebc17c9b
+[MAPPER_SNAPSHOT] [
+  {
+    "participantId": "spaces/BYc8OSL5FeQB/devices/515",
+    "name": "Gautam gupta",
+    "videoStreamId": "1114470718",
+    "currentVideoTrackId": "93def922-1776-40e6-bc9d-d6f65487cab4",
+    "currentAudioTrackId": "463b051f-3dfa-4154-b1da-d74cebc17c9b",
+    "videoBound": true,
+    "audioBound": true
+  },
+  {
+    "participantId": "spaces/BYc8OSL5FeQB/devices/514",
+    "name": "Ravi Sharma",
+    "videoStreamId": "2232057036",
+    "currentVideoTrackId": "3ec2fdf7-f555-4ce8-9be8-5aa1c7d48505",
+    "currentAudioTrackId": "73b6b3cd-d4ec-4238-b7b0-7f9081b1761a",
+    "videoBound": true,
+    "audioBound": true
+  }
+]
+[EVENT_HISTORY_SNAPSHOT] {
+  "spaces/BYc8OSL5FeQB/devices/514": [
+    {
+      "timestamp": 1790163334847,
+      "event": "audio_on",
+      "trackId": "73b6b3cd-d4ec-4238-b7b0-7f9081b1761a"
+    },
+    {
+      "timestamp": 1790163377295,
+      "event": "audio_off",
+      "trackId": "73b6b3cd-d4ec-4238-b7b0-7f9081b1761a"
+    },
+    {
+      "timestamp": 1790163377432,
+      "event": "audio_on",
+      "trackId": "73b6b3cd-d4ec-4238-b7b0-7f9081b1761a"
+    },
+    {
+      "timestamp": 1790163439296,
+      "event": "audio_off",
+      "trackId": "73b6b3cd-d4ec-4238-b7b0-7f9081b1761a"
+    },
+    {
+      "timestamp": 1790163439727,
+      "event": "audio_on",
+      "trackId": "73b6b3cd-d4ec-4238-b7b0-7f9081b1761a"
+    }
+  ],
+  "spaces/BYc8OSL5FeQB/devices/515": [
+    {
+      "timestamp": 1790163335543,
+      "event": "audio_on",
+      "trackId": "463b051f-3dfa-4154-b1da-d74cebc17c9b"
+    },
+    {
+      "timestamp": 1790163343795,
+      "event": "audio_off",
+      "trackId": "463b051f-3dfa-4154-b1da-d74cebc17c9b"
+    },
+    {
+      "timestamp": 1790163345136,
+      "event": "audio_on",
+      "trackId": "463b051f-3dfa-4154-b1da-d74cebc17c9b"
+    },
+    {
+      "timestamp": 1790163365293,
+      "event": "audio_off",
+      "trackId": null
+    },
+    {
+      "timestamp": 1790163374533,
+      "event": "audio_on",
+      "trackId": "463b051f-3dfa-4154-b1da-d74cebc17c9b"
+    },
+    {
+      "timestamp": 1790163381794,
+      "event": "audio_off",
+      "trackId": "463b051f-3dfa-4154-b1da-d74cebc17c9b"
+    },
+    {
+      "timestamp": 1790163389133,
+      "event": "audio_on",
+      "trackId": "73b6b3cd-d4ec-4238-b7b0-7f9081b1761a"
+    },
+    {
+      "timestamp": 1790163396294,
+      "event": "audio_off",
+      "trackId": "463b051f-3dfa-4154-b1da-d74cebc17c9b"
+    },
+    {
+      "timestamp": 1790163437740,
+      "event": "audio_on",
+      "trackId": "463b051f-3dfa-4154-b1da-d74cebc17c9b"
+    },
+    {
+      "timestamp": 1790163444295,
+      "event": "audio_off",
+      "trackId": "463b051f-3dfa-4154-b1da-d74cebc17c9b"
+    }
+  ]
+}
+BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/BYc8OSL5FeQB/devices/515 trackId=73b6b
+3cd-d4ec-4238-b7b0-7f9081b1761a ownedBy="Ravi Sharma"
+[EVENT_AUDIO_ON] participantId=spaces/BYc8OSL5FeQB/devices/515 trackId=73b6b3cd-d4ec-4238-b7b0-7f908
+1b1761a
+[EVENT_AUDIO_OFF] participantId=spaces/BYc8OSL5FeQB/devices/515 trackId=463b051f-3dfa-4154-b1da-d74c
+ebc17c9b
+[MAPPER_SNAPSHOT] [
+  {
+    "participantId": "spaces/BYc8OSL5FeQB/devices/515",
+    "name": "Gautam gupta",
+    "videoStreamId": "1114470718",
+    "currentVideoTrackId": "93def922-1776-40e6-bc9d-d6f65487cab4",
+    "currentAudioTrackId": "73b6b3cd-d4ec-4238-b7b0-7f9081b1761a",
+    "videoBound": true,
+    "audioBound": true
+  },
+  {
+    "participantId": "spaces/BYc8OSL5FeQB/devices/514",
+    "name": "Ravi Sharma",
+    "videoStreamId": "2232057036",
+    "currentVideoTrackId": "3ec2fdf7-f555-4ce8-9be8-5aa1c7d48505",
+    "currentAudioTrackId": "73b6b3cd-d4ec-4238-b7b0-7f9081b1761a",
+    "videoBound": true,
+    "audioBound": true
+  }
+]
+[EVENT_HISTORY_SNAPSHOT] {
+  "spaces/BYc8OSL5FeQB/devices/514": [
+    {
+      "timestamp": 1790163334847,
+      "event": "audio_on",
+      "trackId": "73b6b3cd-d4ec-4238-b7b0-7f9081b1761a"
+    },
+    {
+      "timestamp": 1790163377295,
+      "event": "audio_off",
+      "trackId": "73b6b3cd-d4ec-4238-b7b0-7f9081b1761a"
+    },
+    {
+      "timestamp": 1790163377432,
+      "event": "audio_on",
+      "trackId": "73b6b3cd-d4ec-4238-b7b0-7f9081b1761a"
+    },
+    {
+      "timestamp": 1790163439296,
+      "event": "audio_off",
+      "trackId": "73b6b3cd-d4ec-4238-b7b0-7f9081b1761a"
+    },
+    {
+      "timestamp": 1790163439727,
+      "event": "audio_on",
+      "trackId": "73b6b3cd-d4ec-4238-b7b0-7f9081b1761a"
+    }
+  ],
+  "spaces/BYc8OSL5FeQB/devices/515": [
+    {
+      "timestamp": 1790163335543,
+      "event": "audio_on",
+      "trackId": "463b051f-3dfa-4154-b1da-d74cebc17c9b"
+    },
+    {
+      "timestamp": 1790163343795,
+      "event": "audio_off",
+      "trackId": "463b051f-3dfa-4154-b1da-d74cebc17c9b"
+    },
+    {
+      "timestamp": 1790163345136,
+      "event": "audio_on",
+      "trackId": "463b051f-3dfa-4154-b1da-d74cebc17c9b"
+    },
+    {
+      "timestamp": 1790163365293,
+      "event": "audio_off",
+      "trackId": null
+    },
+    {
+      "timestamp": 1790163374533,
+      "event": "audio_on",
+      "trackId": "463b051f-3dfa-4154-b1da-d74cebc17c9b"
+    },
+    {
+      "timestamp": 1790163381794,
+      "event": "audio_off",
+      "trackId": "463b051f-3dfa-4154-b1da-d74cebc17c9b"
+    },
+    {
+      "timestamp": 1790163389133,
+      "event": "audio_on",
+      "trackId": "73b6b3cd-d4ec-4238-b7b0-7f9081b1761a"
+    },
+    {
+      "timestamp": 1790163396294,
+      "event": "audio_off",
+      "trackId": "463b051f-3dfa-4154-b1da-d74cebc17c9b"
+    },
+    {
+      "timestamp": 1790163437740,
+      "event": "audio_on",
+      "trackId": "463b051f-3dfa-4154-b1da-d74cebc17c9b"
+    },
+    {
+      "timestamp": 1790163444295,
+      "event": "audio_off",
+      "trackId": "463b051f-3dfa-4154-b1da-d74cebc17c9b"
+    },
+    {
+      "timestamp": 1790163538946,
+      "event": "audio_on",
+      "trackId": "73b6b3cd-d4ec-4238-b7b0-7f9081b1761a"
+    },
+    {
+      "timestamp": 1790163545294,
+      "event": "audio_off",
+      "trackId": "463b051f-3dfa-4154-b1da-d74cebc17c9b"
+    }
+  ]
+}
+[EVENT_AUDIO_OFF] participantId=spaces/BYc8OSL5FeQB/devices/514 trackId=73b6b3cd-d4ec-4238-b7b0-7f90
+81b1761a
+[EVENT_AUDIO_ON] participantId=spaces/BYc8OSL5FeQB/devices/514 trackId=73b6b3cd-d4ec-4238-b7b0-7f908
+1b1761a
+[EVENT_AUDIO_ON] participantId=spaces/BYc8OSL5FeQB/devices/515 trackId=463b051f-3dfa-4154-b1da-d74ce
+bc17c9b
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/BYc8OSL5FeQB/devices/514 trackId=463b05
+1f-3dfa-4154-b1da-d74cebc17c9b ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/BYc8OSL5FeQB/devices/514 trackId=463b05
+1f-3dfa-4154-b1da-d74cebc17c9b ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/BYc8OSL5FeQB/devices/514 trackId=463b05
+1f-3dfa-4154-b1da-d74cebc17c9b ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/BYc8OSL5FeQB/devices/515 trackId=73b6b
+3cd-d4ec-4238-b7b0-7f9081b1761a ownedBy="Ravi Sharma"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/BYc8OSL5FeQB/devices/514 trackId=463b05
+1f-3dfa-4154-b1da-d74cebc17c9b ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/BYc8OSL5FeQB/devices/515 trackId=73b6b
+3cd-d4ec-4238-b7b0-7f9081b1761a ownedBy="Ravi Sharma"
+BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/BYc8OSL5FeQB/devices/515 trackId=73b6b
+3cd-d4ec-4238-b7b0-7f9081b1761a ownedBy="Ravi Sharma"
+[EVENT_VIDEO_ON] participantId=spaces/BYc8OSL5FeQB/devices/515 trackId=93def922-1776-40e6-bc9d-d6f65
+487cab4
+[EVENT_VIDEO_ON] participantId=spaces/BYc8OSL5FeQB/devices/514 trackId=3ec2fdf7-f555-4ce8-9be8-5aa1c
+7d48505
+[EVENT_AUDIO_OFF] participantId=spaces/BYc8OSL5FeQB/devices/515 trackId=463b051f-3dfa-4154-b1da-d74c
+ebc17c9b
+BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/BYc8OSL5FeQB/devices/515 trackId=73b6b
+3cd-d4ec-4238-b7b0-7f9081b1761a ownedBy="Ravi Sharma"
+[EVENT_AUDIO_ON] participantId=spaces/BYc8OSL5FeQB/devices/515 trackId=73b6b3cd-d4ec-4238-b7b0-7f908
+1b1761a
+[EVENT_AUDIO_OFF] participantId=spaces/BYc8OSL5FeQB/devices/515 trackId=463b051f-3dfa-4154-b1da-d74c
+ebc17c9b
+BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/BYc8OSL5FeQB/devices/515 trackId=73b6b
+3cd-d4ec-4238-b7b0-7f9081b1761a ownedBy="Ravi Sharma"
+[EVENT_AUDIO_ON] participantId=spaces/BYc8OSL5FeQB/devices/515 trackId=73b6b3cd-d4ec-4238-b7b0-7f908
+1b1761a
+BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/BYc8OSL5FeQB/devices/515 trackId=73b6b
+3cd-d4ec-4238-b7b0-7f9081b1761a ownedBy="Ravi Sharma"
+BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/BYc8OSL5FeQB/devices/515 trackId=73b6b
+3cd-d4ec-4238-b7b0-7f9081b1761a ownedBy="Ravi Sharma"
+[EVENT_AUDIO_OFF] participantId=spaces/BYc8OSL5FeQB/devices/515 trackId=463b051f-3dfa-4154-b1da-d74c
+ebc17c9b
+[EVENT_AUDIO_ON] participantId=spaces/BYc8OSL5FeQB/devices/515 trackId=463b051f-3dfa-4154-b1da-d74ce
+bc17c9b
+[EVENT_AUDIO_OFF] participantId=spaces/BYc8OSL5FeQB/devices/515 trackId=463b051f-3dfa-4154-b1da-d74c
+ebc17c9b
+BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/BYc8OSL5FeQB/devices/515 trackId=73b6b
+3cd-d4ec-4238-b7b0-7f9081b1761a ownedBy="Ravi Sharma"
+[EVENT_AUDIO_ON] participantId=spaces/BYc8OSL5FeQB/devices/515 trackId=73b6b3cd-d4ec-4238-b7b0-7f908
+1b1761a
+BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/BYc8OSL5FeQB/devices/515 trackId=73b6b
+3cd-d4ec-4238-b7b0-7f9081b1761a ownedBy="Ravi Sharma"
+[EVENT_AUDIO_OFF] participantId=spaces/BYc8OSL5FeQB/devices/515 trackId=463b051f-3dfa-4154-b1da-d74c
+ebc17c9b
+
+[RED] Shutting down — accepting remaining in-flight chunks (4s window)...
+[SHUTDOWN] elapsed: 2s — please wait, do not close this window...   [MAPPER_SNAPSHOT] [
+  {
+    "participantId": "spaces/BYc8OSL5FeQB/devices/515",
+    "name": "Gautam gupta",
+    "videoStreamId": "1114470718",
+    "currentVideoTrackId": "93def922-1776-40e6-bc9d-d6f65487cab4",
+    "currentAudioTrackId": "73b6b3cd-d4ec-4238-b7b0-7f9081b1761a",
+    "videoBound": true,
+    "audioBound": true
+  },
+  {
+    "participantId": "spaces/BYc8OSL5FeQB/devices/514",
+    "name": "Ravi Sharma",
+    "videoStreamId": "2232057036",
+    "currentVideoTrackId": "3ec2fdf7-f555-4ce8-9be8-5aa1c7d48505",
+    "currentAudioTrackId": "73b6b3cd-d4ec-4238-b7b0-7f9081b1761a",
+    "videoBound": true,
+    "audioBound": true
+  }
+]
+[EVENT_HISTORY_SNAPSHOT] {
+  "spaces/BYc8OSL5FeQB/devices/514": [
+    {
+      "timestamp": 1790163334847,
+      "event": "audio_on",
+      "trackId": "73b6b3cd-d4ec-4238-b7b0-7f9081b1761a"
+    },
+    {
+      "timestamp": 1790163377295,
+      "event": "audio_off",
+      "trackId": "73b6b3cd-d4ec-4238-b7b0-7f9081b1761a"
+    },
+    {
+      "timestamp": 1790163377432,
+      "event": "audio_on",
+      "trackId": "73b6b3cd-d4ec-4238-b7b0-7f9081b1761a"
+    },
+    {
+      "timestamp": 1790163439296,
+      "event": "audio_off",
+      "trackId": "73b6b3cd-d4ec-4238-b7b0-7f9081b1761a"
+    },
+    {
+      "timestamp": 1790163439727,
+      "event": "audio_on",
+      "trackId": "73b6b3cd-d4ec-4238-b7b0-7f9081b1761a"
+    },
+    {
+      "timestamp": 1790163554294,
+      "event": "audio_off",
+      "trackId": "73b6b3cd-d4ec-4238-b7b0-7f9081b1761a"
+    },
+    {
+      "timestamp": 1790163554642,
+      "event": "audio_on",
+      "trackId": "73b6b3cd-d4ec-4238-b7b0-7f9081b1761a"
+    },
+    {
+      "timestamp": 1790163580271,
+      "event": "video_on",
+      "trackId": "3ec2fdf7-f555-4ce8-9be8-5aa1c7d48505"
+    }
+  ],
+  "spaces/BYc8OSL5FeQB/devices/515": [
+    {
+      "timestamp": 1790163335543,
+      "event": "audio_on",
+      "trackId": "463b051f-3dfa-4154-b1da-d74cebc17c9b"
+    },
+    {
+      "timestamp": 1790163343795,
+      "event": "audio_off",
+      "trackId": "463b051f-3dfa-4154-b1da-d74cebc17c9b"
+    },
+    {
+      "timestamp": 1790163345136,
+      "event": "audio_on",
+      "trackId": "463b051f-3dfa-4154-b1da-d74cebc17c9b"
+    },
+    {
+      "timestamp": 1790163365293,
+      "event": "audio_off",
+      "trackId": null
+    },
+    {
+      "timestamp": 1790163374533,
+      "event": "audio_on",
+      "trackId": "463b051f-3dfa-4154-b1da-d74cebc17c9b"
+    },
+    {
+      "timestamp": 1790163381794,
+      "event": "audio_off",
+      "trackId": "463b051f-3dfa-4154-b1da-d74cebc17c9b"
+    },
+    {
+      "timestamp": 1790163389133,
+      "event": "audio_on",
+      "trackId": "73b6b3cd-d4ec-4238-b7b0-7f9081b1761a"
+    },
+    {
+      "timestamp": 1790163396294,
+      "event": "audio_off",
+      "trackId": "463b051f-3dfa-4154-b1da-d74cebc17c9b"
+    },
+    {
+      "timestamp": 1790163437740,
+      "event": "audio_on",
+      "trackId": "463b051f-3dfa-4154-b1da-d74cebc17c9b"
+    },
+    {
+      "timestamp": 1790163444295,
+      "event": "audio_off",
+      "trackId": "463b051f-3dfa-4154-b1da-d74cebc17c9b"
+    },
+    {
+      "timestamp": 1790163538946,
+      "event": "audio_on",
+      "trackId": "73b6b3cd-d4ec-4238-b7b0-7f9081b1761a"
+    },
+    {
+      "timestamp": 1790163545294,
+      "event": "audio_off",
+      "trackId": "463b051f-3dfa-4154-b1da-d74cebc17c9b"
+    },
+    {
+      "timestamp": 1790163569039,
+      "event": "audio_on",
+      "trackId": "463b051f-3dfa-4154-b1da-d74cebc17c9b"
+    },
+    {
+      "timestamp": 1790163576626,
+      "event": "video_on",
+      "trackId": "93def922-1776-40e6-bc9d-d6f65487cab4"
+    },
+    {
+      "timestamp": 1790163580799,
+      "event": "audio_off",
+      "trackId": "463b051f-3dfa-4154-b1da-d74cebc17c9b"
+    },
+    {
+      "timestamp": 1790163600837,
+      "event": "audio_on",
+      "trackId": "73b6b3cd-d4ec-4238-b7b0-7f9081b1761a"
+    },
+    {
+      "timestamp": 1790163607295,
+      "event": "audio_off",
+      "trackId": "463b051f-3dfa-4154-b1da-d74cebc17c9b"
+    },
+    {
+      "timestamp": 1790163620050,
+      "event": "audio_on",
+      "trackId": "73b6b3cd-d4ec-4238-b7b0-7f9081b1761a"
+    },
+    {
+      "timestamp": 1790163631294,
+      "event": "audio_off",
+      "trackId": "463b051f-3dfa-4154-b1da-d74cebc17c9b"
+    },
+    {
+      "timestamp": 1790163648246,
+      "event": "audio_on",
+      "trackId": "463b051f-3dfa-4154-b1da-d74cebc17c9b"
+    },
+    {
+      "timestamp": 1790163654295,
+      "event": "audio_off",
+      "trackId": "463b051f-3dfa-4154-b1da-d74cebc17c9b"
+    },
+    {
+      "timestamp": 1790163661144,
+      "event": "audio_on",
+      "trackId": "73b6b3cd-d4ec-4238-b7b0-7f9081b1761a"
+    },
+    {
+      "timestamp": 1790163667294,
+      "event": "audio_off",
+      "trackId": "463b051f-3dfa-4154-b1da-d74cebc17c9b"
+    }
+  ]
+}
+[SHUTDOWN] elapsed: 5s — please wait, do not close this window...
+[FINAL_MAPPER] [
+  {
+    "participantId": "spaces/BYc8OSL5FeQB/devices/515",
+    "name": "Gautam gupta",
+    "videoStreamId": "1114470718",
+    "currentVideoTrackId": "93def922-1776-40e6-bc9d-d6f65487cab4",
+    "currentAudioTrackId": "73b6b3cd-d4ec-4238-b7b0-7f9081b1761a",
+    "videoBound": true,
+    "audioBound": true
+  },
+  {
+    "participantId": "spaces/BYc8OSL5FeQB/devices/514",
+    "name": "Ravi Sharma",
+    "videoStreamId": "2232057036",
+    "currentVideoTrackId": "3ec2fdf7-f555-4ce8-9be8-5aa1c7d48505",
+    "currentAudioTrackId": "73b6b3cd-d4ec-4238-b7b0-7f9081b1761a",
+    "videoBound": true,
+    "audioBound": true
+  }
+]
+[FINAL_EVENT_HISTORY] {
+  "spaces/BYc8OSL5FeQB/devices/514": [
+    {
+      "timestamp": 1790163334847,
+      "event": "audio_on",
+      "trackId": "73b6b3cd-d4ec-4238-b7b0-7f9081b1761a"
+    },
+    {
+      "timestamp": 1790163377295,
+      "event": "audio_off",
+      "trackId": "73b6b3cd-d4ec-4238-b7b0-7f9081b1761a"
+    },
+    {
+      "timestamp": 1790163377432,
+      "event": "audio_on",
+      "trackId": "73b6b3cd-d4ec-4238-b7b0-7f9081b1761a"
+    },
+    {
+      "timestamp": 1790163439296,
+      "event": "audio_off",
+      "trackId": "73b6b3cd-d4ec-4238-b7b0-7f9081b1761a"
+    },
+    {
+      "timestamp": 1790163439727,
+      "event": "audio_on",
+      "trackId": "73b6b3cd-d4ec-4238-b7b0-7f9081b1761a"
+    },
+    {
+      "timestamp": 1790163554294,
+      "event": "audio_off",
+      "trackId": "73b6b3cd-d4ec-4238-b7b0-7f9081b1761a"
+    },
+    {
+      "timestamp": 1790163554642,
+      "event": "audio_on",
+      "trackId": "73b6b3cd-d4ec-4238-b7b0-7f9081b1761a"
+    },
+    {
+      "timestamp": 1790163580271,
+      "event": "video_on",
+      "trackId": "3ec2fdf7-f555-4ce8-9be8-5aa1c7d48505"
+    }
+  ],
+  "spaces/BYc8OSL5FeQB/devices/515": [
+    {
+      "timestamp": 1790163335543,
+      "event": "audio_on",
+      "trackId": "463b051f-3dfa-4154-b1da-d74cebc17c9b"
+    },
+    {
+      "timestamp": 1790163343795,
+      "event": "audio_off",
+      "trackId": "463b051f-3dfa-4154-b1da-d74cebc17c9b"
+    },
+    {
+      "timestamp": 1790163345136,
+      "event": "audio_on",
+      "trackId": "463b051f-3dfa-4154-b1da-d74cebc17c9b"
+    },
+    {
+      "timestamp": 1790163365293,
+      "event": "audio_off",
+      "trackId": null
+    },
+    {
+      "timestamp": 1790163374533,
+      "event": "audio_on",
+      "trackId": "463b051f-3dfa-4154-b1da-d74cebc17c9b"
+    },
+    {
+      "timestamp": 1790163381794,
+      "event": "audio_off",
+      "trackId": "463b051f-3dfa-4154-b1da-d74cebc17c9b"
+    },
+    {
+      "timestamp": 1790163389133,
+      "event": "audio_on",
+      "trackId": "73b6b3cd-d4ec-4238-b7b0-7f9081b1761a"
+    },
+    {
+      "timestamp": 1790163396294,
+      "event": "audio_off",
+      "trackId": "463b051f-3dfa-4154-b1da-d74cebc17c9b"
+    },
+    {
+      "timestamp": 1790163437740,
+      "event": "audio_on",
+      "trackId": "463b051f-3dfa-4154-b1da-d74cebc17c9b"
+    },
+    {
+      "timestamp": 1790163444295,
+      "event": "audio_off",
+      "trackId": "463b051f-3dfa-4154-b1da-d74cebc17c9b"
+    },
+    {
+      "timestamp": 1790163538946,
+      "event": "audio_on",
+      "trackId": "73b6b3cd-d4ec-4238-b7b0-7f9081b1761a"
+    },
+    {
+      "timestamp": 1790163545294,
+      "event": "audio_off",
+      "trackId": "463b051f-3dfa-4154-b1da-d74cebc17c9b"
+    },
+    {
+      "timestamp": 1790163569039,
+      "event": "audio_on",
+      "trackId": "463b051f-3dfa-4154-b1da-d74cebc17c9b"
+    },
+    {
+      "timestamp": 1790163576626,
+      "event": "video_on",
+      "trackId": "93def922-1776-40e6-bc9d-d6f65487cab4"
+    },
+    {
+      "timestamp": 1790163580799,
+      "event": "audio_off",
+      "trackId": "463b051f-3dfa-4154-b1da-d74cebc17c9b"
+    },
+    {
+      "timestamp": 1790163600837,
+      "event": "audio_on",
+      "trackId": "73b6b3cd-d4ec-4238-b7b0-7f9081b1761a"
+    },
+    {
+      "timestamp": 1790163607295,
+      "event": "audio_off",
+      "trackId": "463b051f-3dfa-4154-b1da-d74cebc17c9b"
+    },
+    {
+      "timestamp": 1790163620050,
+      "event": "audio_on",
+      "trackId": "73b6b3cd-d4ec-4238-b7b0-7f9081b1761a"
+    },
+    {
+      "timestamp": 1790163631294,
+      "event": "audio_off",
+      "trackId": "463b051f-3dfa-4154-b1da-d74cebc17c9b"
+    },
+    {
+      "timestamp": 1790163648246,
+      "event": "audio_on",
+      "trackId": "463b051f-3dfa-4154-b1da-d74cebc17c9b"
+    },
+    {
+      "timestamp": 1790163654295,
+      "event": "audio_off",
+      "trackId": "463b051f-3dfa-4154-b1da-d74cebc17c9b"
+    },
+    {
+      "timestamp": 1790163661144,
+      "event": "audio_on",
+      "trackId": "73b6b3cd-d4ec-4238-b7b0-7f9081b1761a"
+    },
+    {
+      "timestamp": 1790163667294,
+      "event": "audio_off",
+      "trackId": "463b051f-3dfa-4154-b1da-d74cebc17c9b"
+    }
+  ]
+}
+[FINAL_BINDING_HISTORY] {
+  "spaces/BYc8OSL5FeQB/devices/515": [
+    {
+      "kind": "video",
+      "trackId": "93def922-1776-40e6-bc9d-d6f65487cab4",
+      "timestamp": 1790163333628
+    },
+    {
+      "kind": "audio",
+      "trackId": "463b051f-3dfa-4154-b1da-d74cebc17c9b",
+      "timestamp": 1790163335539
+    },
+    {
+      "kind": "audio",
+      "trackId": "73b6b3cd-d4ec-4238-b7b0-7f9081b1761a",
+      "timestamp": 1790163345649
+    },
+    {
+      "kind": "audio",
+      "trackId": "463b051f-3dfa-4154-b1da-d74cebc17c9b",
+      "timestamp": 1790163346036
+    },
+    {
+      "kind": "audio",
+      "trackId": "73b6b3cd-d4ec-4238-b7b0-7f9081b1761a",
+      "timestamp": 1790163389131
+    },
+    {
+      "kind": "audio",
+      "trackId": "463b051f-3dfa-4154-b1da-d74cebc17c9b",
+      "timestamp": 1790163389330
+    },
+    {
+      "kind": "audio",
+      "trackId": "73b6b3cd-d4ec-4238-b7b0-7f9081b1761a",
+      "timestamp": 1790163538942
+    },
+    {
+      "kind": "audio",
+      "trackId": "463b051f-3dfa-4154-b1da-d74cebc17c9b",
+      "timestamp": 1790163569039
+    },
+    {
+      "kind": "audio",
+      "trackId": "73b6b3cd-d4ec-4238-b7b0-7f9081b1761a",
+      "timestamp": 1790163569338
+    },
+    {
+      "kind": "audio",
+      "trackId": "463b051f-3dfa-4154-b1da-d74cebc17c9b",
+      "timestamp": 1790163573938
+    },
+    {
+      "kind": "audio",
+      "trackId": "73b6b3cd-d4ec-4238-b7b0-7f9081b1761a",
+      "timestamp": 1790163600834
+    },
+    {
+      "kind": "audio",
+      "trackId": "463b051f-3dfa-4154-b1da-d74cebc17c9b",
+      "timestamp": 1790163620848
+    },
+    {
+      "kind": "audio",
+      "trackId": "73b6b3cd-d4ec-4238-b7b0-7f9081b1761a",
+      "timestamp": 1790163625053
+    },
+    {
+      "kind": "audio",
+      "trackId": "463b051f-3dfa-4154-b1da-d74cebc17c9b",
+      "timestamp": 1790163648245
+    },
+    {
+      "kind": "audio",
+      "trackId": "73b6b3cd-d4ec-4238-b7b0-7f9081b1761a",
+      "timestamp": 1790163661143
+    }
+  ],
+  "spaces/BYc8OSL5FeQB/devices/514": [
+    {
+      "kind": "video",
+      "trackId": "3ec2fdf7-f555-4ce8-9be8-5aa1c7d48505",
+      "timestamp": 1790163333660
+    },
+    {
+      "kind": "audio",
+      "trackId": "73b6b3cd-d4ec-4238-b7b0-7f9081b1761a",
+      "timestamp": 1790163334843
+    },
+    {
+      "kind": "audio",
+      "trackId": "463b051f-3dfa-4154-b1da-d74cebc17c9b",
+      "timestamp": 1790163335543
+    },
+    {
+      "kind": "audio",
+      "trackId": "73b6b3cd-d4ec-4238-b7b0-7f9081b1761a",
+      "timestamp": 1790163336138
+    },
+    {
+      "kind": "audio",
+      "trackId": "463b051f-3dfa-4154-b1da-d74cebc17c9b",
+      "timestamp": 1790163345335
+    },
+    {
+      "kind": "audio",
+      "trackId": "73b6b3cd-d4ec-4238-b7b0-7f9081b1761a",
+      "timestamp": 1790163345738
+    },
+    {
+      "kind": "audio",
+      "trackId": "463b051f-3dfa-4154-b1da-d74cebc17c9b",
+      "timestamp": 1790163346336
+    },
+    {
+      "kind": "audio",
+      "trackId": "73b6b3cd-d4ec-4238-b7b0-7f9081b1761a",
+      "timestamp": 1790163348136
+    },
+    {
+      "kind": "audio",
+      "trackId": "463b051f-3dfa-4154-b1da-d74cebc17c9b",
+      "timestamp": 1790163352134
+    },
+    {
+      "kind": "audio",
+      "trackId": "73b6b3cd-d4ec-4238-b7b0-7f9081b1761a",
+      "timestamp": 1790163354734
+    },
+    {
+      "kind": "audio",
+      "trackId": "463b051f-3dfa-4154-b1da-d74cebc17c9b",
+      "timestamp": 1790163358734
+    },
+    {
+      "kind": "audio",
+      "trackId": "73b6b3cd-d4ec-4238-b7b0-7f9081b1761a",
+      "timestamp": 1790163359434
+    },
+    {
+      "kind": "audio",
+      "trackId": "463b051f-3dfa-4154-b1da-d74cebc17c9b",
+      "timestamp": 1790163389430
+    },
+    {
+      "kind": "audio",
+      "trackId": "73b6b3cd-d4ec-4238-b7b0-7f9081b1761a",
+      "timestamp": 1790163391529
+    },
+    {
+      "kind": "audio",
+      "trackId": "463b051f-3dfa-4154-b1da-d74cebc17c9b",
+      "timestamp": 1790163569042
+    },
+    {
+      "kind": "audio",
+      "trackId": "73b6b3cd-d4ec-4238-b7b0-7f9081b1761a",
+      "timestamp": 1790163569340
+    },
+    {
+      "kind": "audio",
+      "trackId": "463b051f-3dfa-4154-b1da-d74cebc17c9b",
+      "timestamp": 1790163569438
+    },
+    {
+      "kind": "audio",
+      "trackId": "73b6b3cd-d4ec-4238-b7b0-7f9081b1761a",
+      "timestamp": 1790163571238
+    }
+  ]
+}
+
+[YELLOW] Stopping recorders and closing all connections...
+[WS_FORCE_CLOSING] Closing 2 remaining connection(s)...
+[WS_STREAM_CLOSED] participantId=spaces/BYc8OSL5FeQB/devices/515::seg1
+[WS_STREAM_CLOSED] participantId=spaces/BYc8OSL5FeQB/devices/514::seg1
+[WS_STREAM_CLOSED] participantId=spaces/BYc8OSL5FeQB/devices/514::seg2
+[WS_STREAM_CLOSED] participantId=spaces/BYc8OSL5FeQB/devices/515::seg2
+
+[GREEN] Leaving the meeting...
+[SHUTDOWN] elapsed: 6s — please wait, do not close this window...   [WS_CLOSED] participantId=spaces
+/BYc8OSL5FeQB/devices/515::seg2
+[WS_CLOSED] participantId=spaces/BYc8OSL5FeQB/devices/514::seg2
+[LEFT_MEETING] Successfully clicked leave button
+PAGE CLOSED EVENT FIRED
+CONTEXT CLOSED EVENT FIRED
+[SHUTDOWN] elapsed: 7s — please wait, do not close this window...
+[STITCH] Starting post-meeting stitch...
+[STITCH_START] Scanning recordings folder...
+[STITCH_CONCURRENCY] Using up to 7 parallel ffmpeg processes
+[SHUTDOWN] elapsed: 9s — please wait, do not close this window...
+[FFMPEG_DONE] spaces_BYc8OSL5FeQB_devices_514 seg1 normalize — completed in 1.9s
+[STITCH_PROGRESS] [####--------------------] 17% (1/6) spaces_BYc8OSL5FeQB_devices_514 normalized se
+g1
+[FFMPEG_DONE] spaces_BYc8OSL5FeQB_devices_515 seg1 normalize — completed in 0.3s
+[STITCH_PROGRESS] [########----------------] 33% (2/6) spaces_BYc8OSL5FeQB_devices_515 normalized se
+[SHUTDOWN] elapsed: 11s — please wait, do not close this window...   [MAPPER_SNAPSHOT] [
+  {
+    "participantId": "spaces/BYc8OSL5FeQB/devices/515",
+    "name": "Gautam gupta",
+    "videoStreamId": "1114470718",
+    "currentVideoTrackId": "93def922-1776-40e6-bc9d-d6f65487cab4",
+    "currentAudioTrackId": "73b6b3cd-d4ec-4238-b7b0-7f9081b1761a",
+    "videoBound": true,
+    "audioBound": true
+  },
+  {
+    "participantId": "spaces/BYc8OSL5FeQB/devices/514",
+    "name": "Ravi Sharma",
+    "videoStreamId": "2232057036",
+    "currentVideoTrackId": "3ec2fdf7-f555-4ce8-9be8-5aa1c7d48505",
+    "currentAudioTrackId": "73b6b3cd-d4ec-4238-b7b0-7f9081b1761a",
+    "videoBound": true,
+    "audioBound": true
+  }
+]
+[EVENT_HISTORY_SNAPSHOT] {
+  "spaces/BYc8OSL5FeQB/devices/514": [
+    {
+      "timestamp": 1790163334847,
+      "event": "audio_on",
+      "trackId": "73b6b3cd-d4ec-4238-b7b0-7f9081b1761a"
+    },
+    {
+      "timestamp": 1790163377295,
+      "event": "audio_off",
+      "trackId": "73b6b3cd-d4ec-4238-b7b0-7f9081b1761a"
+    },
+    {
+      "timestamp": 1790163377432,
+      "event": "audio_on",
+      "trackId": "73b6b3cd-d4ec-4238-b7b0-7f9081b1761a"
+    },
+    {
+      "timestamp": 1790163439296,
+      "event": "audio_off",
+      "trackId": "73b6b3cd-d4ec-4238-b7b0-7f9081b1761a"
+    },
+    {
+      "timestamp": 1790163439727,
+      "event": "audio_on",
+      "trackId": "73b6b3cd-d4ec-4238-b7b0-7f9081b1761a"
+    },
+    {
+      "timestamp": 1790163554294,
+      "event": "audio_off",
+      "trackId": "73b6b3cd-d4ec-4238-b7b0-7f9081b1761a"
+    },
+    {
+      "timestamp": 1790163554642,
+      "event": "audio_on",
+      "trackId": "73b6b3cd-d4ec-4238-b7b0-7f9081b1761a"
+    },
+    {
+      "timestamp": 1790163580271,
+      "event": "video_on",
+      "trackId": "3ec2fdf7-f555-4ce8-9be8-5aa1c7d48505"
+    }
+  ],
+  "spaces/BYc8OSL5FeQB/devices/515": [
+    {
+      "timestamp": 1790163335543,
+      "event": "audio_on",
+      "trackId": "463b051f-3dfa-4154-b1da-d74cebc17c9b"
+    },
+    {
+      "timestamp": 1790163343795,
+      "event": "audio_off",
+      "trackId": "463b051f-3dfa-4154-b1da-d74cebc17c9b"
+    },
+    {
+      "timestamp": 1790163345136,
+      "event": "audio_on",
+      "trackId": "463b051f-3dfa-4154-b1da-d74cebc17c9b"
+    },
+    {
+      "timestamp": 1790163365293,
+      "event": "audio_off",
+      "trackId": null
+    },
+    {
+      "timestamp": 1790163374533,
+      "event": "audio_on",
+      "trackId": "463b051f-3dfa-4154-b1da-d74cebc17c9b"
+    },
+    {
+      "timestamp": 1790163381794,
+      "event": "audio_off",
+      "trackId": "463b051f-3dfa-4154-b1da-d74cebc17c9b"
+    },
+    {
+      "timestamp": 1790163389133,
+      "event": "audio_on",
+      "trackId": "73b6b3cd-d4ec-4238-b7b0-7f9081b1761a"
+    },
+    {
+      "timestamp": 1790163396294,
+      "event": "audio_off",
+      "trackId": "463b051f-3dfa-4154-b1da-d74cebc17c9b"
+    },
+    {
+      "timestamp": 1790163437740,
+      "event": "audio_on",
+      "trackId": "463b051f-3dfa-4154-b1da-d74cebc17c9b"
+    },
+    {
+      "timestamp": 1790163444295,
+      "event": "audio_off",
+      "trackId": "463b051f-3dfa-4154-b1da-d74cebc17c9b"
+    },
+    {
+      "timestamp": 1790163538946,
+      "event": "audio_on",
+      "trackId": "73b6b3cd-d4ec-4238-b7b0-7f9081b1761a"
+    },
+    {
+      "timestamp": 1790163545294,
+      "event": "audio_off",
+      "trackId": "463b051f-3dfa-4154-b1da-d74cebc17c9b"
+    },
+    {
+      "timestamp": 1790163569039,
+      "event": "audio_on",
+      "trackId": "463b051f-3dfa-4154-b1da-d74cebc17c9b"
+    },
+    {
+      "timestamp": 1790163576626,
+      "event": "video_on",
+      "trackId": "93def922-1776-40e6-bc9d-d6f65487cab4"
+    },
+    {
+      "timestamp": 1790163580799,
+      "event": "audio_off",
+      "trackId": "463b051f-3dfa-4154-b1da-d74cebc17c9b"
+    },
+    {
+      "timestamp": 1790163600837,
+      "event": "audio_on",
+      "trackId": "73b6b3cd-d4ec-4238-b7b0-7f9081b1761a"
+    },
+    {
+      "timestamp": 1790163607295,
+      "event": "audio_off",
+      "trackId": "463b051f-3dfa-4154-b1da-d74cebc17c9b"
+    },
+    {
+      "timestamp": 1790163620050,
+      "event": "audio_on",
+      "trackId": "73b6b3cd-d4ec-4238-b7b0-7f9081b1761a"
+    },
+    {
+      "timestamp": 1790163631294,
+      "event": "audio_off",
+      "trackId": "463b051f-3dfa-4154-b1da-d74cebc17c9b"
+    },
+    {
+      "timestamp": 1790163648246,
+      "event": "audio_on",
+      "trackId": "463b051f-3dfa-4154-b1da-d74cebc17c9b"
+    },
+    {
+      "timestamp": 1790163654295,
+      "event": "audio_off",
+      "trackId": "463b051f-3dfa-4154-b1da-d74cebc17c9b"
+    },
+    {
+      "timestamp": 1790163661144,
+      "event": "audio_on",
+      "trackId": "73b6b3cd-d4ec-4238-b7b0-7f9081b1761a"
+    },
+    {
+      "timestamp": 1790163667294,
+      "event": "audio_off",
+      "trackId": "463b051f-3dfa-4154-b1da-d74cebc17c9b"
+    }
+  ]
+}
+[SHUTDOWN] elapsed: 33s — please wait, do not close this window...   .. 24s elapsed
+[FFMPEG_DONE] spaces_BYc8OSL5FeQB_devices_515 seg2 normalize — completed in 24.9s
+[STITCH_PROGRESS] [############------------] 50% (3/6) spaces_BYc8OSL5FeQB_devices_515 normalized se
+[SHUTDOWN] elapsed: 45s — please wait, do not close this window...   .. 36s elapsed
+[FFMPEG_DONE] spaces_BYc8OSL5FeQB_devices_514 seg2 normalize — completed in 36.8s
+[STITCH_PROGRESS] [################--------] 67% (4/6) spaces_BYc8OSL5FeQB_devices_514 normalized se
+g2
+[FFMPEG_DONE] spaces_BYc8OSL5FeQB_devices_515 final concat — completed in 0.3s
+[STITCH_COMPLETE] spaces_BYc8OSL5FeQB_devices_515 -> C:\Bot_Streaming_Poc\Meeting-Bot-Streaming-POC\
+src\finalRecorded\spaces_BYc8OSL5FeQB_devices_515.mp4
+[STITCH_PROGRESS] [####################----] 83% (5/6) spaces_BYc8OSL5FeQB_devices_515 complete
+[FFMPEG_DONE] spaces_BYc8OSL5FeQB_devices_514 final concat — completed in 0.4s
+[STITCH_COMPLETE] spaces_BYc8OSL5FeQB_devices_514 -> C:\Bot_Streaming_Poc\Meeting-Bot-Streaming-POC\
+src\finalRecorded\spaces_BYc8OSL5FeQB_devices_514.mp4
+[STITCH_PROGRESS] [########################] 100% (6/6) spaces_BYc8OSL5FeQB_devices_514 complete
+[STITCH_ALL_DONE] Stitching finished for all participants (see above for any that were skipped).
+
+[SHUTDOWN_COMPLETE] Total shutdown time: 45.8s
+PS>TerminatingError(): "The pipeline has been stopped."
+
+Ctrl+C detected - creating stop signal for the bot...
+PS>TerminatingError(): "The pipeline has been stopped."
+>> TerminatingError(): "The pipeline has been stopped."
+PS C:\Bot_Streaming_Poc\Meeting-Bot-Streaming-POC> Stop-Transcript
+**********************
+Windows PowerShell transcript end
+End time: 20260923171204
+**********************
