@@ -14,6 +14,12 @@ output/
 # Recorded meeting files (heavy, per-participant .webm segments)
 src/recordings/
 
+# Stitched per-participant .mp4s + timeline/manifest
+src/finalRecorded/
+
+# Combined meeting recordings from the player's Record button
+src/finalOutput/
+
 # Playwright test artifacts
 test-results/
 playwright-report/

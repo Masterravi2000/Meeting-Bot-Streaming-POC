@@ -1,12 +1,12 @@
 ﻿**********************
 Windows PowerShell transcript start
-Start time: 20260923220814
+Start time: 20260924210357
 Username: DESKTOP-O4FDRR3\ASUS
 RunAs User: DESKTOP-O4FDRR3\ASUS
 Configuration Name: 
 Machine: DESKTOP-O4FDRR3 (Microsoft Windows NT 10.0.19045.0)
 Host Application: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
-Process ID: 19228
+Process ID: 24664
 PSVersion: 5.1.19041.7725
 PSEdition: Desktop
 PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.19041.7725
@@ -17,2996 +17,1324 @@ PSRemotingProtocolVersion: 2.3
 SerializationVersion: 1.1.0.1
 **********************
 Transcript started, output file is test-log.txt
-BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/SfqndlfuIO8B/devices/98 trackId=0774ae
-e6-fc1a-4a4e-a071-05f60a1217e9 ownedBy="Ravi Sharma"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [STRENGTH_PASSED] name="Kirthan M" pid=spaces/SfqndlfuIO8B/devices/99 gap=12ms level=0.
-1615
-[EVENT_AUDIO_ON] participantId=spaces/SfqndlfuIO8B/devices/99 trackId=b9de6136-662a-4020-89b1-422b4e
-e0c504
-BROWSER LOG: [DUAL_CONFIRM_PASSED] name="Kirthan M" pid=spaces/SfqndlfuIO8B/devices/99 1st=(gap=12ms
- level=0.1615) 2nd=(gap=2ms level=0.1653) totalMs=100
-BROWSER LOG: [AVBOND_LOCKED] name="Kirthan M" pid=spaces/SfqndlfuIO8B/devices/99 trackId=b9de6136-66
-2a-4020-89b1-422b4ee0c504
-[WS_STREAM_OPEN] participantId=spaces/SfqndlfuIO8B/devices/99::seg2 -> C:\Bot_Streaming_Poc\Meeting-
-Bot-Streaming-POC\src\recordings\spaces_SfqndlfuIO8B_devices_99__seg2.webm hasAudio=true
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=b9de613
-6-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=b9de613
-6-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=b9de613
-6-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-[WS_CLOSED] participantId=spaces/SfqndlfuIO8B/devices/99::seg1
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=b9de613
-6-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=b9de613
-6-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=b9de613
-6-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=b9de613
-6-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=b9de613
-6-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=b9de613
-6-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=b9de613
-6-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=b9de613
-6-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=b9de613
-6-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=b9de613
-6-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=b9de613
-6-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=b9de613
-6-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=b9de613
-6-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=b9de613
-6-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-[EVENT_AUDIO_OFF] participantId=spaces/SfqndlfuIO8B/devices/98 trackId=null
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=b9de613
-6-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=b9de613
-6-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=b9de613
-6-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=b9de613
-6-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=b9de613
-6-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/SfqndlfuIO8B/devices/98 trackId=0774ae
-e6-fc1a-4a4e-a071-05f60a1217e9 ownedBy="Ravi Sharma"
-[EVENT_AUDIO_ON] participantId=spaces/SfqndlfuIO8B/devices/98 trackId=0774aee6-fc1a-4a4e-a071-05f60a
-1217e9
-BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/SfqndlfuIO8B/devices/98 trackId=0774ae
-e6-fc1a-4a4e-a071-05f60a1217e9 ownedBy="Ravi Sharma"
-BROWSER LOG: [AVBOND_REJECTED] name="Kirthan M" pid=spaces/SfqndlfuIO8B/devices/99 trackId=0774aee6-
-fc1a-4a4e-a071-05f60a1217e9 ownedBy="Ravi Sharma"
-BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/SfqndlfuIO8B/devices/98 trackId=0774ae
-e6-fc1a-4a4e-a071-05f60a1217e9 ownedBy="Ravi Sharma"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=b9de613
-6-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Kirthan M" pid=spaces/SfqndlfuIO8B/devices/99 trackId=0774aee6-
-fc1a-4a4e-a071-05f60a1217e9 ownedBy="Ravi Sharma"
-BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/SfqndlfuIO8B/devices/98 trackId=0774ae
-e6-fc1a-4a4e-a071-05f60a1217e9 ownedBy="Ravi Sharma"
-BROWSER LOG: [AVBOND_REJECTED] name="Kirthan M" pid=spaces/SfqndlfuIO8B/devices/99 trackId=04714b0b-
-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-[EVENT_AUDIO_OFF] participantId=spaces/SfqndlfuIO8B/devices/99 trackId=null
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-[EVENT_AUDIO_ON] participantId=spaces/SfqndlfuIO8B/devices/99 trackId=b9de6136-662a-4020-89b1-422b4e
-e0c504
-BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/SfqndlfuIO8B/devices/98 trackId=b9de61
-36-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=b9de613
-6-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=b9de613
-6-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=b9de613
-6-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=b9de613
-6-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=b9de613
-6-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-[EVENT_AUDIO_OFF] participantId=spaces/SfqndlfuIO8B/devices/98 trackId=04714b0b-212d-4956-8145-b5037
-aed16d2
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=b9de613
-6-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=b9de613
-6-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=b9de613
-6-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-[EVENT_AUDIO_ON] participantId=spaces/SfqndlfuIO8B/devices/98 trackId=04714b0b-212d-4956-8145-b5037a
-ed16d2
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-[EVENT_AUDIO_OFF] participantId=spaces/SfqndlfuIO8B/devices/99 trackId=b9de6136-662a-4020-89b1-422b4
-ee0c504
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Kirthan M" pid=spaces/SfqndlfuIO8B/devices/99 trackId=04714b0b-
-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-[EVENT_AUDIO_ON] participantId=spaces/SfqndlfuIO8B/devices/99 trackId=04714b0b-212d-4956-8145-b5037a
-ed16d2
-BROWSER LOG: [AVBOND_REJECTED] name="Kirthan M" pid=spaces/SfqndlfuIO8B/devices/99 trackId=04714b0b-
-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Kirthan M" pid=spaces/SfqndlfuIO8B/devices/99 trackId=04714b0b-
-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/SfqndlfuIO8B/devices/98 trackId=b9de61
-36-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=b9de613
-6-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/SfqndlfuIO8B/devices/98 trackId=b9de61
-36-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=b9de613
-6-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Kirthan M" pid=spaces/SfqndlfuIO8B/devices/99 trackId=04714b0b-
-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Kirthan M" pid=spaces/SfqndlfuIO8B/devices/99 trackId=04714b0b-
-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Kirthan M" pid=spaces/SfqndlfuIO8B/devices/99 trackId=04714b0b-
-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/SfqndlfuIO8B/devices/98 trackId=b9de61
-36-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/SfqndlfuIO8B/devices/98 trackId=b9de61
-36-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=b9de613
-6-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Kirthan M" pid=spaces/SfqndlfuIO8B/devices/99 trackId=04714b0b-
-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/SfqndlfuIO8B/devices/98 trackId=b9de61
-36-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/SfqndlfuIO8B/devices/98 trackId=b9de61
-36-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/SfqndlfuIO8B/devices/98 trackId=b9de61
-36-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=b9de613
-6-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Kirthan M" pid=spaces/SfqndlfuIO8B/devices/99 trackId=04714b0b-
-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Kirthan M" pid=spaces/SfqndlfuIO8B/devices/99 trackId=04714b0b-
-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/SfqndlfuIO8B/devices/98 trackId=b9de61
-36-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/SfqndlfuIO8B/devices/98 trackId=b9de61
-36-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Kirthan M" pid=spaces/SfqndlfuIO8B/devices/99 trackId=04714b0b-
-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/SfqndlfuIO8B/devices/98 trackId=b9de61
-36-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/SfqndlfuIO8B/devices/98 trackId=b9de61
-36-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Kirthan M" pid=spaces/SfqndlfuIO8B/devices/99 trackId=04714b0b-
-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Kirthan M" pid=spaces/SfqndlfuIO8B/devices/99 trackId=04714b0b-
-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/SfqndlfuIO8B/devices/98 trackId=b9de61
-36-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/SfqndlfuIO8B/devices/98 trackId=b9de61
-36-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/SfqndlfuIO8B/devices/98 trackId=b9de61
-36-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/SfqndlfuIO8B/devices/98 trackId=b9de61
-36-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/SfqndlfuIO8B/devices/98 trackId=b9de61
-36-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-[EVENT_AUDIO_OFF] participantId=spaces/SfqndlfuIO8B/devices/97 trackId=0774aee6-fc1a-4a4e-a071-05f60
-a1217e9
-BROWSER LOG: [AVBOND_REJECTED] name="Kirthan M" pid=spaces/SfqndlfuIO8B/devices/99 trackId=04714b0b-
-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Kirthan M" pid=spaces/SfqndlfuIO8B/devices/99 trackId=04714b0b-
-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/SfqndlfuIO8B/devices/98 trackId=b9de61
-36-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/SfqndlfuIO8B/devices/98 trackId=b9de61
-36-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/SfqndlfuIO8B/devices/98 trackId=0774ae
-e6-fc1a-4a4e-a071-05f60a1217e9 ownedBy="Ravi Sharma"
-[EVENT_AUDIO_ON] participantId=spaces/SfqndlfuIO8B/devices/97 trackId=0774aee6-fc1a-4a4e-a071-05f60a
-1217e9
-BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/SfqndlfuIO8B/devices/98 trackId=0774ae
-e6-fc1a-4a4e-a071-05f60a1217e9 ownedBy="Ravi Sharma"
-[EVENT_AUDIO_OFF] participantId=spaces/SfqndlfuIO8B/devices/99 trackId=b9de6136-662a-4020-89b1-422b4
-ee0c504
-[EVENT_AUDIO_OFF] participantId=spaces/SfqndlfuIO8B/devices/98 trackId=04714b0b-212d-4956-8145-b5037
-aed16d2
-[EVENT_AUDIO_ON] participantId=spaces/SfqndlfuIO8B/devices/99 trackId=b9de6136-662a-4020-89b1-422b4e
-e0c504
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=b9de613
-6-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
+Page loaded, taking screenshot...
+Screenshot saved.
+Clicked join button
+=== READY: say something now, wait 3s, then stay silent ===
+[EVENT_AUDIO_ON] participantId=spaces/bgcUx4X5YpkB/devices/79 trackId=324e73c5-3cb3-4ba8-8d19-eb33d0
+4409e4
+[EVENT_AUDIO_ON] participantId=spaces/bgcUx4X5YpkB/devices/80 trackId=324e73c5-3cb3-4ba8-8d19-eb33d0
+4409e4
+[WS_STREAM_OPEN] participantId=spaces/bgcUx4X5YpkB/devices/80::seg1 -> C:\Bot_Streaming_Poc\Meeting-
+Bot-Streaming-POC\src\recordings\spaces_bgcUx4X5YpkB_devices_80__seg1.webm hasAudio=false
+[WS_STREAM_OPEN] participantId=spaces/bgcUx4X5YpkB/devices/79::seg1 -> C:\Bot_Streaming_Poc\Meeting-
+Bot-Streaming-POC\src\recordings\spaces_bgcUx4X5YpkB_devices_79__seg1.webm hasAudio=false
+BROWSER LOG: [STRENGTH_PASSED] name="Gautam gupta" pid=spaces/bgcUx4X5YpkB/devices/80 gap=9ms level=
+0.2325
+BROWSER LOG: [DUAL_CONFIRM_PASSED] name="Gautam gupta" pid=spaces/bgcUx4X5YpkB/devices/80 1st=(gap=9
+ms level=0.2325) 2nd=(gap=110ms level=0.2325) totalMs=101
+BROWSER LOG: [AVBOND_LOCKED] name="Gautam gupta" pid=spaces/bgcUx4X5YpkB/devices/80 trackId=ec540b76
+-6a4f-40ea-9a32-9382ec9f0c45
+[WS_STREAM_OPEN] participantId=spaces/bgcUx4X5YpkB/devices/80::seg2 -> C:\Bot_Streaming_Poc\Meeting-
+Bot-Streaming-POC\src\recordings\spaces_bgcUx4X5YpkB_devices_80__seg2.webm hasAudio=true
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+[WS_CLOSED] participantId=spaces/bgcUx4X5YpkB/devices/80::seg1
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [GATE_BLOCKED] case=2 name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 gap=7ms lev
+el=0.2792 otherClaimants="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [STRENGTH_PASSED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 gap=86ms level=
+0.2504
+BROWSER LOG: [DUAL_CONFIRM_FAILED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 otherClaima
+ntsDuringWait="Gautam gupta" gate2Claimants="Gautam gupta"
+BROWSER LOG: [STRENGTH_PASSED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 gap=1ms level=0
+.1292
+BROWSER LOG: [DUAL_CONFIRM_FAILED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 otherClaima
+ntsDuringWait="Gautam gupta" gate2Claimants="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+[EVENT_AUDIO_OFF] participantId=spaces/bgcUx4X5YpkB/devices/80 trackId=324e73c5-3cb3-4ba8-8d19-eb33d
+04409e4
+[EVENT_AUDIO_ON] participantId=spaces/bgcUx4X5YpkB/devices/80 trackId=324e73c5-3cb3-4ba8-8d19-eb33d0
+4409e4
+BROWSER LOG: [GATE_BLOCKED] case=2 name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 gap=37ms le
+vel=0.1243 otherClaimants="Gautam gupta"
+BROWSER LOG: [GATE_BLOCKED] case=2 name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 gap=51ms le
+vel=0.1243 otherClaimants="Gautam gupta"
+BROWSER LOG: [GATE_BLOCKED] case=2 name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 gap=137ms l
+evel=0.1243 otherClaimants="Gautam gupta,Gautam gupta"
+BROWSER LOG: [STRENGTH_FAILED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 gap=21ms level=
+0.0930
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [GATE_BLOCKED] case=2 name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 gap=147ms l
+evel=0.1052 otherClaimants="Gautam gupta,Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [GATE_BLOCKED] case=2 name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 gap=11ms le
+vel=0.3859 otherClaimants="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [GATE_BLOCKED] case=2 name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 gap=41ms le
+vel=0.1047 otherClaimants="Gautam gupta"
+BROWSER LOG: [GATE_BLOCKED] case=2 name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 gap=140ms l
+evel=0.1047 otherClaimants="Gautam gupta"
+BROWSER LOG: [GATE_BLOCKED] case=2 name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 gap=19ms le
+vel=0.3486 otherClaimants="Gautam gupta,Gautam gupta,Gautam gupta"
+BROWSER LOG: [GATE_BLOCKED] case=2 name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 gap=111ms l
+evel=0.0910 otherClaimants="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [GATE_BLOCKED] case=2 name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 gap=59ms le
+vel=0.1045 otherClaimants="Gautam gupta,Gautam gupta"
+BROWSER LOG: [GATE_BLOCKED] case=2 name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 gap=20ms le
+vel=0.1194 otherClaimants="Gautam gupta,Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [GATE_BLOCKED] case=2 name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 gap=30ms le
+vel=0.5192 otherClaimants="Gautam gupta"
+BROWSER LOG: [GATE_BLOCKED] case=2 name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 gap=80ms le
+vel=0.2945 otherClaimants="Gautam gupta,Gautam gupta"
+BROWSER LOG: [GATE_BLOCKED] case=1 name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 gap=20ms le
+vel=0.1316 otherTracksSpiking=1
+BROWSER LOG: [GATE_BLOCKED] case=1 name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 gap=89ms le
+vel=0.0996 otherTracksSpiking=1
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+[EVENT_AUDIO_OFF] participantId=spaces/bgcUx4X5YpkB/devices/80 trackId=324e73c5-3cb3-4ba8-8d19-eb33d
+04409e4
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+[EVENT_AUDIO_ON] participantId=spaces/bgcUx4X5YpkB/devices/80 trackId=324e73c5-3cb3-4ba8-8d19-eb33d0
+4409e4
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [GATE_BLOCKED] case=1 name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 gap=16ms le
+vel=0.1556 otherTracksSpiking=1
+BROWSER LOG: [GATE_BLOCKED] case=1 name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 gap=7ms lev
+el=0.1050 otherTracksSpiking=1
+BROWSER LOG: [GATE_BLOCKED] case=1 name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 gap=26ms le
+vel=0.1143 otherTracksSpiking=1
+BROWSER LOG: [GATE_BLOCKED] case=1 name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 gap=47ms le
+vel=0.1466 otherTracksSpiking=1
+BROWSER LOG: [GATE_BLOCKED] case=2 name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 gap=16ms le
+vel=0.3078 otherClaimants="Gautam gupta,Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [GATE_BLOCKED] case=1 name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 gap=25ms le
+vel=0.1149 otherTracksSpiking=1
+BROWSER LOG: [GATE_BLOCKED] case=1 name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 gap=96ms le
+vel=0.0992 otherTracksSpiking=1
+BROWSER LOG: [GATE_BLOCKED] case=2 name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 gap=36ms le
+vel=0.0951 otherClaimants="Gautam gupta,Gautam gupta"
+BROWSER LOG: [GATE_BLOCKED] case=2 name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 gap=16ms le
+vel=0.1879 otherClaimants="Gautam gupta,Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [GATE_BLOCKED] case=2 name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 gap=56ms le
+vel=0.1442 otherClaimants="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [GATE_BLOCKED] case=1 name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 gap=14ms le
+vel=0.4525 otherTracksSpiking=1
+BROWSER LOG: [GATE_BLOCKED] case=1 name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 gap=14ms le
+vel=0.1414 otherTracksSpiking=1
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [GATE_BLOCKED] case=1 name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 gap=13ms le
+vel=0.2943 otherTracksSpiking=1
+BROWSER LOG: [GATE_BLOCKED] case=1 name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 gap=83ms le
+vel=0.2729 otherTracksSpiking=1
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [STRENGTH_PASSED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 gap=14ms level=
+0.4315
+BROWSER LOG: [DUAL_CONFIRM_PASSED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 1st=(gap=14
+ms level=0.4315) 2nd=(gap=54ms level=0.1381) totalMs=101
+BROWSER LOG: [AVBOND_LOCKED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=324e73c5-
+3cb3-4ba8-8d19-eb33d04409e4
+[WS_STREAM_OPEN] participantId=spaces/bgcUx4X5YpkB/devices/79::seg2 -> C:\Bot_Streaming_Poc\Meeting-
+Bot-Streaming-POC\src\recordings\spaces_bgcUx4X5YpkB_devices_79__seg2.webm hasAudio=true
+BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/bgcUx4X5YpkB/devices/80 trackId=324e73
+c5-3cb3-4ba8-8d19-eb33d04409e4 ownedBy="Ravi Sharma"
+BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/bgcUx4X5YpkB/devices/80 trackId=324e73
+c5-3cb3-4ba8-8d19-eb33d04409e4 ownedBy="Ravi Sharma"
+BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/bgcUx4X5YpkB/devices/80 trackId=324e73
+c5-3cb3-4ba8-8d19-eb33d04409e4 ownedBy="Ravi Sharma"
+[WS_CLOSED] participantId=spaces/bgcUx4X5YpkB/devices/79::seg1
+BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/bgcUx4X5YpkB/devices/80 trackId=324e73
+c5-3cb3-4ba8-8d19-eb33d04409e4 ownedBy="Ravi Sharma"
+BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/bgcUx4X5YpkB/devices/80 trackId=324e73
+c5-3cb3-4ba8-8d19-eb33d04409e4 ownedBy="Ravi Sharma"
+BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/bgcUx4X5YpkB/devices/80 trackId=324e73
+c5-3cb3-4ba8-8d19-eb33d04409e4 ownedBy="Ravi Sharma"
+BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/bgcUx4X5YpkB/devices/80 trackId=324e73
+c5-3cb3-4ba8-8d19-eb33d04409e4 ownedBy="Ravi Sharma"
+BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/bgcUx4X5YpkB/devices/80 trackId=324e73
+c5-3cb3-4ba8-8d19-eb33d04409e4 ownedBy="Ravi Sharma"
+BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/bgcUx4X5YpkB/devices/80 trackId=324e73
+c5-3cb3-4ba8-8d19-eb33d04409e4 ownedBy="Ravi Sharma"
+BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/bgcUx4X5YpkB/devices/80 trackId=324e73
+c5-3cb3-4ba8-8d19-eb33d04409e4 ownedBy="Ravi Sharma"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+[EVENT_AUDIO_OFF] participantId=spaces/bgcUx4X5YpkB/devices/80 trackId=324e73c5-3cb3-4ba8-8d19-eb33d
+04409e4
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+[EVENT_AUDIO_ON] participantId=spaces/bgcUx4X5YpkB/devices/80 trackId=ec540b76-6a4f-40ea-9a32-9382ec
+9f0c45
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/bgcUx4X5YpkB/devices/80 trackId=324e73
+c5-3cb3-4ba8-8d19-eb33d04409e4 ownedBy="Ravi Sharma"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/bgcUx4X5YpkB/devices/80 trackId=324e73
+c5-3cb3-4ba8-8d19-eb33d04409e4 ownedBy="Ravi Sharma"
+BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/bgcUx4X5YpkB/devices/80 trackId=324e73
+c5-3cb3-4ba8-8d19-eb33d04409e4 ownedBy="Ravi Sharma"
+BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/bgcUx4X5YpkB/devices/80 trackId=324e73
+c5-3cb3-4ba8-8d19-eb33d04409e4 ownedBy="Ravi Sharma"
+BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/bgcUx4X5YpkB/devices/80 trackId=324e73
+c5-3cb3-4ba8-8d19-eb33d04409e4 ownedBy="Ravi Sharma"
+BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/bgcUx4X5YpkB/devices/80 trackId=324e73
+c5-3cb3-4ba8-8d19-eb33d04409e4 ownedBy="Ravi Sharma"
+BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/bgcUx4X5YpkB/devices/80 trackId=324e73
+c5-3cb3-4ba8-8d19-eb33d04409e4 ownedBy="Ravi Sharma"
+BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/bgcUx4X5YpkB/devices/80 trackId=324e73
+c5-3cb3-4ba8-8d19-eb33d04409e4 ownedBy="Ravi Sharma"
+BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/bgcUx4X5YpkB/devices/80 trackId=324e73
+c5-3cb3-4ba8-8d19-eb33d04409e4 ownedBy="Ravi Sharma"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+[EVENT_AUDIO_OFF] participantId=spaces/bgcUx4X5YpkB/devices/80 trackId=324e73c5-3cb3-4ba8-8d19-eb33d
+04409e4
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/bgcUx4X5YpkB/devices/80 trackId=324e73
+c5-3cb3-4ba8-8d19-eb33d04409e4 ownedBy="Ravi Sharma"
+[EVENT_AUDIO_ON] participantId=spaces/bgcUx4X5YpkB/devices/80 trackId=324e73c5-3cb3-4ba8-8d19-eb33d0
+4409e4
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/bgcUx4X5YpkB/devices/80 trackId=324e73
+c5-3cb3-4ba8-8d19-eb33d04409e4 ownedBy="Ravi Sharma"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+[EVENT_VIDEO_OFF] participantId=spaces/bgcUx4X5YpkB/devices/80 trackId=e235fd9a-e2ea-40f9-a1f1-97457
+3cb67c4
+[EVENT_VIDEO_ON] participantId=spaces/bgcUx4X5YpkB/devices/80 trackId=e235fd9a-e2ea-40f9-a1f1-974573
+cb67c4
+BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/bgcUx4X5YpkB/devices/79 trackId=ec540b7
+6-6a4f-40ea-9a32-9382ec9f0c45 ownedBy="Gautam gupta"
+BROWSER LOG: [AVBOND_RELEASED] trackId=ec540b76-6a4f-40ea-9a32-9382ec9f0c45 participantId=spaces/bgc
+Ux4X5YpkB/devices/80
+[EVENT_AUDIO_OFF] participantId=spaces/bgcUx4X5YpkB/devices/80 trackId=null
+[WS_CLOSED] participantId=spaces/bgcUx4X5YpkB/devices/80::seg2
+[WS_STREAM_OPEN] participantId=spaces/bgcUx4X5YpkB/devices/81::seg1 -> C:\Bot_Streaming_Poc\Meeting-
+Bot-Streaming-POC\src\recordings\spaces_bgcUx4X5YpkB_devices_81__seg1.webm hasAudio=false
+[EVENT_VIDEO_OFF] participantId=spaces/bgcUx4X5YpkB/devices/81 trackId=06588504-8f3d-41bc-bbde-124af
+9406e39
+[EVENT_VIDEO_ON] participantId=spaces/bgcUx4X5YpkB/devices/81 trackId=06588504-8f3d-41bc-bbde-124af9
+406e39
+BROWSER LOG: [AVBOND_RELEASED] trackId=324e73c5-3cb3-4ba8-8d19-eb33d04409e4 participantId=spaces/bgc
+Ux4X5YpkB/devices/79
+[WS_CLOSED] participantId=spaces/bgcUx4X5YpkB/devices/79::seg2
 [MAPPER_SNAPSHOT] [
   {
-    "participantId": "spaces/SfqndlfuIO8B/devices/98",
-    "name": "Gautam gupta",
-    "videoStreamId": "2362547375",
-    "currentVideoTrackId": "6395a7b4-cf05-4214-b8d1-7ffa84f9ad42",
-    "currentAudioTrackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9",
-    "videoBound": true,
-    "audioBound": true
-  },
-  {
-    "participantId": "spaces/SfqndlfuIO8B/devices/97",
+    "participantId": "spaces/bgcUx4X5YpkB/devices/79",
     "name": "Ravi Sharma",
-    "videoStreamId": "4039565982",
-    "currentVideoTrackId": "bf0fd907-8c3d-4f8b-bdfe-1f39d7d582ef",
-    "currentAudioTrackId": "b9de6136-662a-4020-89b1-422b4ee0c504",
+    "videoStreamId": "3525817420",
+    "currentVideoTrackId": "06588504-8f3d-41bc-bbde-124af9406e39",
+    "currentAudioTrackId": "ec540b76-6a4f-40ea-9a32-9382ec9f0c45",
     "videoBound": true,
     "audioBound": true
   },
   {
-    "participantId": "spaces/SfqndlfuIO8B/devices/99",
-    "name": "Kirthan M",
-    "videoStreamId": "3316915690",
-    "currentVideoTrackId": "25deb0ee-105d-4026-ac8a-13614b021371",
-    "currentAudioTrackId": "b9de6136-662a-4020-89b1-422b4ee0c504",
+    "participantId": "spaces/bgcUx4X5YpkB/devices/80",
+    "name": "Gautam gupta",
+    "videoStreamId": "4031349793",
+    "currentVideoTrackId": "e235fd9a-e2ea-40f9-a1f1-974573cb67c4",
+    "currentAudioTrackId": "324e73c5-3cb3-4ba8-8d19-eb33d04409e4",
     "videoBound": true,
     "audioBound": true
+  },
+  {
+    "participantId": "spaces/bgcUx4X5YpkB/devices/81",
+    "name": "7th Gear",
+    "videoStreamId": "3525817420",
+    "currentVideoTrackId": "06588504-8f3d-41bc-bbde-124af9406e39",
+    "currentAudioTrackId": null,
+    "videoBound": true,
+    "audioBound": false
   }
 ]
 [EVENT_HISTORY_SNAPSHOT] {
-  "spaces/SfqndlfuIO8B/devices/98": [
+  "spaces/bgcUx4X5YpkB/devices/79": [
     {
-      "timestamp": 1790181520262,
-      "event": "video_on",
-      "trackId": "6395a7b4-cf05-4214-b8d1-7ffa84f9ad42"
-    },
-    {
-      "timestamp": 1790181521742,
+      "timestamp": 1790264088067,
       "event": "audio_on",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2"
-    },
-    {
-      "timestamp": 1790181529577,
-      "event": "audio_off",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2"
-    },
-    {
-      "timestamp": 1790181556320,
-      "event": "audio_on",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2"
-    },
-    {
-      "timestamp": 1790181566078,
-      "event": "audio_off",
-      "trackId": null
-    },
-    {
-      "timestamp": 1790181569720,
-      "event": "audio_on",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9"
-    },
-    {
-      "timestamp": 1790181586579,
-      "event": "audio_off",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2"
-    },
-    {
-      "timestamp": 1790181590933,
-      "event": "audio_on",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2"
-    },
-    {
-      "timestamp": 1790181628077,
-      "event": "audio_off",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2"
+      "trackId": "324e73c5-3cb3-4ba8-8d19-eb33d04409e4"
     }
   ],
-  "spaces/SfqndlfuIO8B/devices/97": [
+  "spaces/bgcUx4X5YpkB/devices/80": [
     {
-      "timestamp": 1790181520272,
+      "timestamp": 1790264088113,
       "event": "audio_on",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9"
+      "trackId": "324e73c5-3cb3-4ba8-8d19-eb33d04409e4"
     },
     {
-      "timestamp": 1790181520462,
+      "timestamp": 1790264107632,
+      "event": "audio_off",
+      "trackId": "324e73c5-3cb3-4ba8-8d19-eb33d04409e4"
+    },
+    {
+      "timestamp": 1790264107894,
+      "event": "audio_on",
+      "trackId": "324e73c5-3cb3-4ba8-8d19-eb33d04409e4"
+    },
+    {
+      "timestamp": 1790264132631,
+      "event": "audio_off",
+      "trackId": "324e73c5-3cb3-4ba8-8d19-eb33d04409e4"
+    },
+    {
+      "timestamp": 1790264143904,
+      "event": "audio_on",
+      "trackId": "324e73c5-3cb3-4ba8-8d19-eb33d04409e4"
+    },
+    {
+      "timestamp": 1790264173632,
+      "event": "audio_off",
+      "trackId": "324e73c5-3cb3-4ba8-8d19-eb33d04409e4"
+    },
+    {
+      "timestamp": 1790264175202,
+      "event": "audio_on",
+      "trackId": "ec540b76-6a4f-40ea-9a32-9382ec9f0c45"
+    },
+    {
+      "timestamp": 1790264184132,
+      "event": "audio_off",
+      "trackId": "324e73c5-3cb3-4ba8-8d19-eb33d04409e4"
+    },
+    {
+      "timestamp": 1790264186093,
+      "event": "audio_on",
+      "trackId": "324e73c5-3cb3-4ba8-8d19-eb33d04409e4"
+    },
+    {
+      "timestamp": 1790264195543,
+      "event": "video_off",
+      "trackId": "e235fd9a-e2ea-40f9-a1f1-974573cb67c4"
+    },
+    {
+      "timestamp": 1790264195576,
       "event": "video_on",
-      "trackId": "bf0fd907-8c3d-4f8b-bdfe-1f39d7d582ef"
+      "trackId": "e235fd9a-e2ea-40f9-a1f1-974573cb67c4"
     },
     {
-      "timestamp": 1790181549578,
-      "event": "audio_off",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9"
-    },
-    {
-      "timestamp": 1790181549923,
-      "event": "audio_on",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9"
-    },
-    {
-      "timestamp": 1790181619078,
-      "event": "audio_off",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9"
-    },
-    {
-      "timestamp": 1790181621631,
-      "event": "audio_on",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9"
-    }
-  ],
-  "spaces/SfqndlfuIO8B/devices/99": [
-    {
-      "timestamp": 1790181520308,
-      "event": "video_on",
-      "trackId": "25deb0ee-105d-4026-ac8a-13614b021371"
-    },
-    {
-      "timestamp": 1790181520627,
-      "event": "audio_on",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504"
-    },
-    {
-      "timestamp": 1790181530077,
-      "event": "audio_off",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504"
-    },
-    {
-      "timestamp": 1790181538943,
-      "event": "audio_on",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9"
-    },
-    {
-      "timestamp": 1790181545077,
-      "event": "audio_off",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504"
-    },
-    {
-      "timestamp": 1790181549823,
-      "event": "audio_on",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9"
-    },
-    {
-      "timestamp": 1790181556578,
-      "event": "audio_off",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504"
-    },
-    {
-      "timestamp": 1790181561721,
-      "event": "audio_on",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504"
-    },
-    {
-      "timestamp": 1790181578077,
+      "timestamp": 1790264197631,
       "event": "audio_off",
       "trackId": null
+    }
+  ],
+  "spaces/bgcUx4X5YpkB/devices/81": [
+    {
+      "timestamp": 1790264197906,
+      "event": "video_off",
+      "trackId": "06588504-8f3d-41bc-bbde-124af9406e39"
     },
     {
-      "timestamp": 1790181580217,
-      "event": "audio_on",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504"
-    },
-    {
-      "timestamp": 1790181595078,
-      "event": "audio_off",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504"
-    },
-    {
-      "timestamp": 1790181599136,
-      "event": "audio_on",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2"
-    },
-    {
-      "timestamp": 1790181627077,
-      "event": "audio_off",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504"
-    },
-    {
-      "timestamp": 1790181631227,
-      "event": "audio_on",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504"
+      "timestamp": 1790264197927,
+      "event": "video_on",
+      "trackId": "06588504-8f3d-41bc-bbde-124af9406e39"
     }
   ]
 }
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=b9de613
-6-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=b9de613
-6-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=b9de613
-6-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=b9de613
-6-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=b9de613
-6-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=b9de613
-6-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=b9de613
-6-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=b9de613
-6-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=b9de613
-6-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=b9de613
-6-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=b9de613
-6-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=b9de613
-6-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=b9de613
-6-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=b9de613
-6-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=b9de613
-6-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=b9de613
-6-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-[EVENT_AUDIO_OFF] participantId=spaces/SfqndlfuIO8B/devices/99 trackId=b9de6136-662a-4020-89b1-422b4
-ee0c504
-[MAPPER_SNAPSHOT] [
-  {
-    "participantId": "spaces/SfqndlfuIO8B/devices/98",
-    "name": "Gautam gupta",
-    "videoStreamId": "2362547375",
-    "currentVideoTrackId": "6395a7b4-cf05-4214-b8d1-7ffa84f9ad42",
-    "currentAudioTrackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9",
-    "videoBound": true,
-    "audioBound": true
-  },
-  {
-    "participantId": "spaces/SfqndlfuIO8B/devices/97",
-    "name": "Ravi Sharma",
-    "videoStreamId": "4039565982",
-    "currentVideoTrackId": "bf0fd907-8c3d-4f8b-bdfe-1f39d7d582ef",
-    "currentAudioTrackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9",
-    "videoBound": true,
-    "audioBound": true
-  },
-  {
-    "participantId": "spaces/SfqndlfuIO8B/devices/99",
-    "name": "Kirthan M",
-    "videoStreamId": "3316915690",
-    "currentVideoTrackId": "25deb0ee-105d-4026-ac8a-13614b021371",
-    "currentAudioTrackId": "b9de6136-662a-4020-89b1-422b4ee0c504",
-    "videoBound": true,
-    "audioBound": true
-  }
-]
-[EVENT_HISTORY_SNAPSHOT] {
-  "spaces/SfqndlfuIO8B/devices/98": [
-    {
-      "timestamp": 1790181520262,
-      "event": "video_on",
-      "trackId": "6395a7b4-cf05-4214-b8d1-7ffa84f9ad42"
-    },
-    {
-      "timestamp": 1790181521742,
-      "event": "audio_on",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2"
-    },
-    {
-      "timestamp": 1790181529577,
-      "event": "audio_off",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2"
-    },
-    {
-      "timestamp": 1790181556320,
-      "event": "audio_on",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2"
-    },
-    {
-      "timestamp": 1790181566078,
-      "event": "audio_off",
-      "trackId": null
-    },
-    {
-      "timestamp": 1790181569720,
-      "event": "audio_on",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9"
-    },
-    {
-      "timestamp": 1790181586579,
-      "event": "audio_off",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2"
-    },
-    {
-      "timestamp": 1790181590933,
-      "event": "audio_on",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2"
-    },
-    {
-      "timestamp": 1790181628077,
-      "event": "audio_off",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2"
-    }
-  ],
-  "spaces/SfqndlfuIO8B/devices/97": [
-    {
-      "timestamp": 1790181520272,
-      "event": "audio_on",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9"
-    },
-    {
-      "timestamp": 1790181520462,
-      "event": "video_on",
-      "trackId": "bf0fd907-8c3d-4f8b-bdfe-1f39d7d582ef"
-    },
-    {
-      "timestamp": 1790181549578,
-      "event": "audio_off",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9"
-    },
-    {
-      "timestamp": 1790181549923,
-      "event": "audio_on",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9"
-    },
-    {
-      "timestamp": 1790181619078,
-      "event": "audio_off",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9"
-    },
-    {
-      "timestamp": 1790181621631,
-      "event": "audio_on",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9"
-    }
-  ],
-  "spaces/SfqndlfuIO8B/devices/99": [
-    {
-      "timestamp": 1790181520308,
-      "event": "video_on",
-      "trackId": "25deb0ee-105d-4026-ac8a-13614b021371"
-    },
-    {
-      "timestamp": 1790181520627,
-      "event": "audio_on",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504"
-    },
-    {
-      "timestamp": 1790181530077,
-      "event": "audio_off",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504"
-    },
-    {
-      "timestamp": 1790181538943,
-      "event": "audio_on",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9"
-    },
-    {
-      "timestamp": 1790181545077,
-      "event": "audio_off",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504"
-    },
-    {
-      "timestamp": 1790181549823,
-      "event": "audio_on",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9"
-    },
-    {
-      "timestamp": 1790181556578,
-      "event": "audio_off",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504"
-    },
-    {
-      "timestamp": 1790181561721,
-      "event": "audio_on",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504"
-    },
-    {
-      "timestamp": 1790181578077,
-      "event": "audio_off",
-      "trackId": null
-    },
-    {
-      "timestamp": 1790181580217,
-      "event": "audio_on",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504"
-    },
-    {
-      "timestamp": 1790181595078,
-      "event": "audio_off",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504"
-    },
-    {
-      "timestamp": 1790181599136,
-      "event": "audio_on",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2"
-    },
-    {
-      "timestamp": 1790181627077,
-      "event": "audio_off",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504"
-    },
-    {
-      "timestamp": 1790181631227,
-      "event": "audio_on",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504"
-    },
-    {
-      "timestamp": 1790181660077,
-      "event": "audio_off",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504"
-    }
-  ]
-}
-[EVENT_AUDIO_ON] participantId=spaces/SfqndlfuIO8B/devices/99 trackId=b9de6136-662a-4020-89b1-422b4e
-e0c504
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=b9de613
-6-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=b9de613
-6-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=b9de613
-6-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=b9de613
-6-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-[EVENT_AUDIO_OFF] participantId=spaces/SfqndlfuIO8B/devices/99 trackId=b9de6136-662a-4020-89b1-422b4
-ee0c504
-[EVENT_AUDIO_ON] participantId=spaces/SfqndlfuIO8B/devices/99 trackId=b9de6136-662a-4020-89b1-422b4e
-e0c504
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=b9de613
-6-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=b9de613
-6-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=b9de613
-6-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Kirthan M" pid=spaces/SfqndlfuIO8B/devices/99 trackId=0774aee6-
-fc1a-4a4e-a071-05f60a1217e9 ownedBy="Ravi Sharma"
-[EVENT_AUDIO_ON] participantId=spaces/SfqndlfuIO8B/devices/98 trackId=04714b0b-212d-4956-8145-b5037a
-ed16d2
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-[EVENT_AUDIO_OFF] participantId=spaces/SfqndlfuIO8B/devices/99 trackId=b9de6136-662a-4020-89b1-422b4
-ee0c504
-BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/SfqndlfuIO8B/devices/98 trackId=0774ae
-e6-fc1a-4a4e-a071-05f60a1217e9 ownedBy="Ravi Sharma"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/SfqndlfuIO8B/devices/98 trackId=0774ae
-e6-fc1a-4a4e-a071-05f60a1217e9 ownedBy="Ravi Sharma"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/SfqndlfuIO8B/devices/98 trackId=0774ae
-e6-fc1a-4a4e-a071-05f60a1217e9 ownedBy="Ravi Sharma"
-BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/SfqndlfuIO8B/devices/98 trackId=0774ae
-e6-fc1a-4a4e-a071-05f60a1217e9 ownedBy="Ravi Sharma"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/SfqndlfuIO8B/devices/98 trackId=0774ae
-e6-fc1a-4a4e-a071-05f60a1217e9 ownedBy="Ravi Sharma"
-BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/SfqndlfuIO8B/devices/98 trackId=0774ae
-e6-fc1a-4a4e-a071-05f60a1217e9 ownedBy="Ravi Sharma"
-BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/SfqndlfuIO8B/devices/98 trackId=0774ae
-e6-fc1a-4a4e-a071-05f60a1217e9 ownedBy="Ravi Sharma"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/SfqndlfuIO8B/devices/98 trackId=0774ae
-e6-fc1a-4a4e-a071-05f60a1217e9 ownedBy="Ravi Sharma"
-BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/SfqndlfuIO8B/devices/98 trackId=0774ae
-e6-fc1a-4a4e-a071-05f60a1217e9 ownedBy="Ravi Sharma"
-BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/SfqndlfuIO8B/devices/98 trackId=0774ae
-e6-fc1a-4a4e-a071-05f60a1217e9 ownedBy="Ravi Sharma"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/SfqndlfuIO8B/devices/98 trackId=0774ae
-e6-fc1a-4a4e-a071-05f60a1217e9 ownedBy="Ravi Sharma"
-BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/SfqndlfuIO8B/devices/98 trackId=0774ae
-e6-fc1a-4a4e-a071-05f60a1217e9 ownedBy="Ravi Sharma"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/SfqndlfuIO8B/devices/98 trackId=0774ae
-e6-fc1a-4a4e-a071-05f60a1217e9 ownedBy="Ravi Sharma"
-BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/SfqndlfuIO8B/devices/98 trackId=0774ae
-e6-fc1a-4a4e-a071-05f60a1217e9 ownedBy="Ravi Sharma"
-BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/SfqndlfuIO8B/devices/98 trackId=0774ae
-e6-fc1a-4a4e-a071-05f60a1217e9 ownedBy="Ravi Sharma"
-BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/SfqndlfuIO8B/devices/98 trackId=0774ae
-e6-fc1a-4a4e-a071-05f60a1217e9 ownedBy="Ravi Sharma"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-[EVENT_AUDIO_ON] participantId=spaces/SfqndlfuIO8B/devices/99 trackId=b9de6136-662a-4020-89b1-422b4e
-e0c504
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=b9de613
-6-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Kirthan M" pid=spaces/SfqndlfuIO8B/devices/99 trackId=04714b0b-
-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/SfqndlfuIO8B/devices/98 trackId=b9de61
-36-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/SfqndlfuIO8B/devices/98 trackId=b9de61
-36-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Kirthan M" pid=spaces/SfqndlfuIO8B/devices/99 trackId=04714b0b-
-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-[EVENT_AUDIO_OFF] participantId=spaces/SfqndlfuIO8B/devices/99 trackId=null
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Kirthan M" pid=spaces/SfqndlfuIO8B/devices/99 trackId=04714b0b-
-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-[EVENT_AUDIO_ON] participantId=spaces/SfqndlfuIO8B/devices/99 trackId=04714b0b-212d-4956-8145-b5037a
-ed16d2
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/SfqndlfuIO8B/devices/98 trackId=b9de61
-36-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Kirthan M" pid=spaces/SfqndlfuIO8B/devices/99 trackId=04714b0b-
-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Kirthan M" pid=spaces/SfqndlfuIO8B/devices/99 trackId=04714b0b-
-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Kirthan M" pid=spaces/SfqndlfuIO8B/devices/99 trackId=04714b0b-
-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Kirthan M" pid=spaces/SfqndlfuIO8B/devices/99 trackId=04714b0b-
-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Kirthan M" pid=spaces/SfqndlfuIO8B/devices/99 trackId=04714b0b-
-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/SfqndlfuIO8B/devices/98 trackId=b9de61
-36-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Kirthan M" pid=spaces/SfqndlfuIO8B/devices/99 trackId=04714b0b-
-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Kirthan M" pid=spaces/SfqndlfuIO8B/devices/99 trackId=04714b0b-
-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Kirthan M" pid=spaces/SfqndlfuIO8B/devices/99 trackId=04714b0b-
-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Kirthan M" pid=spaces/SfqndlfuIO8B/devices/99 trackId=04714b0b-
-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=b9de613
-6-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-[EVENT_AUDIO_OFF] participantId=spaces/SfqndlfuIO8B/devices/99 trackId=b9de6136-662a-4020-89b1-422b4
-ee0c504
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Kirthan M" pid=spaces/SfqndlfuIO8B/devices/99 trackId=04714b0b-
-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-[EVENT_AUDIO_ON] participantId=spaces/SfqndlfuIO8B/devices/99 trackId=04714b0b-212d-4956-8145-b5037a
-ed16d2
-BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/SfqndlfuIO8B/devices/98 trackId=b9de61
-36-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Kirthan M" pid=spaces/SfqndlfuIO8B/devices/99 trackId=04714b0b-
-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Kirthan M" pid=spaces/SfqndlfuIO8B/devices/99 trackId=04714b0b-
-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/SfqndlfuIO8B/devices/98 trackId=b9de61
-36-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=b9de613
-6-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/SfqndlfuIO8B/devices/98 trackId=b9de61
-36-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=b9de613
-6-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=b9de613
-6-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Kirthan M" pid=spaces/SfqndlfuIO8B/devices/99 trackId=04714b0b-
-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/SfqndlfuIO8B/devices/98 trackId=b9de61
-36-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=b9de613
-6-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/SfqndlfuIO8B/devices/98 trackId=b9de61
-36-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-[EVENT_AUDIO_OFF] participantId=spaces/SfqndlfuIO8B/devices/99 trackId=null
-[EVENT_AUDIO_OFF] participantId=spaces/SfqndlfuIO8B/devices/98 trackId=b9de6136-662a-4020-89b1-422b4
-ee0c504
-BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/SfqndlfuIO8B/devices/98 trackId=0774ae
-e6-fc1a-4a4e-a071-05f60a1217e9 ownedBy="Ravi Sharma"
-[EVENT_AUDIO_ON] participantId=spaces/SfqndlfuIO8B/devices/98 trackId=0774aee6-fc1a-4a4e-a071-05f60a
-1217e9
-BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/SfqndlfuIO8B/devices/98 trackId=0774ae
-e6-fc1a-4a4e-a071-05f60a1217e9 ownedBy="Ravi Sharma"
-[EVENT_AUDIO_OFF] participantId=spaces/SfqndlfuIO8B/devices/98 trackId=b9de6136-662a-4020-89b1-422b4
-ee0c504
-BROWSER LOG: [AVBOND_REJECTED] name="Kirthan M" pid=spaces/SfqndlfuIO8B/devices/99 trackId=0774aee6-
-fc1a-4a4e-a071-05f60a1217e9 ownedBy="Ravi Sharma"
-[EVENT_AUDIO_ON] participantId=spaces/SfqndlfuIO8B/devices/99 trackId=0774aee6-fc1a-4a4e-a071-05f60a
-1217e9
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=b9de613
-6-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=b9de613
-6-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=b9de613
-6-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=b9de613
-6-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=b9de613
-6-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=b9de613
-6-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Kirthan M" pid=spaces/SfqndlfuIO8B/devices/99 trackId=0774aee6-
-fc1a-4a4e-a071-05f60a1217e9 ownedBy="Ravi Sharma"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=b9de613
-6-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Kirthan M" pid=spaces/SfqndlfuIO8B/devices/99 trackId=0774aee6-
-fc1a-4a4e-a071-05f60a1217e9 ownedBy="Ravi Sharma"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=b9de613
-6-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Kirthan M" pid=spaces/SfqndlfuIO8B/devices/99 trackId=0774aee6-
-fc1a-4a4e-a071-05f60a1217e9 ownedBy="Ravi Sharma"
-[EVENT_AUDIO_OFF] participantId=spaces/SfqndlfuIO8B/devices/99 trackId=b9de6136-662a-4020-89b1-422b4
-ee0c504
-BROWSER LOG: [AVBOND_REJECTED] name="Kirthan M" pid=spaces/SfqndlfuIO8B/devices/99 trackId=0774aee6-
-fc1a-4a4e-a071-05f60a1217e9 ownedBy="Ravi Sharma"
-[EVENT_AUDIO_ON] participantId=spaces/SfqndlfuIO8B/devices/99 trackId=0774aee6-fc1a-4a4e-a071-05f60a
-1217e9
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=b9de613
-6-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=b9de613
-6-662a-4020-89b1-422b4ee0c504 ownedBy="Kirthan M"
-BROWSER LOG: [AVBOND_REJECTED] name="Kirthan M" pid=spaces/SfqndlfuIO8B/devices/99 trackId=0774aee6-
-fc1a-4a4e-a071-05f60a1217e9 ownedBy="Ravi Sharma"
-BROWSER LOG: [AVBOND_REJECTED] name="Kirthan M" pid=spaces/SfqndlfuIO8B/devices/99 trackId=0774aee6-
-fc1a-4a4e-a071-05f60a1217e9 ownedBy="Ravi Sharma"
-[EVENT_AUDIO_OFF] participantId=spaces/SfqndlfuIO8B/devices/99 trackId=null
-[EVENT_AUDIO_ON] participantId=spaces/SfqndlfuIO8B/devices/99 trackId=b9de6136-662a-4020-89b1-422b4e
-e0c504
-[EVENT_AUDIO_OFF] participantId=spaces/SfqndlfuIO8B/devices/99 trackId=b9de6136-662a-4020-89b1-422b4
-ee0c504
-[EVENT_AUDIO_ON] participantId=spaces/SfqndlfuIO8B/devices/98 trackId=04714b0b-212d-4956-8145-b5037a
-ed16d2
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/SfqndlfuIO8B/devices/98 trackId=0774ae
-e6-fc1a-4a4e-a071-05f60a1217e9 ownedBy="Ravi Sharma"
-[EVENT_AUDIO_OFF] participantId=spaces/SfqndlfuIO8B/devices/98 trackId=null
-[EVENT_AUDIO_ON] participantId=spaces/SfqndlfuIO8B/devices/98 trackId=04714b0b-212d-4956-8145-b5037a
-ed16d2
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-[EVENT_AUDIO_OFF] participantId=spaces/SfqndlfuIO8B/devices/98 trackId=04714b0b-212d-4956-8145-b5037
-aed16d2
-[EVENT_AUDIO_ON] participantId=spaces/SfqndlfuIO8B/devices/98 trackId=04714b0b-212d-4956-8145-b5037a
-ed16d2
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/SfqndlfuIO8B/devices/98 trackId=0774ae
-e6-fc1a-4a4e-a071-05f60a1217e9 ownedBy="Ravi Sharma"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/SfqndlfuIO8B/devices/98 trackId=0774ae
-e6-fc1a-4a4e-a071-05f60a1217e9 ownedBy="Ravi Sharma"
-BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/SfqndlfuIO8B/devices/98 trackId=0774ae
-e6-fc1a-4a4e-a071-05f60a1217e9 ownedBy="Ravi Sharma"
-BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/SfqndlfuIO8B/devices/98 trackId=0774ae
-e6-fc1a-4a4e-a071-05f60a1217e9 ownedBy="Ravi Sharma"
-[EVENT_AUDIO_OFF] participantId=spaces/SfqndlfuIO8B/devices/98 trackId=null
-BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/SfqndlfuIO8B/devices/98 trackId=0774ae
-e6-fc1a-4a4e-a071-05f60a1217e9 ownedBy="Ravi Sharma"
-[EVENT_AUDIO_ON] participantId=spaces/SfqndlfuIO8B/devices/98 trackId=0774aee6-fc1a-4a4e-a071-05f60a
-1217e9
-BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/SfqndlfuIO8B/devices/98 trackId=0774ae
-e6-fc1a-4a4e-a071-05f60a1217e9 ownedBy="Ravi Sharma"
-BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/SfqndlfuIO8B/devices/98 trackId=0774ae
-e6-fc1a-4a4e-a071-05f60a1217e9 ownedBy="Ravi Sharma"
-BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/SfqndlfuIO8B/devices/98 trackId=0774ae
-e6-fc1a-4a4e-a071-05f60a1217e9 ownedBy="Ravi Sharma"
-BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/SfqndlfuIO8B/devices/98 trackId=0774ae
-e6-fc1a-4a4e-a071-05f60a1217e9 ownedBy="Ravi Sharma"
-BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/SfqndlfuIO8B/devices/98 trackId=0774ae
-e6-fc1a-4a4e-a071-05f60a1217e9 ownedBy="Ravi Sharma"
-BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/SfqndlfuIO8B/devices/98 trackId=0774ae
-e6-fc1a-4a4e-a071-05f60a1217e9 ownedBy="Ravi Sharma"
-BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/SfqndlfuIO8B/devices/98 trackId=0774ae
-e6-fc1a-4a4e-a071-05f60a1217e9 ownedBy="Ravi Sharma"
-BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/SfqndlfuIO8B/devices/98 trackId=0774ae
-e6-fc1a-4a4e-a071-05f60a1217e9 ownedBy="Ravi Sharma"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/SfqndlfuIO8B/devices/98 trackId=0774ae
-e6-fc1a-4a4e-a071-05f60a1217e9 ownedBy="Ravi Sharma"
-BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/SfqndlfuIO8B/devices/98 trackId=0774ae
-e6-fc1a-4a4e-a071-05f60a1217e9 ownedBy="Ravi Sharma"
-BROWSER LOG: [AVBOND_REJECTED] name="Gautam gupta" pid=spaces/SfqndlfuIO8B/devices/98 trackId=0774ae
-e6-fc1a-4a4e-a071-05f60a1217e9 ownedBy="Ravi Sharma"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
-BROWSER LOG: [AVBOND_REJECTED] name="Ravi Sharma" pid=spaces/SfqndlfuIO8B/devices/97 trackId=04714b0
-b-212d-4956-8145-b5037aed16d2 ownedBy="Gautam gupta"
+[EVENT_AUDIO_OFF] participantId=spaces/bgcUx4X5YpkB/devices/79 trackId=324e73c5-3cb3-4ba8-8d19-eb33d
+04409e4
 
 [RED] Shutting down — accepting remaining in-flight chunks (4s window)...
-[EVENT_AUDIO_ON] participantId=spaces/SfqndlfuIO8B/devices/99 trackId=04714b0b-212d-4956-8145-b5037a
-ed16d2
+[SHUTDOWN] elapsed: 1s — please wait, do not close this window...   [MAPPER_SNAPSHOT] [
+  {
+    "participantId": "spaces/bgcUx4X5YpkB/devices/79",
+    "name": "Ravi Sharma",
+    "videoStreamId": "3525817420",
+    "currentVideoTrackId": "06588504-8f3d-41bc-bbde-124af9406e39",
+    "currentAudioTrackId": "ec540b76-6a4f-40ea-9a32-9382ec9f0c45",
+    "videoBound": true,
+    "audioBound": true
+  },
+  {
+    "participantId": "spaces/bgcUx4X5YpkB/devices/80",
+    "name": "Gautam gupta",
+    "videoStreamId": "4031349793",
+    "currentVideoTrackId": "e235fd9a-e2ea-40f9-a1f1-974573cb67c4",
+    "currentAudioTrackId": "324e73c5-3cb3-4ba8-8d19-eb33d04409e4",
+    "videoBound": true,
+    "audioBound": true
+  },
+  {
+    "participantId": "spaces/bgcUx4X5YpkB/devices/81",
+    "name": "7th Gear",
+    "videoStreamId": "3525817420",
+    "currentVideoTrackId": "06588504-8f3d-41bc-bbde-124af9406e39",
+    "currentAudioTrackId": null,
+    "videoBound": true,
+    "audioBound": false
+  }
+]
+[EVENT_HISTORY_SNAPSHOT] {
+  "spaces/bgcUx4X5YpkB/devices/79": [
+    {
+      "timestamp": 1790264088067,
+      "event": "audio_on",
+      "trackId": "324e73c5-3cb3-4ba8-8d19-eb33d04409e4"
+    },
+    {
+      "timestamp": 1790264203131,
+      "event": "audio_off",
+      "trackId": "324e73c5-3cb3-4ba8-8d19-eb33d04409e4"
+    }
+  ],
+  "spaces/bgcUx4X5YpkB/devices/80": [
+    {
+      "timestamp": 1790264088113,
+      "event": "audio_on",
+      "trackId": "324e73c5-3cb3-4ba8-8d19-eb33d04409e4"
+    },
+    {
+      "timestamp": 1790264107632,
+      "event": "audio_off",
+      "trackId": "324e73c5-3cb3-4ba8-8d19-eb33d04409e4"
+    },
+    {
+      "timestamp": 1790264107894,
+      "event": "audio_on",
+      "trackId": "324e73c5-3cb3-4ba8-8d19-eb33d04409e4"
+    },
+    {
+      "timestamp": 1790264132631,
+      "event": "audio_off",
+      "trackId": "324e73c5-3cb3-4ba8-8d19-eb33d04409e4"
+    },
+    {
+      "timestamp": 1790264143904,
+      "event": "audio_on",
+      "trackId": "324e73c5-3cb3-4ba8-8d19-eb33d04409e4"
+    },
+    {
+      "timestamp": 1790264173632,
+      "event": "audio_off",
+      "trackId": "324e73c5-3cb3-4ba8-8d19-eb33d04409e4"
+    },
+    {
+      "timestamp": 1790264175202,
+      "event": "audio_on",
+      "trackId": "ec540b76-6a4f-40ea-9a32-9382ec9f0c45"
+    },
+    {
+      "timestamp": 1790264184132,
+      "event": "audio_off",
+      "trackId": "324e73c5-3cb3-4ba8-8d19-eb33d04409e4"
+    },
+    {
+      "timestamp": 1790264186093,
+      "event": "audio_on",
+      "trackId": "324e73c5-3cb3-4ba8-8d19-eb33d04409e4"
+    },
+    {
+      "timestamp": 1790264195543,
+      "event": "video_off",
+      "trackId": "e235fd9a-e2ea-40f9-a1f1-974573cb67c4"
+    },
+    {
+      "timestamp": 1790264195576,
+      "event": "video_on",
+      "trackId": "e235fd9a-e2ea-40f9-a1f1-974573cb67c4"
+    },
+    {
+      "timestamp": 1790264197631,
+      "event": "audio_off",
+      "trackId": null
+    }
+  ],
+  "spaces/bgcUx4X5YpkB/devices/81": [
+    {
+      "timestamp": 1790264197906,
+      "event": "video_off",
+      "trackId": "06588504-8f3d-41bc-bbde-124af9406e39"
+    },
+    {
+      "timestamp": 1790264197927,
+      "event": "video_on",
+      "trackId": "06588504-8f3d-41bc-bbde-124af9406e39"
+    }
+  ]
+}
 [SHUTDOWN] elapsed: 5s — please wait, do not close this window...
 [FINAL_MAPPER] [
   {
-    "participantId": "spaces/SfqndlfuIO8B/devices/98",
-    "name": "Gautam gupta",
-    "videoStreamId": "2362547375",
-    "currentVideoTrackId": "6395a7b4-cf05-4214-b8d1-7ffa84f9ad42",
-    "currentAudioTrackId": "b9de6136-662a-4020-89b1-422b4ee0c504",
-    "videoBound": true,
-    "audioBound": true
-  },
-  {
-    "participantId": "spaces/SfqndlfuIO8B/devices/97",
+    "participantId": "spaces/bgcUx4X5YpkB/devices/79",
     "name": "Ravi Sharma",
-    "videoStreamId": "4039565982",
-    "currentVideoTrackId": "bf0fd907-8c3d-4f8b-bdfe-1f39d7d582ef",
-    "currentAudioTrackId": "04714b0b-212d-4956-8145-b5037aed16d2",
+    "videoStreamId": "3525817420",
+    "currentVideoTrackId": "06588504-8f3d-41bc-bbde-124af9406e39",
+    "currentAudioTrackId": "ec540b76-6a4f-40ea-9a32-9382ec9f0c45",
     "videoBound": true,
     "audioBound": true
   },
   {
-    "participantId": "spaces/SfqndlfuIO8B/devices/99",
-    "name": "Kirthan M",
-    "videoStreamId": "3316915690",
-    "currentVideoTrackId": "25deb0ee-105d-4026-ac8a-13614b021371",
-    "currentAudioTrackId": "b9de6136-662a-4020-89b1-422b4ee0c504",
+    "participantId": "spaces/bgcUx4X5YpkB/devices/80",
+    "name": "Gautam gupta",
+    "videoStreamId": "4031349793",
+    "currentVideoTrackId": "e235fd9a-e2ea-40f9-a1f1-974573cb67c4",
+    "currentAudioTrackId": "324e73c5-3cb3-4ba8-8d19-eb33d04409e4",
     "videoBound": true,
     "audioBound": true
+  },
+  {
+    "participantId": "spaces/bgcUx4X5YpkB/devices/81",
+    "name": "7th Gear",
+    "videoStreamId": "3525817420",
+    "currentVideoTrackId": "06588504-8f3d-41bc-bbde-124af9406e39",
+    "currentAudioTrackId": null,
+    "videoBound": true,
+    "audioBound": false
   }
 ]
 [FINAL_EVENT_HISTORY] {
-  "spaces/SfqndlfuIO8B/devices/98": [
+  "spaces/bgcUx4X5YpkB/devices/79": [
     {
-      "timestamp": 1790181520262,
-      "event": "video_on",
-      "trackId": "6395a7b4-cf05-4214-b8d1-7ffa84f9ad42"
-    },
-    {
-      "timestamp": 1790181521742,
+      "timestamp": 1790264088067,
       "event": "audio_on",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2"
+      "trackId": "324e73c5-3cb3-4ba8-8d19-eb33d04409e4"
     },
     {
-      "timestamp": 1790181529577,
+      "timestamp": 1790264203131,
       "event": "audio_off",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2"
-    },
-    {
-      "timestamp": 1790181556320,
-      "event": "audio_on",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2"
-    },
-    {
-      "timestamp": 1790181566078,
-      "event": "audio_off",
-      "trackId": null
-    },
-    {
-      "timestamp": 1790181569720,
-      "event": "audio_on",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9"
-    },
-    {
-      "timestamp": 1790181586579,
-      "event": "audio_off",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2"
-    },
-    {
-      "timestamp": 1790181590933,
-      "event": "audio_on",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2"
-    },
-    {
-      "timestamp": 1790181628077,
-      "event": "audio_off",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2"
-    },
-    {
-      "timestamp": 1790181686936,
-      "event": "audio_on",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2"
-    },
-    {
-      "timestamp": 1790181753076,
-      "event": "audio_off",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504"
-    },
-    {
-      "timestamp": 1790181771024,
-      "event": "audio_on",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9"
-    },
-    {
-      "timestamp": 1790181777577,
-      "event": "audio_off",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504"
-    },
-    {
-      "timestamp": 1790181828819,
-      "event": "audio_on",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2"
-    },
-    {
-      "timestamp": 1790181841576,
-      "event": "audio_off",
-      "trackId": null
-    },
-    {
-      "timestamp": 1790181849629,
-      "event": "audio_on",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2"
-    },
-    {
-      "timestamp": 1790181866078,
-      "event": "audio_off",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2"
-    },
-    {
-      "timestamp": 1790181867111,
-      "event": "audio_on",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2"
-    },
-    {
-      "timestamp": 1790181878077,
-      "event": "audio_off",
-      "trackId": null
-    },
-    {
-      "timestamp": 1790181880143,
-      "event": "audio_on",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9"
+      "trackId": "324e73c5-3cb3-4ba8-8d19-eb33d04409e4"
     }
   ],
-  "spaces/SfqndlfuIO8B/devices/97": [
+  "spaces/bgcUx4X5YpkB/devices/80": [
     {
-      "timestamp": 1790181520272,
+      "timestamp": 1790264088113,
       "event": "audio_on",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9"
+      "trackId": "324e73c5-3cb3-4ba8-8d19-eb33d04409e4"
     },
     {
-      "timestamp": 1790181520462,
+      "timestamp": 1790264107632,
+      "event": "audio_off",
+      "trackId": "324e73c5-3cb3-4ba8-8d19-eb33d04409e4"
+    },
+    {
+      "timestamp": 1790264107894,
+      "event": "audio_on",
+      "trackId": "324e73c5-3cb3-4ba8-8d19-eb33d04409e4"
+    },
+    {
+      "timestamp": 1790264132631,
+      "event": "audio_off",
+      "trackId": "324e73c5-3cb3-4ba8-8d19-eb33d04409e4"
+    },
+    {
+      "timestamp": 1790264143904,
+      "event": "audio_on",
+      "trackId": "324e73c5-3cb3-4ba8-8d19-eb33d04409e4"
+    },
+    {
+      "timestamp": 1790264173632,
+      "event": "audio_off",
+      "trackId": "324e73c5-3cb3-4ba8-8d19-eb33d04409e4"
+    },
+    {
+      "timestamp": 1790264175202,
+      "event": "audio_on",
+      "trackId": "ec540b76-6a4f-40ea-9a32-9382ec9f0c45"
+    },
+    {
+      "timestamp": 1790264184132,
+      "event": "audio_off",
+      "trackId": "324e73c5-3cb3-4ba8-8d19-eb33d04409e4"
+    },
+    {
+      "timestamp": 1790264186093,
+      "event": "audio_on",
+      "trackId": "324e73c5-3cb3-4ba8-8d19-eb33d04409e4"
+    },
+    {
+      "timestamp": 1790264195543,
+      "event": "video_off",
+      "trackId": "e235fd9a-e2ea-40f9-a1f1-974573cb67c4"
+    },
+    {
+      "timestamp": 1790264195576,
       "event": "video_on",
-      "trackId": "bf0fd907-8c3d-4f8b-bdfe-1f39d7d582ef"
+      "trackId": "e235fd9a-e2ea-40f9-a1f1-974573cb67c4"
     },
     {
-      "timestamp": 1790181549578,
+      "timestamp": 1790264197631,
       "event": "audio_off",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9"
-    },
-    {
-      "timestamp": 1790181549923,
-      "event": "audio_on",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9"
-    },
-    {
-      "timestamp": 1790181619078,
-      "event": "audio_off",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9"
-    },
-    {
-      "timestamp": 1790181621631,
-      "event": "audio_on",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9"
+      "trackId": null
     }
   ],
-  "spaces/SfqndlfuIO8B/devices/99": [
+  "spaces/bgcUx4X5YpkB/devices/81": [
     {
-      "timestamp": 1790181520308,
+      "timestamp": 1790264197906,
+      "event": "video_off",
+      "trackId": "06588504-8f3d-41bc-bbde-124af9406e39"
+    },
+    {
+      "timestamp": 1790264197927,
       "event": "video_on",
-      "trackId": "25deb0ee-105d-4026-ac8a-13614b021371"
-    },
-    {
-      "timestamp": 1790181520627,
-      "event": "audio_on",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504"
-    },
-    {
-      "timestamp": 1790181530077,
-      "event": "audio_off",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504"
-    },
-    {
-      "timestamp": 1790181538943,
-      "event": "audio_on",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9"
-    },
-    {
-      "timestamp": 1790181545077,
-      "event": "audio_off",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504"
-    },
-    {
-      "timestamp": 1790181549823,
-      "event": "audio_on",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9"
-    },
-    {
-      "timestamp": 1790181556578,
-      "event": "audio_off",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504"
-    },
-    {
-      "timestamp": 1790181561721,
-      "event": "audio_on",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504"
-    },
-    {
-      "timestamp": 1790181578077,
-      "event": "audio_off",
-      "trackId": null
-    },
-    {
-      "timestamp": 1790181580217,
-      "event": "audio_on",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504"
-    },
-    {
-      "timestamp": 1790181595078,
-      "event": "audio_off",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504"
-    },
-    {
-      "timestamp": 1790181599136,
-      "event": "audio_on",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2"
-    },
-    {
-      "timestamp": 1790181627077,
-      "event": "audio_off",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504"
-    },
-    {
-      "timestamp": 1790181631227,
-      "event": "audio_on",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504"
-    },
-    {
-      "timestamp": 1790181660077,
-      "event": "audio_off",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504"
-    },
-    {
-      "timestamp": 1790181666240,
-      "event": "audio_on",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504"
-    },
-    {
-      "timestamp": 1790181676077,
-      "event": "audio_off",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504"
-    },
-    {
-      "timestamp": 1790181676639,
-      "event": "audio_on",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504"
-    },
-    {
-      "timestamp": 1790181690077,
-      "event": "audio_off",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504"
-    },
-    {
-      "timestamp": 1790181714531,
-      "event": "audio_on",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504"
-    },
-    {
-      "timestamp": 1790181722078,
-      "event": "audio_off",
-      "trackId": null
-    },
-    {
-      "timestamp": 1790181724733,
-      "event": "audio_on",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2"
-    },
-    {
-      "timestamp": 1790181735578,
-      "event": "audio_off",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504"
-    },
-    {
-      "timestamp": 1790181738531,
-      "event": "audio_on",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2"
-    },
-    {
-      "timestamp": 1790181750077,
-      "event": "audio_off",
-      "trackId": null
-    },
-    {
-      "timestamp": 1790181781340,
-      "event": "audio_on",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9"
-    },
-    {
-      "timestamp": 1790181799576,
-      "event": "audio_off",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504"
-    },
-    {
-      "timestamp": 1790181810221,
-      "event": "audio_on",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9"
-    },
-    {
-      "timestamp": 1790181818077,
-      "event": "audio_off",
-      "trackId": null
-    },
-    {
-      "timestamp": 1790181818460,
-      "event": "audio_on",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504"
-    },
-    {
-      "timestamp": 1790181825077,
-      "event": "audio_off",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504"
-    },
-    {
-      "timestamp": 1790181889340,
-      "event": "audio_on",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2"
+      "trackId": "06588504-8f3d-41bc-bbde-124af9406e39"
     }
   ]
 }
 [FINAL_BINDING_HISTORY] {
-  "spaces/SfqndlfuIO8B/devices/98": [
+  "spaces/bgcUx4X5YpkB/devices/79": [
+    {
+      "kind": "audio",
+      "trackId": "324e73c5-3cb3-4ba8-8d19-eb33d04409e4",
+      "timestamp": 1790264088065
+    },
     {
       "kind": "video",
-      "trackId": "6395a7b4-cf05-4214-b8d1-7ffa84f9ad42",
-      "timestamp": 1790181520144
+      "trackId": "06588504-8f3d-41bc-bbde-124af9406e39",
+      "timestamp": 1790264088812
     },
     {
       "kind": "audio",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2",
-      "timestamp": 1790181521740
+      "trackId": "ec540b76-6a4f-40ea-9a32-9382ec9f0c45",
+      "timestamp": 1790264089607
     },
     {
       "kind": "audio",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9",
-      "timestamp": 1790181557620
+      "trackId": "324e73c5-3cb3-4ba8-8d19-eb33d04409e4",
+      "timestamp": 1790264094694
     },
     {
       "kind": "audio",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2",
-      "timestamp": 1790181557720
+      "trackId": "ec540b76-6a4f-40ea-9a32-9382ec9f0c45",
+      "timestamp": 1790264097093
     },
     {
       "kind": "audio",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9",
-      "timestamp": 1790181569718
+      "trackId": "324e73c5-3cb3-4ba8-8d19-eb33d04409e4",
+      "timestamp": 1790264099192
     },
     {
       "kind": "audio",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2",
-      "timestamp": 1790181571418
+      "trackId": "ec540b76-6a4f-40ea-9a32-9382ec9f0c45",
+      "timestamp": 1790264103192
     },
     {
       "kind": "audio",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504",
-      "timestamp": 1790181580221
+      "trackId": "324e73c5-3cb3-4ba8-8d19-eb33d04409e4",
+      "timestamp": 1790264107897
     },
     {
       "kind": "audio",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2",
-      "timestamp": 1790181590933
+      "trackId": "ec540b76-6a4f-40ea-9a32-9382ec9f0c45",
+      "timestamp": 1790264111492
     },
     {
       "kind": "audio",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504",
-      "timestamp": 1790181599731
+      "trackId": "324e73c5-3cb3-4ba8-8d19-eb33d04409e4",
+      "timestamp": 1790264114294
     },
     {
       "kind": "audio",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2",
-      "timestamp": 1790181601030
+      "trackId": "ec540b76-6a4f-40ea-9a32-9382ec9f0c45",
+      "timestamp": 1790264114392
     },
     {
       "kind": "audio",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504",
-      "timestamp": 1790181612231
+      "trackId": "324e73c5-3cb3-4ba8-8d19-eb33d04409e4",
+      "timestamp": 1790264120108
     },
     {
       "kind": "audio",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2",
-      "timestamp": 1790181612434
+      "trackId": "ec540b76-6a4f-40ea-9a32-9382ec9f0c45",
+      "timestamp": 1790264120193
     },
     {
       "kind": "audio",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504",
-      "timestamp": 1790181612529
+      "trackId": "324e73c5-3cb3-4ba8-8d19-eb33d04409e4",
+      "timestamp": 1790264120409
     },
     {
       "kind": "audio",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2",
-      "timestamp": 1790181613529
+      "trackId": "ec540b76-6a4f-40ea-9a32-9382ec9f0c45",
+      "timestamp": 1790264123508
     },
     {
       "kind": "audio",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504",
-      "timestamp": 1790181617030
+      "trackId": "324e73c5-3cb3-4ba8-8d19-eb33d04409e4",
+      "timestamp": 1790264124107
     },
     {
       "kind": "audio",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2",
-      "timestamp": 1790181617231
+      "trackId": "ec540b76-6a4f-40ea-9a32-9382ec9f0c45",
+      "timestamp": 1790264124791
     },
     {
       "kind": "audio",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504",
-      "timestamp": 1790181617429
+      "trackId": "324e73c5-3cb3-4ba8-8d19-eb33d04409e4",
+      "timestamp": 1790264125008
     },
     {
       "kind": "audio",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2",
-      "timestamp": 1790181617628
+      "trackId": "ec540b76-6a4f-40ea-9a32-9382ec9f0c45",
+      "timestamp": 1790264127506
     },
     {
       "kind": "audio",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504",
-      "timestamp": 1790181617928
+      "trackId": "324e73c5-3cb3-4ba8-8d19-eb33d04409e4",
+      "timestamp": 1790264146004
     },
     {
       "kind": "audio",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2",
-      "timestamp": 1790181620032
+      "trackId": "ec540b76-6a4f-40ea-9a32-9382ec9f0c45",
+      "timestamp": 1790264149491
     },
     {
       "kind": "audio",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504",
-      "timestamp": 1790181620229
+      "trackId": "324e73c5-3cb3-4ba8-8d19-eb33d04409e4",
+      "timestamp": 1790264153002
     },
     {
       "kind": "audio",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9",
-      "timestamp": 1790181621628
+      "trackId": "ec540b76-6a4f-40ea-9a32-9382ec9f0c45",
+      "timestamp": 1790264154703
     },
     {
       "kind": "audio",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2",
-      "timestamp": 1790181686936
+      "trackId": "324e73c5-3cb3-4ba8-8d19-eb33d04409e4",
+      "timestamp": 1790264159304
     },
     {
       "kind": "audio",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9",
-      "timestamp": 1790181690734
+      "trackId": "ec540b76-6a4f-40ea-9a32-9382ec9f0c45",
+      "timestamp": 1790264161501
     },
     {
       "kind": "audio",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2",
-      "timestamp": 1790181690834
+      "trackId": "324e73c5-3cb3-4ba8-8d19-eb33d04409e4",
+      "timestamp": 1790264163901
     },
     {
       "kind": "audio",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9",
-      "timestamp": 1790181690933
+      "trackId": "ec540b76-6a4f-40ea-9a32-9382ec9f0c45",
+      "timestamp": 1790264165102
     },
     {
       "kind": "audio",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2",
-      "timestamp": 1790181691234
+      "trackId": "324e73c5-3cb3-4ba8-8d19-eb33d04409e4",
+      "timestamp": 1790264165601
     },
     {
       "kind": "audio",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9",
-      "timestamp": 1790181695334
+      "trackId": "ec540b76-6a4f-40ea-9a32-9382ec9f0c45",
+      "timestamp": 1790264165803
     },
     {
       "kind": "audio",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2",
-      "timestamp": 1790181695534
+      "trackId": "324e73c5-3cb3-4ba8-8d19-eb33d04409e4",
+      "timestamp": 1790264166001
     },
     {
       "kind": "audio",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9",
-      "timestamp": 1790181701133
+      "trackId": "ec540b76-6a4f-40ea-9a32-9382ec9f0c45",
+      "timestamp": 1790264169100
     },
     {
       "kind": "audio",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2",
-      "timestamp": 1790181702033
+      "trackId": "324e73c5-3cb3-4ba8-8d19-eb33d04409e4",
+      "timestamp": 1790264175602
     },
     {
       "kind": "audio",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9",
-      "timestamp": 1790181703133
+      "trackId": "ec540b76-6a4f-40ea-9a32-9382ec9f0c45",
+      "timestamp": 1790264175799
     },
     {
       "kind": "audio",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2",
-      "timestamp": 1790181706631
+      "trackId": "324e73c5-3cb3-4ba8-8d19-eb33d04409e4",
+      "timestamp": 1790264175899
     },
     {
       "kind": "audio",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9",
-      "timestamp": 1790181706832
+      "trackId": "ec540b76-6a4f-40ea-9a32-9382ec9f0c45",
+      "timestamp": 1790264177899
     },
     {
       "kind": "audio",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2",
-      "timestamp": 1790181707332
+      "trackId": "324e73c5-3cb3-4ba8-8d19-eb33d04409e4",
+      "timestamp": 1790264191297
     },
     {
       "kind": "audio",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9",
-      "timestamp": 1790181707731
-    },
-    {
-      "kind": "audio",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2",
-      "timestamp": 1790181710730
-    },
-    {
-      "kind": "audio",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504",
-      "timestamp": 1790181715530
-    },
-    {
-      "kind": "audio",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2",
-      "timestamp": 1790181715932
-    },
-    {
-      "kind": "audio",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504",
-      "timestamp": 1790181724830
-    },
-    {
-      "kind": "audio",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2",
-      "timestamp": 1790181724933
-    },
-    {
-      "kind": "audio",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504",
-      "timestamp": 1790181728330
-    },
-    {
-      "kind": "audio",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2",
-      "timestamp": 1790181728431
-    },
-    {
-      "kind": "audio",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504",
-      "timestamp": 1790181738629
-    },
-    {
-      "kind": "audio",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2",
-      "timestamp": 1790181738829
-    },
-    {
-      "kind": "audio",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504",
-      "timestamp": 1790181742231
-    },
-    {
-      "kind": "audio",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2",
-      "timestamp": 1790181742928
-    },
-    {
-      "kind": "audio",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504",
-      "timestamp": 1790181743828
-    },
-    {
-      "kind": "audio",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2",
-      "timestamp": 1790181744127
-    },
-    {
-      "kind": "audio",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9",
-      "timestamp": 1790181771022
-    },
-    {
-      "kind": "audio",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2",
-      "timestamp": 1790181828817
-    },
-    {
-      "kind": "audio",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9",
-      "timestamp": 1790181835547
-    },
-    {
-      "kind": "audio",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2",
-      "timestamp": 1790181849629
-    },
-    {
-      "kind": "audio",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9",
-      "timestamp": 1790181867912
-    },
-    {
-      "kind": "audio",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2",
-      "timestamp": 1790181868012
-    },
-    {
-      "kind": "audio",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9",
-      "timestamp": 1790181870412
-    },
-    {
-      "kind": "audio",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2",
-      "timestamp": 1790181881541
-    },
-    {
-      "kind": "audio",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9",
-      "timestamp": 1790181883740
-    },
-    {
-      "kind": "audio",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2",
-      "timestamp": 1790181886442
-    },
-    {
-      "kind": "audio",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504",
-      "timestamp": 1790181889639
-    },
-    {
-      "kind": "audio",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2",
-      "timestamp": 1790181890239
-    },
-    {
-      "kind": "audio",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504",
-      "timestamp": 1790181892539
+      "trackId": "ec540b76-6a4f-40ea-9a32-9382ec9f0c45",
+      "timestamp": 1790264191897
     }
   ],
-  "spaces/SfqndlfuIO8B/devices/97": [
+  "spaces/bgcUx4X5YpkB/devices/80": [
+    {
+      "kind": "audio",
+      "trackId": "324e73c5-3cb3-4ba8-8d19-eb33d04409e4",
+      "timestamp": 1790264088112
+    },
     {
       "kind": "video",
-      "trackId": "bf0fd907-8c3d-4f8b-bdfe-1f39d7d582ef",
-      "timestamp": 1790181520219
+      "trackId": "e235fd9a-e2ea-40f9-a1f1-974573cb67c4",
+      "timestamp": 1790264088781
     },
     {
       "kind": "audio",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9",
-      "timestamp": 1790181520266
+      "trackId": "ec540b76-6a4f-40ea-9a32-9382ec9f0c45",
+      "timestamp": 1790264089495
     },
     {
       "kind": "audio",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504",
-      "timestamp": 1790181520826
+      "trackId": "324e73c5-3cb3-4ba8-8d19-eb33d04409e4",
+      "timestamp": 1790264094694
     },
     {
       "kind": "audio",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9",
-      "timestamp": 1790181521026
+      "trackId": "ec540b76-6a4f-40ea-9a32-9382ec9f0c45",
+      "timestamp": 1790264097709
     },
     {
       "kind": "audio",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504",
-      "timestamp": 1790181550121
+      "trackId": "324e73c5-3cb3-4ba8-8d19-eb33d04409e4",
+      "timestamp": 1790264098992
     },
     {
       "kind": "audio",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9",
-      "timestamp": 1790181550320
+      "trackId": "ec540b76-6a4f-40ea-9a32-9382ec9f0c45",
+      "timestamp": 1790264120192
     },
     {
       "kind": "audio",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2",
-      "timestamp": 1790181556822
+      "trackId": "324e73c5-3cb3-4ba8-8d19-eb33d04409e4",
+      "timestamp": 1790264120408
     },
     {
       "kind": "audio",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9",
-      "timestamp": 1790181557622
+      "trackId": "ec540b76-6a4f-40ea-9a32-9382ec9f0c45",
+      "timestamp": 1790264123507
     },
     {
       "kind": "audio",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2",
-      "timestamp": 1790181558120
+      "trackId": "324e73c5-3cb3-4ba8-8d19-eb33d04409e4",
+      "timestamp": 1790264124007
     },
     {
       "kind": "audio",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504",
-      "timestamp": 1790181561920
+      "trackId": "ec540b76-6a4f-40ea-9a32-9382ec9f0c45",
+      "timestamp": 1790264124907
     },
     {
       "kind": "audio",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9",
-      "timestamp": 1790181569821
+      "trackId": "324e73c5-3cb3-4ba8-8d19-eb33d04409e4",
+      "timestamp": 1790264125007
     },
     {
       "kind": "audio",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504",
-      "timestamp": 1790181570220
+      "trackId": "ec540b76-6a4f-40ea-9a32-9382ec9f0c45",
+      "timestamp": 1790264145303
     },
     {
       "kind": "audio",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9",
-      "timestamp": 1790181570427
+      "trackId": "324e73c5-3cb3-4ba8-8d19-eb33d04409e4",
+      "timestamp": 1790264145704
     },
     {
       "kind": "audio",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2",
-      "timestamp": 1790181573019
+      "trackId": "ec540b76-6a4f-40ea-9a32-9382ec9f0c45",
+      "timestamp": 1790264152802
     },
     {
       "kind": "audio",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504",
-      "timestamp": 1790181582318
+      "trackId": "324e73c5-3cb3-4ba8-8d19-eb33d04409e4",
+      "timestamp": 1790264152902
     },
     {
       "kind": "audio",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2",
-      "timestamp": 1790181591033
+      "trackId": "ec540b76-6a4f-40ea-9a32-9382ec9f0c45",
+      "timestamp": 1790264165401
     },
     {
       "kind": "audio",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504",
-      "timestamp": 1790181599733
+      "trackId": "324e73c5-3cb3-4ba8-8d19-eb33d04409e4",
+      "timestamp": 1790264165701
     },
     {
       "kind": "audio",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2",
-      "timestamp": 1790181601332
+      "trackId": "ec540b76-6a4f-40ea-9a32-9382ec9f0c45",
+      "timestamp": 1790264165801
     },
     {
       "kind": "audio",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504",
-      "timestamp": 1790181612334
+      "trackId": "324e73c5-3cb3-4ba8-8d19-eb33d04409e4",
+      "timestamp": 1790264166401
     },
     {
       "kind": "audio",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9",
-      "timestamp": 1790181621630
+      "trackId": "ec540b76-6a4f-40ea-9a32-9382ec9f0c45",
+      "timestamp": 1790264175200
     },
     {
       "kind": "audio",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504",
-      "timestamp": 1790181631425
+      "trackId": "324e73c5-3cb3-4ba8-8d19-eb33d04409e4",
+      "timestamp": 1790264175599
     },
     {
       "kind": "audio",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9",
-      "timestamp": 1790181644624
+      "trackId": "ec540b76-6a4f-40ea-9a32-9382ec9f0c45",
+      "timestamp": 1790264178101
     },
     {
       "kind": "audio",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504",
-      "timestamp": 1790181650722
+      "trackId": "324e73c5-3cb3-4ba8-8d19-eb33d04409e4",
+      "timestamp": 1790264186091
     },
     {
       "kind": "audio",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9",
-      "timestamp": 1790181655339
+      "trackId": "ec540b76-6a4f-40ea-9a32-9382ec9f0c45",
+      "timestamp": 1790264186511
     },
     {
       "kind": "audio",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504",
-      "timestamp": 1790181666338
-    },
-    {
-      "kind": "audio",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9",
-      "timestamp": 1790181670137
-    },
-    {
-      "kind": "audio",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504",
-      "timestamp": 1790181676640
-    },
-    {
-      "kind": "audio",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9",
-      "timestamp": 1790181677736
-    },
-    {
-      "kind": "audio",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504",
-      "timestamp": 1790181682435
-    },
-    {
-      "kind": "audio",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9",
-      "timestamp": 1790181683037
-    },
-    {
-      "kind": "audio",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2",
-      "timestamp": 1790181686937
-    },
-    {
-      "kind": "audio",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9",
-      "timestamp": 1790181690738
-    },
-    {
-      "kind": "audio",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2",
-      "timestamp": 1790181690835
-    },
-    {
-      "kind": "audio",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9",
-      "timestamp": 1790181691034
-    },
-    {
-      "kind": "audio",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2",
-      "timestamp": 1790181691334
-    },
-    {
-      "kind": "audio",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9",
-      "timestamp": 1790181695337
-    },
-    {
-      "kind": "audio",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2",
-      "timestamp": 1790181695534
-    },
-    {
-      "kind": "audio",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9",
-      "timestamp": 1790181697233
-    },
-    {
-      "kind": "audio",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2",
-      "timestamp": 1790181698036
-    },
-    {
-      "kind": "audio",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9",
-      "timestamp": 1790181701135
-    },
-    {
-      "kind": "audio",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2",
-      "timestamp": 1790181702036
-    },
-    {
-      "kind": "audio",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9",
-      "timestamp": 1790181703135
-    },
-    {
-      "kind": "audio",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2",
-      "timestamp": 1790181706632
-    },
-    {
-      "kind": "audio",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9",
-      "timestamp": 1790181706732
-    },
-    {
-      "kind": "audio",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2",
-      "timestamp": 1790181707333
-    },
-    {
-      "kind": "audio",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9",
-      "timestamp": 1790181707733
-    },
-    {
-      "kind": "audio",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2",
-      "timestamp": 1790181710832
-    },
-    {
-      "kind": "audio",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504",
-      "timestamp": 1790181714632
-    },
-    {
-      "kind": "audio",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2",
-      "timestamp": 1790181714835
-    },
-    {
-      "kind": "audio",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504",
-      "timestamp": 1790181729229
-    },
-    {
-      "kind": "audio",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2",
-      "timestamp": 1790181730129
-    },
-    {
-      "kind": "audio",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504",
-      "timestamp": 1790181742233
-    },
-    {
-      "kind": "audio",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2",
-      "timestamp": 1790181743127
-    },
-    {
-      "kind": "audio",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9",
-      "timestamp": 1790181743427
-    },
-    {
-      "kind": "audio",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2",
-      "timestamp": 1790181743730
-    },
-    {
-      "kind": "audio",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504",
-      "timestamp": 1790181743831
-    },
-    {
-      "kind": "audio",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2",
-      "timestamp": 1790181744128
-    },
-    {
-      "kind": "audio",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9",
-      "timestamp": 1790181748626
-    },
-    {
-      "kind": "audio",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504",
-      "timestamp": 1790181784838
-    },
-    {
-      "kind": "audio",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9",
-      "timestamp": 1790181785437
-    },
-    {
-      "kind": "audio",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504",
-      "timestamp": 1790181785938
-    },
-    {
-      "kind": "audio",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9",
-      "timestamp": 1790181787041
-    },
-    {
-      "kind": "audio",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504",
-      "timestamp": 1790181789238
-    },
-    {
-      "kind": "audio",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9",
-      "timestamp": 1790181791537
-    },
-    {
-      "kind": "audio",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504",
-      "timestamp": 1790181792239
-    },
-    {
-      "kind": "audio",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9",
-      "timestamp": 1790181792340
-    },
-    {
-      "kind": "audio",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504",
-      "timestamp": 1790181810339
-    },
-    {
-      "kind": "audio",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9",
-      "timestamp": 1790181810522
-    },
-    {
-      "kind": "audio",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2",
-      "timestamp": 1790181828820
-    },
-    {
-      "kind": "audio",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9",
-      "timestamp": 1790181834514
-    },
-    {
-      "kind": "audio",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2",
-      "timestamp": 1790181849632
-    },
-    {
-      "kind": "audio",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9",
-      "timestamp": 1790181860011
-    },
-    {
-      "kind": "audio",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2",
-      "timestamp": 1790181867243
-    },
-    {
-      "kind": "audio",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9",
-      "timestamp": 1790181867915
-    },
-    {
-      "kind": "audio",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2",
-      "timestamp": 1790181868146
-    },
-    {
-      "kind": "audio",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9",
-      "timestamp": 1790181870414
-    },
-    {
-      "kind": "audio",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2",
-      "timestamp": 1790181881541
-    },
-    {
-      "kind": "audio",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9",
-      "timestamp": 1790181883742
-    },
-    {
-      "kind": "audio",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2",
-      "timestamp": 1790181886442
+      "trackId": "324e73c5-3cb3-4ba8-8d19-eb33d04409e4",
+      "timestamp": 1790264191397
     }
   ],
-  "spaces/SfqndlfuIO8B/devices/99": [
+  "spaces/bgcUx4X5YpkB/devices/81": [
     {
       "kind": "video",
-      "trackId": "25deb0ee-105d-4026-ac8a-13614b021371",
-      "timestamp": 1790181520222
-    },
-    {
-      "kind": "audio",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504",
-      "timestamp": 1790181520625
-    },
-    {
-      "kind": "audio",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2",
-      "timestamp": 1790181522141
-    },
-    {
-      "kind": "audio",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504",
-      "timestamp": 1790181523843
-    },
-    {
-      "kind": "audio",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9",
-      "timestamp": 1790181538939
-    },
-    {
-      "kind": "audio",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504",
-      "timestamp": 1790181550220
-    },
-    {
-      "kind": "audio",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9",
-      "timestamp": 1790181570120
-    },
-    {
-      "kind": "audio",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504",
-      "timestamp": 1790181570220
-    },
-    {
-      "kind": "audio",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9",
-      "timestamp": 1790181570419
-    },
-    {
-      "kind": "audio",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2",
-      "timestamp": 1790181571820
-    },
-    {
-      "kind": "audio",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504",
-      "timestamp": 1790181580217
-    },
-    {
-      "kind": "audio",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2",
-      "timestamp": 1790181599132
-    },
-    {
-      "kind": "audio",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504",
-      "timestamp": 1790181599831
-    },
-    {
-      "kind": "audio",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2",
-      "timestamp": 1790181604430
-    },
-    {
-      "kind": "audio",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504",
-      "timestamp": 1790181604729
-    },
-    {
-      "kind": "audio",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2",
-      "timestamp": 1790181604932
-    },
-    {
-      "kind": "audio",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504",
-      "timestamp": 1790181612230
-    },
-    {
-      "kind": "audio",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2",
-      "timestamp": 1790181612430
-    },
-    {
-      "kind": "audio",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504",
-      "timestamp": 1790181612630
-    },
-    {
-      "kind": "audio",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2",
-      "timestamp": 1790181613631
-    },
-    {
-      "kind": "audio",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504",
-      "timestamp": 1790181617029
-    },
-    {
-      "kind": "audio",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2",
-      "timestamp": 1790181617229
-    },
-    {
-      "kind": "audio",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504",
-      "timestamp": 1790181617429
-    },
-    {
-      "kind": "audio",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2",
-      "timestamp": 1790181617728
-    },
-    {
-      "kind": "audio",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504",
-      "timestamp": 1790181618427
-    },
-    {
-      "kind": "audio",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2",
-      "timestamp": 1790181620028
-    },
-    {
-      "kind": "audio",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504",
-      "timestamp": 1790181620328
-    },
-    {
-      "kind": "audio",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9",
-      "timestamp": 1790181683736
-    },
-    {
-      "kind": "audio",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504",
-      "timestamp": 1790181714530
-    },
-    {
-      "kind": "audio",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2",
-      "timestamp": 1790181714832
-    },
-    {
-      "kind": "audio",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504",
-      "timestamp": 1790181715431
-    },
-    {
-      "kind": "audio",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2",
-      "timestamp": 1790181716034
-    },
-    {
-      "kind": "audio",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504",
-      "timestamp": 1790181724829
-    },
-    {
-      "kind": "audio",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2",
-      "timestamp": 1790181724930
-    },
-    {
-      "kind": "audio",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504",
-      "timestamp": 1790181728329
-    },
-    {
-      "kind": "audio",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2",
-      "timestamp": 1790181728429
-    },
-    {
-      "kind": "audio",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504",
-      "timestamp": 1790181729229
-    },
-    {
-      "kind": "audio",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2",
-      "timestamp": 1790181738528
-    },
-    {
-      "kind": "audio",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504",
-      "timestamp": 1790181738628
-    },
-    {
-      "kind": "audio",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2",
-      "timestamp": 1790181738728
-    },
-    {
-      "kind": "audio",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504",
-      "timestamp": 1790181742229
-    },
-    {
-      "kind": "audio",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2",
-      "timestamp": 1790181743727
-    },
-    {
-      "kind": "audio",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504",
-      "timestamp": 1790181743928
-    },
-    {
-      "kind": "audio",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9",
-      "timestamp": 1790181781338
-    },
-    {
-      "kind": "audio",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504",
-      "timestamp": 1790181784838
-    },
-    {
-      "kind": "audio",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9",
-      "timestamp": 1790181787038
-    },
-    {
-      "kind": "audio",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504",
-      "timestamp": 1790181788837
-    },
-    {
-      "kind": "audio",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9",
-      "timestamp": 1790181792137
-    },
-    {
-      "kind": "audio",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504",
-      "timestamp": 1790181792239
-    },
-    {
-      "kind": "audio",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9",
-      "timestamp": 1790181792337
-    },
-    {
-      "kind": "audio",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504",
-      "timestamp": 1790181793438
-    },
-    {
-      "kind": "audio",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9",
-      "timestamp": 1790181810218
-    },
-    {
-      "kind": "audio",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504",
-      "timestamp": 1790181810338
-    },
-    {
-      "kind": "audio",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9",
-      "timestamp": 1790181810519
-    },
-    {
-      "kind": "audio",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504",
-      "timestamp": 1790181818458
-    },
-    {
-      "kind": "audio",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2",
-      "timestamp": 1790181889340
-    },
-    {
-      "kind": "audio",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504",
-      "timestamp": 1790181890040
-    },
-    {
-      "kind": "audio",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2",
-      "timestamp": 1790181890840
-    },
-    {
-      "kind": "audio",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504",
-      "timestamp": 1790181892640
+      "trackId": "06588504-8f3d-41bc-bbde-124af9406e39",
+      "timestamp": 1790264197801
     }
   ]
 }
 
 [YELLOW] Stopping recorders and closing all connections...
-[WS_FORCE_CLOSING] Closing 3 remaining connection(s)...
-[WS_STREAM_CLOSED] participantId=spaces/SfqndlfuIO8B/devices/98::seg1
-[WS_STREAM_CLOSED] participantId=spaces/SfqndlfuIO8B/devices/97::seg1
-[WS_STREAM_CLOSED] participantId=spaces/SfqndlfuIO8B/devices/99::seg1
-[WS_STREAM_CLOSED] participantId=spaces/SfqndlfuIO8B/devices/97::seg2
-[WS_STREAM_CLOSED] participantId=spaces/SfqndlfuIO8B/devices/98::seg2
-[WS_STREAM_CLOSED] participantId=spaces/SfqndlfuIO8B/devices/99::seg2
+[WS_FORCE_CLOSING] Closing 1 remaining connection(s)...
+[WS_STREAM_CLOSED] participantId=spaces/bgcUx4X5YpkB/devices/80::seg1
+[WS_STREAM_CLOSED] participantId=spaces/bgcUx4X5YpkB/devices/79::seg1
+[WS_STREAM_CLOSED] participantId=spaces/bgcUx4X5YpkB/devices/80::seg2
+[WS_STREAM_CLOSED] participantId=spaces/bgcUx4X5YpkB/devices/79::seg2
+[WS_STREAM_CLOSED] participantId=spaces/bgcUx4X5YpkB/devices/81::seg1
 
 [GREEN] Leaving the meeting...
-[SHUTDOWN] elapsed: 6s — please wait, do not close this window...   [WS_CLOSED] participantId=spaces
-/SfqndlfuIO8B/devices/99::seg2
-[WS_CLOSED] participantId=spaces/SfqndlfuIO8B/devices/97::seg2
-[WS_CLOSED] participantId=spaces/SfqndlfuIO8B/devices/98::seg2
-[LEFT_MEETING] Successfully clicked leave button
+[WS_CLOSED] participantId=spaces/bgcUx4X5YpkB/devices/81::seg1
+[SHUTDOWN] elapsed: 6s — please wait, do not close this window...   [LEFT_MEETING] Successfully clic
+ked leave button
 PAGE CLOSED EVENT FIRED
 CONTEXT CLOSED EVENT FIRED
-[SHUTDOWN] elapsed: 7s — please wait, do not close this window...
+
 [STITCH] Starting post-meeting stitch...
 [STITCH_START] Scanning recordings folder...
 [STITCH_CONCURRENCY] Using up to 7 parallel ffmpeg processes
-[SHUTDOWN] elapsed: 9s — please wait, do not close this window...
-[FFMPEG_DONE] spaces_SfqndlfuIO8B_devices_97 seg1 normalize — completed in 2.5s
-[STITCH_PROGRESS] [###---------------------] 11% (1/9) spaces_SfqndlfuIO8B_devices_97 normalized seg
+[SHUTDOWN] elapsed: 7s — please wait, do not close this window...
+[FFMPEG_DONE] spaces_bgcUx4X5YpkB_devices_80 seg1 normalize — completed in 0.4s
+[STITCH_PROGRESS] [###---------------------] 13% (1/8) spaces_bgcUx4X5YpkB_devices_80 normalized seg
 1
-[FFMPEG_DONE] spaces_SfqndlfuIO8B_devices_98 seg1 normalize — completed in 0.6s
-[STITCH_PROGRESS] [#####-------------------] 22% (2/9) spaces_SfqndlfuIO8B_devices_98 normalized seg
-[SHUTDOWN] elapsed: 10s — please wait, do not close this window...   [MAPPER_SNAPSHOT] [
-  {
-    "participantId": "spaces/SfqndlfuIO8B/devices/98",
-    "name": "Gautam gupta",
-    "videoStreamId": "2362547375",
-    "currentVideoTrackId": "6395a7b4-cf05-4214-b8d1-7ffa84f9ad42",
-    "currentAudioTrackId": "b9de6136-662a-4020-89b1-422b4ee0c504",
-    "videoBound": true,
-    "audioBound": true
-  },
-  {
-    "participantId": "spaces/SfqndlfuIO8B/devices/97",
-    "name": "Ravi Sharma",
-    "videoStreamId": "4039565982",
-    "currentVideoTrackId": "bf0fd907-8c3d-4f8b-bdfe-1f39d7d582ef",
-    "currentAudioTrackId": "04714b0b-212d-4956-8145-b5037aed16d2",
-    "videoBound": true,
-    "audioBound": true
-  },
-  {
-    "participantId": "spaces/SfqndlfuIO8B/devices/99",
-    "name": "Kirthan M",
-    "videoStreamId": "3316915690",
-    "currentVideoTrackId": "25deb0ee-105d-4026-ac8a-13614b021371",
-    "currentAudioTrackId": "b9de6136-662a-4020-89b1-422b4ee0c504",
-    "videoBound": true,
-    "audioBound": true
-  }
-]
-[EVENT_HISTORY_SNAPSHOT] {
-  "spaces/SfqndlfuIO8B/devices/98": [
-    {
-      "timestamp": 1790181520262,
-      "event": "video_on",
-      "trackId": "6395a7b4-cf05-4214-b8d1-7ffa84f9ad42"
-    },
-    {
-      "timestamp": 1790181521742,
-      "event": "audio_on",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2"
-    },
-    {
-      "timestamp": 1790181529577,
-      "event": "audio_off",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2"
-    },
-    {
-      "timestamp": 1790181556320,
-      "event": "audio_on",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2"
-    },
-    {
-      "timestamp": 1790181566078,
-      "event": "audio_off",
-      "trackId": null
-    },
-    {
-      "timestamp": 1790181569720,
-      "event": "audio_on",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9"
-    },
-    {
-      "timestamp": 1790181586579,
-      "event": "audio_off",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2"
-    },
-    {
-      "timestamp": 1790181590933,
-      "event": "audio_on",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2"
-    },
-    {
-      "timestamp": 1790181628077,
-      "event": "audio_off",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2"
-    },
-    {
-      "timestamp": 1790181686936,
-      "event": "audio_on",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2"
-    },
-    {
-      "timestamp": 1790181753076,
-      "event": "audio_off",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504"
-    },
-    {
-      "timestamp": 1790181771024,
-      "event": "audio_on",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9"
-    },
-    {
-      "timestamp": 1790181777577,
-      "event": "audio_off",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504"
-    },
-    {
-      "timestamp": 1790181828819,
-      "event": "audio_on",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2"
-    },
-    {
-      "timestamp": 1790181841576,
-      "event": "audio_off",
-      "trackId": null
-    },
-    {
-      "timestamp": 1790181849629,
-      "event": "audio_on",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2"
-    },
-    {
-      "timestamp": 1790181866078,
-      "event": "audio_off",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2"
-    },
-    {
-      "timestamp": 1790181867111,
-      "event": "audio_on",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2"
-    },
-    {
-      "timestamp": 1790181878077,
-      "event": "audio_off",
-      "trackId": null
-    },
-    {
-      "timestamp": 1790181880143,
-      "event": "audio_on",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9"
-    }
-  ],
-  "spaces/SfqndlfuIO8B/devices/97": [
-    {
-      "timestamp": 1790181520272,
-      "event": "audio_on",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9"
-    },
-    {
-      "timestamp": 1790181520462,
-      "event": "video_on",
-      "trackId": "bf0fd907-8c3d-4f8b-bdfe-1f39d7d582ef"
-    },
-    {
-      "timestamp": 1790181549578,
-      "event": "audio_off",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9"
-    },
-    {
-      "timestamp": 1790181549923,
-      "event": "audio_on",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9"
-    },
-    {
-      "timestamp": 1790181619078,
-      "event": "audio_off",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9"
-    },
-    {
-      "timestamp": 1790181621631,
-      "event": "audio_on",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9"
-    }
-  ],
-  "spaces/SfqndlfuIO8B/devices/99": [
-    {
-      "timestamp": 1790181520308,
-      "event": "video_on",
-      "trackId": "25deb0ee-105d-4026-ac8a-13614b021371"
-    },
-    {
-      "timestamp": 1790181520627,
-      "event": "audio_on",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504"
-    },
-    {
-      "timestamp": 1790181530077,
-      "event": "audio_off",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504"
-    },
-    {
-      "timestamp": 1790181538943,
-      "event": "audio_on",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9"
-    },
-    {
-      "timestamp": 1790181545077,
-      "event": "audio_off",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504"
-    },
-    {
-      "timestamp": 1790181549823,
-      "event": "audio_on",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9"
-    },
-    {
-      "timestamp": 1790181556578,
-      "event": "audio_off",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504"
-    },
-    {
-      "timestamp": 1790181561721,
-      "event": "audio_on",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504"
-    },
-    {
-      "timestamp": 1790181578077,
-      "event": "audio_off",
-      "trackId": null
-    },
-    {
-      "timestamp": 1790181580217,
-      "event": "audio_on",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504"
-    },
-    {
-      "timestamp": 1790181595078,
-      "event": "audio_off",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504"
-    },
-    {
-      "timestamp": 1790181599136,
-      "event": "audio_on",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2"
-    },
-    {
-      "timestamp": 1790181627077,
-      "event": "audio_off",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504"
-    },
-    {
-      "timestamp": 1790181631227,
-      "event": "audio_on",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504"
-    },
-    {
-      "timestamp": 1790181660077,
-      "event": "audio_off",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504"
-    },
-    {
-      "timestamp": 1790181666240,
-      "event": "audio_on",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504"
-    },
-    {
-      "timestamp": 1790181676077,
-      "event": "audio_off",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504"
-    },
-    {
-      "timestamp": 1790181676639,
-      "event": "audio_on",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504"
-    },
-    {
-      "timestamp": 1790181690077,
-      "event": "audio_off",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504"
-    },
-    {
-      "timestamp": 1790181714531,
-      "event": "audio_on",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504"
-    },
-    {
-      "timestamp": 1790181722078,
-      "event": "audio_off",
-      "trackId": null
-    },
-    {
-      "timestamp": 1790181724733,
-      "event": "audio_on",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2"
-    },
-    {
-      "timestamp": 1790181735578,
-      "event": "audio_off",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504"
-    },
-    {
-      "timestamp": 1790181738531,
-      "event": "audio_on",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2"
-    },
-    {
-      "timestamp": 1790181750077,
-      "event": "audio_off",
-      "trackId": null
-    },
-    {
-      "timestamp": 1790181781340,
-      "event": "audio_on",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9"
-    },
-    {
-      "timestamp": 1790181799576,
-      "event": "audio_off",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504"
-    },
-    {
-      "timestamp": 1790181810221,
-      "event": "audio_on",
-      "trackId": "0774aee6-fc1a-4a4e-a071-05f60a1217e9"
-    },
-    {
-      "timestamp": 1790181818077,
-      "event": "audio_off",
-      "trackId": null
-    },
-    {
-      "timestamp": 1790181818460,
-      "event": "audio_on",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504"
-    },
-    {
-      "timestamp": 1790181825077,
-      "event": "audio_off",
-      "trackId": "b9de6136-662a-4020-89b1-422b4ee0c504"
-    },
-    {
-      "timestamp": 1790181889340,
-      "event": "audio_on",
-      "trackId": "04714b0b-212d-4956-8145-b5037aed16d2"
-    }
-  ]
-}
-[FFMPEG] spaces_SfqndlfuIO8B_devices_98 seg2 normalize — processing... 23s elapsed
-[FFMPEG_DONE] spaces_SfqndlfuIO8B_devices_99 seg1 normalize — completed in 23.2s
-[STITCH_PROGRESS] [########----------------] 33% (3/9) spaces_SfqndlfuIO8B_devices_99 normalized seg
-[FFMPEG] spaces_SfqndlfuIO8B_devices_99 seg2 normalize — processing... 150s elapsed
-[FFMPEG_DONE] spaces_SfqndlfuIO8B_devices_99 seg2 normalize — completed in 149.9s
-[STITCH_PROGRESS] [###########-------------] 44% (4/9) spaces_SfqndlfuIO8B_devices_99 normalized seg
-[SHUTDOWN] elapsed: 162s — please wait, do not close this window...    153s elapsed
-[FFMPEG_DONE] spaces_SfqndlfuIO8B_devices_98 seg2 normalize — completed in 153.3s
-[STITCH_PROGRESS] [#############-----------] 56% (5/9) spaces_SfqndlfuIO8B_devices_98 normalized seg
-[FFMPEG] spaces_SfqndlfuIO8B_devices_97 seg2 normalize — processing... 182s elapsed
-[FFMPEG_DONE] spaces_SfqndlfuIO8B_devices_97 seg2 normalize — completed in 181.7s
-[STITCH_PROGRESS] [################--------] 67% (6/9) spaces_SfqndlfuIO8B_devices_97 normalized seg
-[SHUTDOWN] elapsed: 192s — please wait, do not close this window...
-[FFMPEG_DONE] spaces_SfqndlfuIO8B_devices_97 final concat — completed in 0.8s
-[STITCH_COMPLETE] spaces_SfqndlfuIO8B_devices_97 -> C:\Bot_Streaming_Poc\Meeting-Bot-Streaming-POC\s
-rc\finalRecorded\spaces_SfqndlfuIO8B_devices_97.mp4
-[STITCH_PROGRESS] [###################-----] 78% (7/9) spaces_SfqndlfuIO8B_devices_97 complete
-[FFMPEG_DONE] spaces_SfqndlfuIO8B_devices_99 final concat — completed in 0.8s
-[STITCH_COMPLETE] spaces_SfqndlfuIO8B_devices_99 -> C:\Bot_Streaming_Poc\Meeting-Bot-Streaming-POC\s
-rc\finalRecorded\spaces_SfqndlfuIO8B_devices_99.mp4
-[STITCH_PROGRESS] [#####################---] 89% (8/9) spaces_SfqndlfuIO8B_devices_99 complete
-[FFMPEG_DONE] spaces_SfqndlfuIO8B_devices_98 final concat — completed in 0.8s
-[STITCH_COMPLETE] spaces_SfqndlfuIO8B_devices_98 -> C:\Bot_Streaming_Poc\Meeting-Bot-Streaming-POC\s
-rc\finalRecorded\spaces_SfqndlfuIO8B_devices_98.mp4
-[STITCH_PROGRESS] [########################] 100% (9/9) spaces_SfqndlfuIO8B_devices_98 complete
+[FFMPEG_DONE] spaces_bgcUx4X5YpkB_devices_81 seg1 normalize — completed in 0.8s
+[STITCH_PROGRESS] [######------------------] 25% (2/8) spaces_bgcUx4X5YpkB_devices_81 normalized seg
+[SHUTDOWN] elapsed: 9s — please wait, do not close this window...   .. 2s elapsed
+[FFMPEG_DONE] spaces_bgcUx4X5YpkB_devices_79 seg1 normalize — completed in 2.4s
+[STITCH_PROGRESS] [#########---------------] 38% (3/8) spaces_bgcUx4X5YpkB_devices_79 normalized seg
+1
+[FFMPEG_DONE] spaces_bgcUx4X5YpkB_devices_79 seg2 normalize — completed in 2.6s
+[STITCH_PROGRESS] [############------------] 50% (4/8) spaces_bgcUx4X5YpkB_devices_79 normalized seg
+[SHUTDOWN] elapsed: 14s — please wait, do not close this window...   . 7s elapsed
+[FFMPEG_DONE] spaces_bgcUx4X5YpkB_devices_80 seg2 normalize — completed in 7.7s
+[STITCH_PROGRESS] [###############---------] 63% (5/8) spaces_bgcUx4X5YpkB_devices_80 normalized seg
+2
+[FFMPEG_DONE] spaces_bgcUx4X5YpkB_devices_81 final concat — completed in 0.1s
+[STITCH_COMPLETE] spaces_bgcUx4X5YpkB_devices_81 -> C:\Bot_Streaming_Poc\Meeting-Bot-Streaming-POC\s
+rc\finalRecorded\spaces_bgcUx4X5YpkB_devices_81.mp4
+[STITCH_PROGRESS] [##################------] 75% (6/8) spaces_bgcUx4X5YpkB_devices_81 complete
+[FFMPEG_DONE] spaces_bgcUx4X5YpkB_devices_79 final concat — completed in 0.1s
+[STITCH_COMPLETE] spaces_bgcUx4X5YpkB_devices_79 -> C:\Bot_Streaming_Poc\Meeting-Bot-Streaming-POC\s
+rc\finalRecorded\spaces_bgcUx4X5YpkB_devices_79.mp4
+[STITCH_PROGRESS] [#####################---] 88% (7/8) spaces_bgcUx4X5YpkB_devices_79 complete
+[FFMPEG_DONE] spaces_bgcUx4X5YpkB_devices_80 final concat — completed in 0.1s
+[STITCH_COMPLETE] spaces_bgcUx4X5YpkB_devices_80 -> C:\Bot_Streaming_Poc\Meeting-Bot-Streaming-POC\s
+rc\finalRecorded\spaces_bgcUx4X5YpkB_devices_80.mp4
+[STITCH_PROGRESS] [########################] 100% (8/8) spaces_bgcUx4X5YpkB_devices_80 complete
 [STITCH_ALL_DONE] Stitching finished for all participants (see above for any that were skipped).
-
-[SHUTDOWN_COMPLETE] Total shutdown time: 191.8s
+[SHUTDOWN] elapsed: 145s — please wait, do not close this window...
+[SHUTDOWN_COMPLETE] Total shutdown time: 145.7s
 PS>TerminatingError(): "The pipeline has been stopped."
 
 Ctrl+C detected - creating stop signal for the bot...
@@ -3015,5 +1343,5 @@ PS>TerminatingError(): "The pipeline has been stopped."
 PS C:\Bot_Streaming_Poc\Meeting-Bot-Streaming-POC> Stop-Transcript
 **********************
 Windows PowerShell transcript end
-End time: 20260923221809
+End time: 20260924210919
 **********************

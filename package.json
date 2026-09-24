@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/Masterravi2000/Meeting-Bot-Streaming-POC#readme",
   "dependencies": {
+    "cloudinary": "^2.11.0",
     "dotenv": "^17.4.2",
     "ffmpeg-static": "5.3.0",
     "playwright": "^1.62.1",

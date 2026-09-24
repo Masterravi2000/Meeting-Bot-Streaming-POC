@@ -1,40 +1,456 @@
-now look i cant show each individual participants .mp4 one by one i have to show in a webpage screen in a black rectangle screen box and under that i need to show all participants .mp4 videl simultaneosuly together played from starting with a player controll in short their will be a central video playing controller connected with all given  participants .mp4 videos and when that is played then all the .mp4 for all participants would get started to show up their   under that black screen just like how a gmeet ui green while meeting feels like right when their are two participants .mp4 only then 4 participants tile playing each participants inividual audio synced with video right their  when play button is pressed from the bottom video controll pannel     so now tell here in short is their any issue to use cloudinary to store all the .mp4 videos of each participants and accroding to the total numbers of .mp4 videos that numbers of participants tile will get created and actually from tile i means the screen which plays that participant .mp4 video right   in order to present this poc to sir
+// Only run in the top-level frame — addInitScript injects into every iframe,
+// and separate frames have separate window objects, so state would be fragmented.
+if (window.self !== window.top) {
+  console.log("[RECORDER_SKIP] Not the top frame, skipping recorder setup");
+} else {
+  // recorder.js — runs in the BROWSER context.
+  //
+  // Canvas + Web Audio compositor approach:
+  //   - A hidden canvas per participant is drawn to continuously (video frames when
+  //     available, black + name when not), so MediaRecorder never sees a gap.
+  //   - A Web Audio graph provides a STABLE audio track from the start; the real
+  //     audio source is connected into it later, once speaker-correlation binds it.
+  //   - Both tracks go to one MediaRecorder, so the browser handles A/V sync natively.
 
-Assessing feasibility of a synced multi-video grid setup.
-Assessing feasibility of a synced multi-video grid setup.
-Cloudinary is fine for this — no real issue for a POC. A 5-minute 640×360 .mp4 is roughly 10-20 MB, well within the free plan's limits, and each file just becomes a direct URL your page can play. You can upload automatically from bot.js right after STITCH_COMPLETE with the Cloudinary Node SDK.
+  window.__recorders = window.__recorders || {};
+  window.__recorderState = window.__recorderState || {}; // participantId -> state bundle
+  window.__segmentCounters = window.__segmentCounters || {};
+  window.__lastRenegotiationAt = window.__lastRenegotiationAt || {};
+  window.__shuttingDown = window.__shuttingDown || false;
 
-The real thing to handle is sync, not storage:
+  const CANVAS_FPS = 15;
+  const CANVAS_WIDTH = 640;
+  const CANVAS_HEIGHT = 360;
+  const FRAME_STALE_MS = 500; // if no new frame within this, treat as camera-off
 
-Different start times. Each .mp4 starts when that person's recording started (their join time), not when the meeting started. If Pintu joined 40s after you, pressing play on both at once puts him 40s early. Fix: have the bot save each participant's recording start timestamp (e.g. in a small JSON uploaded next to the videos), and the player delays or offsets each tile by that amount.
-One master controller. Play, pause, and seek act on all videos together, and every second or so the page nudges any video that drifted more than ~0.2s back in line. Without this, tiles slowly drift apart.
-People who left early. Their video ends before the others — show a black tile with their name for the rest, like Meet does.
-Leftover files. The stale device-311 file from today would appear as a 4th tile. Either fix the session-ID naming first, or upload only the files from the current session.
-The page itself is simple: a black stage, a responsive grid with one tile per .mp4 (2 → side by side, 4 → 2×2, and so on), each tile with the name label, and one control bar at the bottom driving everything.
+  // Single shared AudioContext for all participants
+  window.__audioContext = window.__audioContext || new AudioContext();
 
-Want me to build that player page? If so, share the participant names and Cloudinary URLs (or I can use placeholders you swap in).
+  console.log("[AUDIO_CONTEXT] initial state=" + window.__audioContext.state);
+  if (window.__audioContext.state === "suspended") {
+    window.__audioContext
+      .resume()
+      .then(() =>
+        console.log(
+          "[AUDIO_CONTEXT] resumed, state=" + window.__audioContext.state,
+        ),
+      )
+      .catch((e) => console.log("[AUDIO_CONTEXT_ERROR] " + e.message));
+  }
 
-look let me tell you the senario of that page as of now when meeting  started all participants recorder 1 which is video -only got started no issue all 4 participants got started from the same time no issue their - so only 4 participant tiles are shown playing their .mp4 together now when  someone joined in middle then their tile will appear in that black screen making its onw space like an animation between others tile and then start playing the newly joined participant .mp4 video when anyone lefts means their .mp4 got ended then their tile will dissappear in an animation leaving space for other participants tile thats it nothing extra right and after ffmpeg process that  all participants  .mp4 playing  web page will automatically get open up when ffmpeg gets completed and start playing within the black screen in the center the page itself background color will be white   their will be a central controll pannel in the bottom regulating the start and stop
+  // function arrayBufferToBase64(buffer) {
+  //   let binary = "";
+  //   const bytes = new Uint8Array(buffer);
+  //   const chunkSize = 0x8000;
+  //   for (let i = 0; i < bytes.length; i += chunkSize) {
+  //     binary += String.fromCharCode.apply(
+  //       null,
+  //       bytes.subarray(i, i + chunkSize),
+  //     );
+  //   }
+  //   return btoa(binary);
+  // }
 
-Reviewing a page design for confirmation and gaps.
-Reviewing a page design for confirmation and gaps.
-Yes, that design is right and complete for the demo. To make it actually work, four things are needed:
+  function nextSegment(participantId) {
+    window.__segmentCounters[participantId] =
+      (window.__segmentCounters[participantId] || 0) + 1;
+    return window.__segmentCounters[participantId];
+  }
 
-A manifest from the bot. The page needs to know when each tile appears and disappears. So after stitching, bot.js should write a small JSON: for each participant — name, .mp4 URL, start offset (when their recording began relative to the meeting start) and duration. The page runs one master clock: a tile animates in when the clock reaches its start offset, and animates out when its video ends. Right now the bot doesn't save those start times, so that's a small addition in bot.js.
-Auto-open after ffmpeg. After STITCH_ALL_DONE, bot.js uploads the files (Cloudinary), writes the manifest, then opens the page in your default browser — on Windows that's one line (start "" "path-or-url").
-One catch — autoplay with sound. Browsers block videos from auto-playing with audio unless the user clicks first. So the page can open automatically, but it should either start muted, or show a big "Play meeting" button — one click and everything starts with sound. For a live demo, the button actually looks cleaner.
-The page: white background, centered black stage, tiles that re-flow with a smooth animation as people join/leave, name label on each tile, and a bottom control bar (play/pause, seek bar, time) driving all videos together with drift correction.
-Want me to build the page now with a sample manifest, so you can plug in the real Cloudinary URLs later?
+  function startRecordingForParticipant(
+    participantId,
+    videoTrackId,
+    displayName,
+    audioTrackId, // now optional — null/undefined means video-only mode
+  ) {
+    if (window.__shuttingDown) return;
+    if (window.__presentationParticipants[participantId]) {
+      console.log(
+        `[RECORDER_SKIP_SCREEN_SHARE] participantId=${participantId} — screen-share recording not implemented yet`,
+      );
+      return;
+    }
+    if (window.__recorders[participantId]) return;
 
-okay so for this thus bot need to take a lot of load and suffer with what already it is doing correctly    - A manifest from the bot. The page needs to know when each tile appears and disappears. So after stitching, bot.js should write a small JSON: for each participant — name, .mp4 URL, start offset (when their recording began relative to the meeting start) and duration. The page runs one master clock: a tile animates in when the clock reaches its start offset, and animates out when its video ends. Right now the bot doesn't save those start times, so that's a small addition in bot.js.
+    const videoTrack = window.__trackObjects[videoTrackId];
+    const audioTrack = audioTrackId
+      ? window.__trackObjects[audioTrackId]
+      : null;
 
-Auto-open after ffmpeg. After STITCH_ALL_DONE, bot.js uploads the files (Cloudinary), writes the manifest, then opens the page in your default browser — on Windows that's one line (start "" "path-or-url"). and yes it should not become a bottleneak in braking, that should work flowlessly any unnessarly pressure should not be their on the bt for this
-Assessing whether streaming load causes noticeable performance impact.
-Assessing whether streaming load causes noticeable performance impact.
-No real load — and it can be arranged so the bot isn't touched at all during the meeting or the braking:
+    if (!videoTrack) {
+      console.log(`[RECORDER] Waiting — video not ready for ${participantId}`);
+      return;
+    }
+    if (audioTrackId && !audioTrack) {
+      console.log(`[RECORDER] Waiting — audio not ready for ${participantId}`);
+      return;
+    }
 
-Start times: Node already sees each participant's first segment connect (WS_STREAM_OPEN ...::seg1). Saving Date.now() into a small object at that moment is one line in the existing wss.on("connection") handler — no browser work, no extra messages, nothing during correlation.
-Duration: the bot doesn't need to compute it; the page reads each video's length itself when it loads.
-Upload + manifest + open: run these after the bot has fully exited, not inside shutdown(). Put them in a separate script (e.g. publish.js) and add one line to start-bot.ps1 right after node src/bot.js, so it runs only once the bot has already stopped. RED → YELLOW → GREEN → stitch stays exactly as it is now.
-So during the meeting and the brake: one extra line, nothing else. Everything heavier happens afterward, in its own process — if an upload fails, it can't affect your recordings or the shutdown at all.
+    try {
+      const segmentIndex = nextSegment(participantId);
+      const segKey = `${participantId}::seg${segmentIndex}`;
 
+      let ws = new WebSocket(
+        `ws://127.0.0.1:8765?participantId=${encodeURIComponent(segKey)}&hasAudio=${audioTrack ? "1" : "0"}`,
+      );
+      ws.binaryType = "arraybuffer";
+
+      const chunkQueue = [];
+      let wsOpen = false;
+      let connectionSettled = false;
+
+      ws.onopen = () => {
+        connectionSettled = true;
+        wsOpen = true;
+        console.log(`[WS_OPEN] participantId=${segKey}`);
+        while (chunkQueue.length > 0) {
+          ws.send(chunkQueue.shift());
+        }
+      };
+
+      ws.onerror = () => {
+        console.log(
+          `[WS_CLIENT_ERROR] participantId=${segKey} origin=${location.origin} url=${location.href}`,
+        );
+      };
+
+      ws.onclose = (event) => {
+        console.log(
+          `[WS_CLIENT_CLOSED] participantId=${segKey} code=${event.code} reason="${event.reason}" wasClean=${event.wasClean}`,
+        );
+      };
+
+      setTimeout(() => {
+        if (connectionSettled) return;
+        console.log(
+          `[WS_CONNECT_TIMEOUT] participantId=${segKey} — retrying once`,
+        );
+        try {
+          ws.close();
+        } catch (e) {}
+
+        const retryWs = new WebSocket(
+          `ws://127.0.0.1:8765?participantId=${encodeURIComponent(segKey)}&hasAudio=${audioTrack ? "1" : "0"}`,
+        );
+        retryWs.binaryType = "arraybuffer";
+
+        retryWs.onopen = () => {
+          connectionSettled = true;
+          wsOpen = true;
+          ws = retryWs;
+          if (window.__recorderState[participantId]) {
+            window.__recorderState[participantId].ws = retryWs;
+          }
+          console.log(`[WS_OPEN_AFTER_RETRY] participantId=${segKey}`);
+          while (chunkQueue.length > 0) {
+            retryWs.send(chunkQueue.shift());
+          }
+        };
+        retryWs.onerror = () => {
+          console.log(`[WS_RETRY_FAILED] participantId=${segKey}`);
+        };
+        retryWs.onclose = (event) => {
+          console.log(
+            `[WS_RETRY_CLOSED] participantId=${segKey} code=${event.code} reason="${event.reason}"`,
+          );
+        };
+      }, 5000);
+
+      const canvas = document.createElement("canvas");
+      canvas.width = CANVAS_WIDTH;
+      canvas.height = CANVAS_HEIGHT;
+      const ctx = canvas.getContext("2d");
+
+      const videoEl = document.createElement("video");
+      videoEl.srcObject = new MediaStream([videoTrack]);
+      videoEl.muted = true;
+      videoEl.play().catch(() => {});
+
+      const canvasStream = canvas.captureStream(CANVAS_FPS);
+      const tracks = [canvasStream.getVideoTracks()[0]];
+      if (audioTrack) tracks.push(audioTrack);
+      const combined = new MediaStream(tracks);
+
+      const mimeType = audioTrack
+        ? "video/webm;codecs=vp8,opus"
+        : "video/webm;codecs=vp8";
+      const recorder = new MediaRecorder(combined, { mimeType });
+
+      recorder.ondataavailable = async (event) => {
+        // console.log(
+        //   `[CHUNK_EVENT] participantId=${segKey} size=${event.data ? event.data.size : 0}`,
+        // );
+        if (event.data && event.data.size > 0) {
+          try {
+            const buffer = await event.data.arrayBuffer();
+            if (wsOpen && ws.readyState === WebSocket.OPEN) {
+              ws.send(buffer);
+              // console.log(
+              //   `[CHUNK_SENT] participantId=${segKey} bytes=${buffer.byteLength}`,
+              // );
+            } else {
+              chunkQueue.push(buffer);
+              console.log(
+                `[CHUNK_QUEUED] participantId=${segKey} bytes=${buffer.byteLength} — socket not open yet`,
+              );
+            }
+          } catch (err) {
+            console.log(
+              `[CHUNK_ERROR] participantId=${segKey}: ${err.message}`,
+            );
+          }
+        }
+      };
+
+      recorder.onerror = (e) =>
+        console.log(`[RECORDER_ERROR] ${segKey}: ${e.error}`);
+
+      recorder.start(2000);
+      window.__recorders[participantId] = recorder;
+
+      window.__recorderState[participantId] = {
+        canvas,
+        ctx,
+        videoEl,
+        displayName: displayName || "Unknown",
+        lastFrameTime: 0,
+        lastVideoTime: 0,
+        ws,
+        mode: audioTrack ? "full" : "video-only",
+        segmentIndex,
+        videoTrackId,
+        audioTrackId: audioTrackId || null,
+      };
+
+      console.log(
+        `[RECORDER_STARTED] participantId=${participantId} segment=${segmentIndex} mode=${audioTrack ? "full" : "video-only"} videoTrackId=${videoTrackId} audioTrackId=${audioTrackId || "none"} (canvas ${CANVAS_WIDTH}x${CANVAS_HEIGHT} @${CANVAS_FPS}fps)`,
+      );
+    } catch (err) {
+      console.log(`[RECORDER_ERROR] ${participantId}: ${err.message}`);
+    }
+  }
+
+  function handleAudioIdentified(
+    participantId,
+    videoTrackId,
+    displayName,
+    audioTrackId,
+  ) {
+    if (window.__shuttingDown) return;
+    if (window.__presentationParticipants[participantId]) return;
+
+    const state = window.__recorderState[participantId];
+
+    if (!state) {
+      startRecordingForParticipant(
+        participantId,
+        videoTrackId,
+        displayName,
+        audioTrackId,
+      );
+      return;
+    }
+
+    if (state.audioTrackId === audioTrackId) return;
+
+    if (state.mode === "video-only") {
+      console.log(
+        `[RECORDER_HANDOFF] participantId=${participantId} video-only -> full at ${Date.now()}`,
+      );
+    } else {
+      console.log(
+        `[RECORDER_AV_SWITCH] participantId=${participantId} oldAudioTrackId=${state.audioTrackId || "none"} newAudioTrackId=${audioTrackId}`,
+      );
+    }
+
+    stopRecordingForParticipant(participantId);
+    startRecordingForParticipant(
+      participantId,
+      videoTrackId,
+      displayName,
+      audioTrackId,
+    );
+  }
+
+  function handleVideoIdentified(participantId, videoTrackId, displayName) {
+    if (window.__shuttingDown) return;
+    if (window.__presentationParticipants[participantId]) return;
+
+    const state = window.__recorderState[participantId];
+    if (!state) return; // not recording yet — the audio path or initial join handles first start
+
+    if (state.videoTrackId && state.videoTrackId !== videoTrackId) {
+      const RENEGOTIATION_COOLDOWN_MS = 2000;
+      const lastReneg = window.__lastRenegotiationAt[participantId] || 0;
+      if (Date.now() - lastReneg < RENEGOTIATION_COOLDOWN_MS) {
+        console.log(
+          `[RENEGOTIATION_DEBOUNCED] participantId=${participantId} — too soon after last restart, skipping`,
+        );
+        return;
+      }
+      window.__lastRenegotiationAt[participantId] = Date.now();
+
+      const newPcId = window.__trackToPcId
+        ? window.__trackToPcId[videoTrackId]
+        : undefined;
+      const pairedAudioTrackId =
+        (newPcId &&
+          window.__pcIdTracks[newPcId] &&
+          window.__pcIdTracks[newPcId].audio) ||
+        null;
+      const finalAudioTrackId = pairedAudioTrackId || state.audioTrackId;
+
+      console.log(
+        `[RECORDER_RENEGOTIATION_DETECTED] participantId=${participantId} oldVideoTrackId=${state.videoTrackId} newVideoTrackId=${videoTrackId} (via srcObject video identification)`,
+      );
+      stopRecordingForParticipant(participantId);
+      startRecordingForParticipant(
+        participantId,
+        videoTrackId,
+        displayName,
+        finalAudioTrackId,
+      );
+      console.log(
+        `[RECORDER_RENEGOTIATION_RESTART] participantId=${participantId} newVideoTrackId=${videoTrackId} newAudioTrackId=${finalAudioTrackId || "pending"}`,
+      );
+    }
+  }
+
+  window.__handleAudioIdentified = handleAudioIdentified;
+  window.__handleVideoIdentified = handleVideoIdentified;
+
+  // --- Single shared render loop for ALL participants ---
+  function renderTick() {
+    try {
+      const now = performance.now();
+
+      window.__tickCount = (window.__tickCount || 0) + 1;
+      if (window.__tickCount % 30 === 0) {
+        console.log(
+          `[RENDER_TICK] count=${window.__tickCount} participants=${Object.keys(window.__recorderState).length}`,
+        );
+      }
+
+      Object.keys(window.__recorderState).forEach((participantId) => {
+        const s = window.__recorderState[participantId];
+        if (!s) return;
+
+        const v = s.videoEl;
+        const hasLiveFrame =
+          v.readyState >= 2 && v.videoWidth > 0 && !v.paused && !v.ended;
+
+        if (hasLiveFrame && v.currentTime !== s.lastVideoTime) {
+          // Fresh frame → draw it, letterboxed to fit the fixed canvas size
+          s.lastVideoTime = v.currentTime;
+          s.lastFrameTime = now;
+
+          s.ctx.fillStyle = "#000";
+          s.ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+
+          const scale = Math.min(
+            CANVAS_WIDTH / v.videoWidth,
+            CANVAS_HEIGHT / v.videoHeight,
+          );
+          const dw = v.videoWidth * scale;
+          const dh = v.videoHeight * scale;
+          s.ctx.drawImage(
+            v,
+            (CANVAS_WIDTH - dw) / 2,
+            (CANVAS_HEIGHT - dh) / 2,
+            dw,
+            dh,
+          );
+        } else if (now - s.lastFrameTime > FRAME_STALE_MS) {
+          // Camera off / no frames → black screen with name.
+          // Must repaint EVERY tick — captureStream() only emits frames while the
+          // canvas is actively being drawn to.
+          s.ctx.fillStyle = "#202124";
+          s.ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+
+          s.ctx.fillStyle = "#ffffff";
+          s.ctx.font = "24px sans-serif";
+          s.ctx.textAlign = "center";
+          s.ctx.textBaseline = "middle";
+          s.ctx.fillText(s.displayName, CANVAS_WIDTH / 2, CANVAS_HEIGHT / 2);
+        }
+      });
+    } catch (err) {
+      console.log(`[RENDER_TICK_ERROR] ${err.message} | ${err.stack}`);
+    }
+  }
+
+  // Start the shared loop once.
+  // setInterval is used instead of requestAnimationFrame because rAF is throttled
+  // or suspended entirely in headless Chrome, which would stop the canvas being
+  // drawn to — and captureStream() only emits frames while drawing happens.
+  if (!window.__renderLoopStarted) {
+    window.__renderLoopStarted = true;
+    setInterval(renderTick, Math.floor(1000 / CANVAS_FPS));
+    console.log(
+      "[RENDER_LOOP] Started shared canvas render loop (setInterval)",
+    );
+  }
+
+  function stopRecordingForParticipant(participantId) {
+    const r = window.__recorders[participantId];
+    if (r && r.state !== "inactive") {
+      r.stop();
+      console.log(`[RECORDER_STOPPED] participantId=${participantId}`);
+    }
+    delete window.__recorders[participantId];
+    const state = window.__recorderState[participantId];
+    if (state && state.ws) {
+      setTimeout(() => state.ws.close(), 500);
+    }
+    if (
+      state &&
+      state.audioTrackId &&
+      window.__audioTrackLock &&
+      window.__audioTrackLock[state.audioTrackId] === participantId
+    ) {
+      delete window.__audioTrackLock[state.audioTrackId];
+      console.log(
+        `[AVBOND_RELEASED] trackId=${state.audioTrackId} participantId=${participantId}`,
+      );
+    }
+    delete window.__recorderState[participantId];
+  }
+
+  function stopAllRecorders() {
+    const pids = Object.keys(window.__recorders);
+
+    pids.forEach((pid) => {
+      const r = window.__recorders[pid];
+      if (r && r.state !== "inactive") {
+        r.stop();
+        console.log(`[RECORDER_STOPPED] participantId=${pid}`);
+      }
+    });
+
+    // Give MediaRecorder's final async dataavailable event time to fire and
+    // send before we close the sockets out from under it.
+    setTimeout(() => {
+      pids.forEach((pid) => {
+        const state = window.__recorderState[pid];
+        if (state && state.ws) {
+          try {
+            state.ws.close();
+          } catch (e) {}
+          console.log(`[WS_CLOSED_ON_SHUTDOWN] participantId=${pid}`);
+        }
+      });
+
+      window.__recorders = {};
+      window.__recorderState = {};
+      console.log("[STOP_ALL_RECORDERS_COMPLETE]");
+    }, 2000);
+  }
+
+  window.__startRecordingForParticipant = startRecordingForParticipant;
+  // window.__upgradeToFullRecording = upgradeToFullRecording;
+  // window.__attachAudioToRecording = attachAudioToRecording;
+  window.__stopRecordingForParticipant = stopRecordingForParticipant;
+  window.__stopAllRecorders = stopAllRecorders;
+
+  // ... entire existing contents of recorder.js go inside this block ...
+}

@@ -1,4 +1,5 @@
 const { chromium } = require("playwright-extra");
+const timeline = require("./timeline");
 const stealth = require("puppeteer-extra-plugin-stealth")();
 const mapper = require("./mapper.js");
 const { stitchAllRecordings, killAllActiveFfmpeg } = require("./stitch.js");
@@ -34,6 +35,7 @@ chromium.use(stealth);
   const page = context.pages()[0] || (await context.newPage());
 
   const wss = new WebSocketServer({ host: "127.0.0.1", port: 8765 });
+  timeline.init(path.join(__dirname, "finalRecorded"), `session-${Date.now()}`);
 
   const activeConnections = new Set();
 
@@ -62,6 +64,7 @@ chromium.use(stealth);
       console.log(
         `[WS_STREAM_OPEN] participantId=${participantId} -> ${filePath} hasAudio=${hasAudio}`,
       );
+      timeline.markStart(participantId.split("::")[0]);
     }
 
     const stream = chunkStreams[participantId];
@@ -125,6 +128,7 @@ chromium.use(stealth);
     "__bindVideo",
     (participantId, name, ssrc, trackId) => {
       mapper.bindVideo(participantId, name, ssrc, trackId);
+      timeline.setName(participantId, name);
       // console.log(
       //   `[MAPPER_BIND_VIDEO] participantId=${participantId} name=${name} ssrc=${ssrc} trackId=${trackId}`,
       // );
@@ -174,6 +178,7 @@ chromium.use(stealth);
 
   await page.exposeFunction("__updateName", (participantId, name) => {
     mapper.updateName(participantId, name);
+    timeline.setName(participantId, name);
   });
 
   await context.addInitScript({
@@ -1161,7 +1166,7 @@ chromium.use(stealth);
   page.on("close", () => console.log("PAGE CLOSED EVENT FIRED"));
   context.on("close", () => console.log("CONTEXT CLOSED EVENT FIRED"));
 
-  await page.goto("https://meet.google.com/chx-vbrh-ocm");
+  await page.goto("https://meet.google.com/yzd-grbf-zpi");
 
   console.log("Page loaded, taking screenshot...");
   await page.screenshot({ path: "debug_screenshot.png" });
@@ -1279,6 +1284,15 @@ chromium.use(stealth);
       console.log(`[STITCH_FATAL_ERROR] ${err.message}`);
       killAllActiveFfmpeg();
     }
+
+    // open the player in its own window (separate process, no load on the bot)
+    await new Promise((resolve) => {
+      require("child_process").exec(
+        `start "MeetingPlayer" node publish.js "${path.join(__dirname, "finalRecorded")}"`,
+        { cwd: __dirname },
+        () => resolve(),
+      );
+    });
 
     clearInterval(heartbeat);
     const totalElapsed = ((Date.now() - shutdownStart) / 1000).toFixed(1);

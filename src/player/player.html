@@ -1,0 +1,441 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Meeting replay</title>
+<style>
+  :root {
+    --page: #282828;
+    --stage: #000000;
+    --tile: #202124;
+    --ink: #202124;
+    --muted: #5f6368;
+    --accent: #1a73e8;
+    --rail: #dadce0;
+    --ease: cubic-bezier(.2, .8, .2, 1);
+    --rec: #d93025;
+    --w: min(1280px, 100%, calc((100vh - 180px) * 16 / 9));
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; background: var(--page); color: var(--ink);
+    font-family: "Google Sans", Roboto, "Segoe UI", system-ui, sans-serif; }
+  body { display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 18px; padding: 24px; min-height: 100vh; }
+
+  .stage { position: relative; overflow: hidden; background: var(--stage); border-radius: 14px;
+    width: var(--w); aspect-ratio: 16 / 9; }
+
+  .tile { position: absolute; left: 0; top: 0; width: 0; height: 0; overflow: hidden;
+    background: var(--tile); border-radius: 10px;
+    transition: left .55s var(--ease), top .55s var(--ease), width .55s var(--ease),
+                height .55s var(--ease), opacity .45s var(--ease), transform .45s var(--ease); }
+  .tile.off { opacity: 0; transform: scale(.82); pointer-events: none; }
+  .tile.instant { transition: none; }
+  .tile video { width: 100%; height: 100%; object-fit: cover; display: block; background: var(--tile); }
+  .tile .name { position: absolute; left: 12px; bottom: 10px; max-width: calc(100% - 24px);
+    color: #fff; font-size: 14px; font-weight: 500; white-space: nowrap; overflow: hidden;
+    text-overflow: ellipsis; text-shadow: 0 1px 3px rgba(0,0,0,.7); }
+
+  .overlay { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center;
+    justify-content: center; gap: 16px; color: #e8eaed; font-size: 15px; text-align: center; padding: 24px; }
+  .overlay[hidden] { display: none; }
+  .spinner { width: 36px; height: 36px; border-radius: 50%; border: 3px solid rgba(255,255,255,.18);
+    border-top-color: #fff; animation: spin .9s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .overlay button { font: inherit; font-weight: 500; color: var(--ink); background: #fff; border: 0;
+    border-radius: 999px; padding: 10px 22px; cursor: pointer; }
+
+  .controls { width: var(--w); display: flex; align-items: center;
+    gap: 14px; font-size: 14px; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .controls button { flex: none; width: 44px; height: 44px; border-radius: 50%; border: 0; cursor: pointer;
+    display: grid; place-items: center; background: var(--ink); color: #fff; }
+  .controls button.quiet { background: transparent; color: var(--ink); width: 40px; height: 40px; }
+  .controls button:disabled { opacity: .35; cursor: default; }
+  .controls svg { width: 22px; height: 22px; fill: currentColor; }
+  .controls button.rec { width: auto; height: 40px; padding: 0 16px 0 14px; display: inline-flex; gap: 8px;
+    align-items: center; background: transparent; color: var(--rec); border: 1px solid var(--rail);
+    border-radius: 999px; font: inherit; font-weight: 500; }
+  .controls button.rec .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--rec); transition: border-radius .2s; }
+  .controls button.rec.on .dot { border-radius: 2px; }
+  .status { width: var(--w); min-height: 20px; margin-top: -8px; font-size: 13px; color: var(--muted); }
+  .status.live { color: var(--rec); }
+  .status.live::before { content: ""; display: inline-block; width: 8px; height: 8px; margin-right: 8px;
+    border-radius: 50%; background: var(--rec); vertical-align: 1px; animation: blink 1s steps(2) infinite; }
+  @keyframes blink { 50% { opacity: .2; } }
+  .seek { flex: 1; accent-color: var(--accent); height: 4px; cursor: pointer; }
+  button:focus-visible, .seek:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+  @media (prefers-reduced-motion: reduce) { .tile { transition: none; } .spinner { animation-duration: 3s; } }
+  @media (max-width: 600px) { body { padding: 12px; } .controls { gap: 8px; } }
+</style>
+</head>
+<body>
+  <main class="stage" id="stage" aria-label="Meeting replay">
+    <div class="overlay" id="overlay">
+      <div class="spinner" id="spinner"></div>
+      <div id="overlayText">Getting the recording ready</div>
+      <button id="overlayBtn" hidden></button>
+    </div>
+  </main>
+
+  <div class="controls">
+    <button id="playBtn" aria-label="Play" disabled></button>
+    <span id="timeNow">0:00</span>
+    <input class="seek" id="seek" type="range" min="0" max="0" step="0.01" value="0" disabled aria-label="Seek">
+    <span id="timeTotal">0:00</span>
+    <button class="quiet" id="muteBtn" aria-label="Mute" disabled></button>
+    <button class="rec" id="recBtn" disabled><span class="dot"></span><span id="recLabel">Record</span></button>
+  </div>
+  <div class="status" id="status" aria-live="polite"></div>
+
+<script>
+(() => {
+  const ICON = {
+    play:   '<svg viewBox="0 0 24 24"><path d="M8 5.14v13.72L19 12z"/></svg>',
+    pause:  '<svg viewBox="0 0 24 24"><path d="M7 5h4v14H7zm6 0h4v14h-4z"/></svg>',
+    replay: '<svg viewBox="0 0 24 24"><path d="M12 5V1L7 6l5 5V7a6 6 0 1 1-6 6H4a8 8 0 1 0 8-8z"/></svg>',
+    sound:  '<svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9zm13.5 3A4.5 4.5 0 0 0 14 7.97v8.05A4.5 4.5 0 0 0 16.5 12zM14 3.23v2.06a7 7 0 0 1 0 13.42v2.06a9 9 0 0 0 0-17.54z"/></svg>',
+    muted:  '<svg viewBox="0 0 24 24"><path d="M16.5 12A4.5 4.5 0 0 0 14 7.97v2.21l2.45 2.45c.03-.2.05-.41.05-.63zM19 12c0 .94-.2 1.82-.54 2.64l1.51 1.51A8.8 8.8 0 0 0 21 12a9 9 0 0 0-7-8.77v2.06A7 7 0 0 1 19 12zM4.27 3 3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06a9 9 0 0 0 3.69-1.81L19.73 21 21 19.73l-9-9zM12 4 9.91 6.09 12 8.18z"/></svg>',
+  };
+  const $ = (id) => document.getElementById(id);
+  const stage = $("stage"), overlay = $("overlay"), overlayText = $("overlayText"),
+        overlayBtn = $("overlayBtn"), spinner = $("spinner"), playBtn = $("playBtn"),
+        muteBtn = $("muteBtn"), recBtn = $("recBtn"), recLabel = $("recLabel"), statusEl = $("status"), seek = $("seek"), timeNow = $("timeNow"), timeTotal = $("timeTotal");
+
+  const GAP = 8, ASPECT = 16 / 9, FIX_EVERY_MS = 500, STALL_MAX_MS = 4000;
+  let parts = [], total = 0, muted = false, seeking = false;
+
+  // ---------- master clock ----------
+  const clock = { playing: false, t: 0, anchorT: 0, anchorPerf: 0, stalledSince: 0 };
+  const getT = () => clock.playing && !clock.stalledSince
+    ? clock.anchorT + (performance.now() - clock.anchorPerf) / 1000 : clock.t;
+  function setT(t) { clock.t = clock.anchorT = t; clock.anchorPerf = performance.now(); }
+
+  // ---------- helpers ----------
+  const fmt = (s) => { s = Math.max(0, Math.floor(s)); const m = Math.floor(s / 60);
+    return m >= 60 ? `${Math.floor(m / 60)}:${String(m % 60).padStart(2, "0")}:${String(s % 60).padStart(2, "0")}`
+                   : `${m}:${String(s % 60).padStart(2, "0")}`; };
+  function showOverlay(text, { spin = false, button = null } = {}) {
+    overlay.hidden = false; overlayText.textContent = text; spinner.hidden = !spin;
+    overlayBtn.hidden = !button;
+    if (button) { overlayBtn.textContent = button.label; overlayBtn.onclick = button.onClick; }
+  }
+  const hideOverlay = () => { overlay.hidden = true; };
+  const tryPlay = (v) => v.play().catch((e) => { if (e.name === "NotAllowedError") needClick(); });
+  function needClick() {
+    if (!clock.playing) return;
+    pause();
+    showOverlay("Your browser needs a click to play with sound.", { button: { label: "Play meeting", onClick: () => { hideOverlay(); play(); } } });
+  }
+
+  // ---------- 1. wait for publish.js ----------
+  async function poll() {
+    let s;
+    try { s = await (await fetch("/api/status", { cache: "no-store" })).json(); }
+    catch { showOverlay("Can't reach the publisher. Is publish.js still running?", { spin: true }); return setTimeout(poll, 1500); }
+    if (s.state === "uploading") { showOverlay(`Uploading videos ${s.done} of ${s.total}`, { spin: true }); return setTimeout(poll, 1000); }
+    if (s.state === "error") return showOverlay(`Publishing failed: ${s.message}. See the publish.js console.`);
+    build(s.manifest);
+  }
+
+  // ---------- 2. build tiles + preload ----------
+  async function build(manifest) {
+    const list = manifest.participants || [];
+    if (!list.length) return showOverlay("No participant videos in this recording.");
+
+    parts = list.map((p) => {
+      const el = document.createElement("div");
+      el.className = "tile off";
+      const v = document.createElement("video");
+      v.preload = "auto"; v.playsInline = true;
+      v.crossOrigin = "anonymous"; // lets the recorder read frames/audio from Cloudinary
+      v.src = p.url;
+      const name = document.createElement("div");
+      name.className = "name"; name.textContent = p.name;
+      el.append(v, name); stage.insertBefore(el, overlay);
+      return { ...p, el, video: v, duration: NaN, present: false, entering: false, lastFix: 0 };
+    });
+
+    let ready = 0;
+    showOverlay(`Loading videos 0 of ${parts.length}`, { spin: true });
+    await Promise.all(parts.map((p) => new Promise((resolve) => {
+      const v = p.video; let doneOnce = false;
+      const done = () => { if (doneOnce) return; doneOnce = true;
+        p.duration = isFinite(v.duration) ? v.duration : NaN;
+        showOverlay(`Loading videos ${++ready} of ${parts.length}`, { spin: true }); resolve(); };
+      v.addEventListener("canplaythrough", done, { once: true });
+      v.addEventListener("error", () => {
+        if (p.localUrl && !p.triedLocal && p.url !== p.localUrl) { // Cloudinary failed -> play the local file
+          p.triedLocal = true; console.warn("falling back to local file:", p.name);
+          v.src = p.localUrl; v.load();
+        } else { console.warn("video failed:", p.name, v.src); done(); }
+      });
+      setTimeout(() => (v.readyState >= 1 ? done() : null), 25000); // don't wait forever on one slow file
+    })));
+
+    parts = parts.filter((p) => isFinite(p.duration) && p.duration > 0);
+    if (!parts.length) return showOverlay("None of the videos could be loaded. Check the URLs in manifest.json.");
+    total = Math.max(...parts.map((p) => p.offset + p.duration));
+    seek.max = total; timeTotal.textContent = fmt(total);
+    [playBtn, muteBtn, seek, recBtn].forEach((b) => (b.disabled = false));
+    muteBtn.innerHTML = ICON.sound;
+
+    hideOverlay();
+    new ResizeObserver(layout).observe(stage);
+    requestAnimationFrame(tick);
+    play();
+  }
+
+  // ---------- 3. Meet-style grid ----------
+  function layout() {
+    const shown = parts.filter((p) => p.present);
+    const n = shown.length; if (!n) return;
+    const W = stage.clientWidth, H = stage.clientHeight;
+    let best = null;
+    for (let cols = 1; cols <= n; cols++) {
+      const rows = Math.ceil(n / cols);
+      const w = Math.min((W - GAP * (cols + 1)) / cols, ((H - GAP * (rows + 1)) / rows) * ASPECT);
+      if (!best || w > best.w) best = { cols, rows, w, h: w / ASPECT };
+    }
+    const { cols, rows, w, h } = best;
+    const top0 = (H - (rows * h + (rows - 1) * GAP)) / 2;
+    shown.forEach((p, i) => {
+      const r = Math.floor(i / cols), c = i % cols;
+      const inRow = r === rows - 1 ? n - r * cols : cols;          // last row is centered, like Meet
+      const left0 = (W - (inRow * w + (inRow - 1) * GAP)) / 2;
+      const s = p.el.style;
+      if (p.entering) p.el.classList.add("instant");               // jump into place invisibly…
+      s.left = `${left0 + c * (w + GAP)}px`; s.top = `${top0 + r * (h + GAP)}px`;
+      s.width = `${w}px`; s.height = `${h}px`;
+      if (p.entering) { p.el.offsetWidth; p.el.classList.remove("instant"); p.el.classList.remove("off"); p.entering = false; } // …then fade/scale in
+    });
+  }
+
+  // ---------- 4. play / pause / seek ----------
+  function play() {
+    if (getT() >= total - 0.05) seekTo(0);
+    setT(clock.t); clock.playing = true; clock.stalledSince = 0;
+    playBtn.innerHTML = ICON.pause; playBtn.setAttribute("aria-label", "Pause");
+    parts.forEach((p) => p.present && tryPlay(p.video));
+  }
+  function pause() {
+    clock.t = getT(); clock.playing = false; clock.stalledSince = 0;
+    playBtn.innerHTML = ICON.play; playBtn.setAttribute("aria-label", "Play");
+    parts.forEach((p) => p.video.pause());
+  }
+  function seekTo(t) {
+    t = Math.min(Math.max(0, t), total); setT(t);
+    parts.forEach((p) => {
+      const local = t - p.offset;
+      if (local >= 0 && local < p.duration) { p.video.currentTime = local; p.lastFix = performance.now(); }
+      else p.video.pause();
+    });
+  }
+
+  playBtn.onclick = () => (clock.playing ? pause() : play());
+  muteBtn.onclick = () => {
+    muted = !muted; parts.forEach((p) => (p.video.muted = muted));
+    muteBtn.innerHTML = muted ? ICON.muted : ICON.sound; muteBtn.setAttribute("aria-label", muted ? "Unmute" : "Mute");
+  };
+  seek.addEventListener("pointerdown", () => (seeking = true));
+  seek.addEventListener("pointerup", () => (seeking = false));
+  seek.addEventListener("input", () => {
+    seekTo(Number(seek.value));
+    if (!clock.playing) { playBtn.innerHTML = ICON.play; playBtn.setAttribute("aria-label", "Play"); }
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.code === "Space" && !playBtn.disabled && e.target.tagName !== "BUTTON") { e.preventDefault(); playBtn.click(); }
+  });
+
+  // ---------- 5. the loop: presence, drift, stalls ----------
+  function tick() {
+    const now = performance.now();
+    let t = getT();
+
+    if (t >= total) {
+      if (clock.playing) { pause(); clock.t = total; }
+      t = total; playBtn.innerHTML = ICON.replay; playBtn.setAttribute("aria-label", "Replay");
+      if (rec.active && !rec.ending) { rec.ending = true; recBtn.disabled = true; setTimeout(finishRecording, 800); } // let last tiles fade out
+    }
+
+    // tiles in / out
+    let changed = false;
+    for (const p of parts) {
+      const local = t - p.offset;
+      const should = local >= 0 && local < p.duration && !(p.video.ended && local > p.duration - 0.5);
+      if (should && !p.present) {
+        p.present = true; p.entering = true; changed = true;
+        if (Math.abs(p.video.currentTime - local) > 0.3) p.video.currentTime = local;
+        if (clock.playing && !clock.stalledSince) tryPlay(p.video);
+      } else if (!should && p.present) {
+        p.present = false; p.video.pause(); p.el.classList.add("off"); changed = true; // leaves in place, others reflow
+      }
+    }
+    if (changed) layout();
+
+    if (clock.playing) {
+      const shown = parts.filter((p) => p.present);
+      // hold everyone if a visible video is buffering, so nobody runs ahead
+      const buffering = shown.some((p) => p.video.readyState < 3 && !p.video.ended);
+      if (buffering && !clock.stalledSince) {
+        clock.t = t; clock.stalledSince = now; shown.forEach((p) => p.video.pause());
+      } else if (clock.stalledSince && (!buffering || now - clock.stalledSince > STALL_MAX_MS)) {
+        clock.stalledSince = 0; setT(clock.t); shown.forEach((p) => tryPlay(p.video));
+      }
+
+      // gentle drift correction: nudge speed for small drift, jump for big drift
+      if (!clock.stalledSince) {
+        for (const p of shown) {
+          const v = p.video;
+          if (v.seeking || v.ended || now - p.lastFix < FIX_EVERY_MS) continue;
+          p.lastFix = now;
+          const drift = v.currentTime - (t - p.offset);
+          if (Math.abs(drift) > 0.6) { v.currentTime = t - p.offset; v.playbackRate = 1; }
+          else if (Math.abs(drift) > 0.08) v.playbackRate = drift > 0 ? 0.95 : 1.05;
+          else v.playbackRate = 1;
+          if (v.paused) tryPlay(v);
+        }
+      }
+    }
+
+    if (!seeking) seek.value = t;
+    timeNow.textContent = fmt(t);
+    requestAnimationFrame(tick);
+  }
+
+  // ---------- 6. record the stage (with animations) into one .mp4 ----------
+  const REC_W = 1280, REC_H = 720;
+  const rec = { active: false, ending: false, cancelled: false, mr: null, id: null, chain: null, ctx: null, audio: null, dest: null };
+  const setStatus = (text, live = false) => { statusEl.textContent = text; statusEl.classList.toggle("live", live); };
+  const setLocked = (locked) => [playBtn, seek, muteBtn].forEach((b) => (b.disabled = locked));
+  const pickMime = () => ["video/mp4;codecs=avc1.42E01F,mp4a.40.2", "video/mp4;codecs=avc1,opus", "video/mp4",
+    "video/webm;codecs=vp9,opus", "video/webm;codecs=vp8,opus", "video/webm"]
+    .find((m) => window.MediaRecorder && MediaRecorder.isTypeSupported(m));
+
+  // route every tile's audio through one mixer: speakers + recording
+  function ensureAudioGraph() {
+    if (rec.audio) return;
+    const ac = new AudioContext(), dest = ac.createMediaStreamDestination();
+    parts.forEach((p) => { const s = ac.createMediaElementSource(p.video); s.connect(ac.destination); s.connect(dest); });
+    rec.audio = ac; rec.dest = dest;
+  }
+
+  // paint the stage exactly as it looks right now, mid-animation included
+  function drawFrame() {
+    const c = rec.ctx, S = stage.getBoundingClientRect(), k = REC_W / S.width;
+    c.globalAlpha = 1; c.shadowColor = "transparent"; c.fillStyle = "#000"; c.fillRect(0, 0, REC_W, REC_H);
+    for (const p of parts) {
+      const alpha = parseFloat(getComputedStyle(p.el).opacity);
+      if (alpha <= 0.01) continue;
+      const r = p.el.getBoundingClientRect();
+      const x = (r.left - S.left) * k, y = (r.top - S.top) * k, w = r.width * k, h = r.height * k;
+      if (w < 2 || h < 2) continue;
+      const sc = (p.el.offsetWidth ? r.width / p.el.offsetWidth : 1) * k; // includes the scale-in/out
+      c.save(); c.globalAlpha = alpha;
+      c.beginPath(); c.roundRect(x, y, w, h, 10 * sc); c.clip();
+      c.fillStyle = "#202124"; c.fillRect(x, y, w, h);
+      const v = p.video;
+      if (v.readyState >= 2 && v.videoWidth) { // object-fit: cover
+        let sx = 0, sy = 0, sw = v.videoWidth, sh = v.videoHeight;
+        if (sw / sh > w / h) { const nw = sh * (w / h); sx = (sw - nw) / 2; sw = nw; }
+        else { const nh = sw / (w / h); sy = (sh - nh) / 2; sh = nh; }
+        c.drawImage(v, sx, sy, sw, sh, x, y, w, h);
+      }
+      const fs = 14 * sc;
+      c.font = `500 ${fs}px "Google Sans", Roboto, "Segoe UI", system-ui, sans-serif`;
+      c.fillStyle = "#fff"; c.shadowColor = "rgba(0,0,0,.7)"; c.shadowBlur = 3 * sc; c.shadowOffsetY = sc;
+      c.fillText(p.name, x + 12 * sc, y + h - 10 * sc - fs * 0.25, Math.max(10, w - 24 * sc));
+      c.restore();
+    }
+  }
+
+  function drawLoop() {
+    if (!rec.active) return;
+    drawFrame();
+    const mr = rec.mr;
+    if (mr && !rec.ending) { // skip buffering freezes so the file has no stalls
+      if (clock.stalledSince && mr.state === "recording") mr.pause();
+      else if (!clock.stalledSince && mr.state === "paused") mr.resume();
+    }
+    if (!rec.ending) setStatus(`Recording ${fmt(getT())} / ${fmt(total)} · keep this tab open and in front`, true);
+    requestAnimationFrame(drawLoop);
+  }
+
+  async function startRecording() {
+    const mime = pickMime();
+    if (!mime) return setStatus("This browser can't record. Please use Chrome.");
+    recBtn.disabled = true;
+    try {
+      ensureAudioGraph(); await rec.audio.resume();
+      if (muted) muteBtn.click(); // the recording always gets sound
+      const canvas = document.createElement("canvas");
+      canvas.width = REC_W; canvas.height = REC_H; rec.ctx = canvas.getContext("2d");
+      const stream = new MediaStream([...canvas.captureStream(30).getVideoTracks(), ...rec.dest.stream.getAudioTracks()]);
+      const ext = mime.startsWith("video/mp4") ? "mp4" : "webm";
+      const r = await fetch(`/api/rec/start?ext=${ext}`, { method: "POST" });
+      if (!r.ok) throw new Error("publisher refused to start");
+      const { id } = await r.json();
+
+      const mr = new MediaRecorder(stream, { mimeType: mime, videoBitsPerSecond: 6_000_000, audioBitsPerSecond: 160_000 });
+      Object.assign(rec, { active: true, ending: false, cancelled: false, id, mr, chain: Promise.resolve() });
+      mr.ondataavailable = (e) => { // stream chunks to disk so memory stays flat on long meetings
+        if (!e.data.size || rec.cancelled) return;
+        rec.chain = rec.chain
+          .then(() => fetch(`/api/rec/chunk?id=${id}`, { method: "POST", body: e.data }))
+          .then((res) => { if (!res.ok) throw new Error("chunk upload failed"); });
+      };
+
+      // reset the stage so the file starts clean from 0:00
+      pause();
+      parts.forEach((p) => { p.present = false; p.entering = false; p.el.classList.add("instant", "off"); });
+      stage.offsetWidth; parts.forEach((p) => p.el.classList.remove("instant"));
+      seekTo(0);
+
+      setLocked(true); recBtn.classList.add("on"); recLabel.textContent = "Cancel"; recBtn.disabled = false;
+      drawFrame(); mr.start(1000); play();
+      requestAnimationFrame(drawLoop);
+    } catch (e) {
+      console.error(e); rec.active = false; setLocked(false); recBtn.disabled = false;
+      setStatus(`Couldn't start recording: ${e.message}`);
+    }
+  }
+
+  function resetRecordingUi() {
+    rec.active = false; rec.ending = false; setLocked(false);
+    recBtn.classList.remove("on"); recLabel.textContent = "Record"; recBtn.disabled = false;
+  }
+
+  async function finishRecording() {
+    if (!rec.active || rec.cancelled) return;
+    setStatus("Saving recording…");
+    try {
+      const mr = rec.mr;
+      await new Promise((res) => { mr.onstop = res; mr.state !== "inactive" ? mr.stop() : res(); });
+      await rec.chain; // last chunk is on disk
+      const r = await fetch(`/api/rec/finish?id=${rec.id}`, { method: "POST" });
+      const j = await r.json();
+      if (!r.ok) throw new Error(j.error || "save failed");
+      setStatus(`Saved to ${j.file}${j.warning ? ` (${j.warning})` : ""}`);
+    } catch (e) { setStatus(`Recording failed: ${e.message}`); }
+    resetRecordingUi();
+  }
+
+  async function cancelRecording() {
+    rec.cancelled = true;
+    try { if (rec.mr && rec.mr.state !== "inactive") rec.mr.stop(); } catch (_) {}
+    pause(); resetRecordingUi();
+    try { await rec.chain; } catch (_) {}
+    try { await fetch(`/api/rec/cancel?id=${rec.id}`, { method: "POST" }); } catch (_) {}
+    setStatus("Recording cancelled.");
+  }
+
+  recBtn.onclick = () => { if (!rec.active) startRecording(); else if (!rec.ending) cancelRecording(); };
+  window.addEventListener("beforeunload", (e) => { if (rec.active) { e.preventDefault(); e.returnValue = ""; } });
+
+  playBtn.innerHTML = ICON.play; muteBtn.innerHTML = ICON.sound;
+  poll();
+})();
+</script>
+</body>
+</html>
